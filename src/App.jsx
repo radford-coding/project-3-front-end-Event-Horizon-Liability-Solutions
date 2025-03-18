@@ -9,6 +9,8 @@ import Dashboard from './components/Dashboard/Dashboard';
 
 import { UserContext } from './contexts/UserContext';
 
+import './App.css';
+
 const App = () => {
   const { user } = useContext(UserContext);
   
