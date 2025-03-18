@@ -1,4 +1,5 @@
 body {
-    background-image: url('./public/BH_accretion_disk_viz.png');
+    /* from https://svs.gsfc.nasa.gov/14146/ */
+    background-image: url('/BH_accretion_disk_viz.png');
     background-position: center;
 }
