@@ -24,4 +24,3 @@ You've been hired as a security consultant at Event Horizon Liability Solutions,
     - ExoLegal Compliance Officer – Ensures clients meet their contract obligations (or suffer consequences).
     - Event Horizon Incident Containment Operative – Cleans up "unfortunate accidents" and ensures no information leaks.
 
-testing enforcement
