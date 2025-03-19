@@ -39,20 +39,20 @@ const updatePlayer = async (playerId, playerFormData) => {
 };
 
 // DELETE /users/:userId - delete a player account - needs to also log out
-const deletePlayer = async (playerId) => {
-  try {
-    const res = await fetch(`${BASE_URL}/${playerId}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    });
-    return res.json();
-  } catch (err) {
-    console.log(err);
-    throw new Error(err);
-  };
-};
+// const deletePlayer = async (playerId) => {
+//   try {
+//     const res = await fetch(`${BASE_URL}/${playerId}`, {
+//       method: 'DELETE',
+//       headers: {
+//         Authorization: `Bearer ${localStorage.getItem('token')}`,
+//       },
+//     });
+//     return res.json();
+//   } catch (err) {
+//     console.log(err);
+//     throw new Error(err);
+//   };
+// };
 
 // GET /users/:userId/employees - view all employees
 const employeeList = async (playerId) => {
@@ -195,7 +195,7 @@ const editMission = async (playerId, missionId, missionFormData) => {
 export {
   playerList,
   updatePlayer,
-  deletePlayer,
+  // deletePlayer,
   employeeList,
   createEmployee,
   employeeDetails,
