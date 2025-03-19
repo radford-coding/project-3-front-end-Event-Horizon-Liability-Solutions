@@ -26,21 +26,22 @@ You've been hired as a security consultant at Event Horizon Liability Solutions,
 
 ## Route definitions
 
-| HTTP Method              | controller | Response | URI | Use Case | status |
-| :----------------: | :------: | :----: | :---- | :---- | :-----: |
-| POST        |   auth   | 201 |  /auth/sign-up |  register and create a new user  | |
-| POST        |   auth   | 200 |  /auth/sign-in |  log in  | |
-| GET | users | 200 | /users | get all users | done |
-| PUT | users | 200 | /users/:userId | update a user's details | |
-| DELETE | users | 200 | /users/:userId | delete a user account | |
-| GET | users | 200 | /users/:userId/employees | get index of employees | |
-| POST | users | 201 | /users/:userId/employees | create new employee | |
-| GET | users | 200 | /users/:userId/employees:employeeId | get one employee's details | |
-| PUT | users | 200 | /users/:userId/employees:employeeId | edit an employee | |
-| DELETE | users | 200 | /users/:userId/employees:employeeId | delete an employee | |
-| GET | users | 200 | /users/:userId/missions/ | get index of missions | |
-| GET | users | 200 | /users/:userId/missions/:missionId | get one mission's details | |
-| PUT | users | 200 | /users/:userId/missions/:missionId | edit an mission | |
+| HTTP Method              | controller | Response | URI | Use Case |
+| :----------------:       | :------:    | :----:  | :---- | :---- |
+| POST        |   auth   | 201 |  /auth/sign-up |  register and create a new user  |
+| POST        |   auth   | 200 |  /auth/sign-in |  log in  |
+| GET | users | 200 | /users | get all users |
+| GET | users | 200 | /users/:userId | get a user's details |
+| PUT | users | 200 | /users/:userId | update a user's details |
+| DELETE | users | 200 | /users/:userId | delete a user account |
+| GET | users | 200 | /users/:userId/employees | get index of employees |
+| POST | users | 201 | /users/:userId/employees | create new employee |
+| GET | users | 200 | /users/:userId/employees/:employeeId | get one employee's details |
+| PUT | users | 200 | /users/:userId/employees/:employeeId | edit an employee |
+| DELETE | users | 200 | /users/:userId/employees/:employeeId | delete an employee |
+| GET | users | 200 | /users/:userId/missions/ | get index of missions |
+| GET | users | 200 | /users/:userId/missions/:missionId | get one mission's details |
+| PUT | users | 200 | /users/:userId/missions/:missionId | edit an mission |
 
 
 <!-- | POST | users | 201 | /users/:userId/missions/ | create new mission | -->
