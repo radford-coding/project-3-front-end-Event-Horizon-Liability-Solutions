@@ -5,6 +5,10 @@ body {
     background-position: center;
 }
 
+.App {
+    text-align: center;
+}
+
 #root {
     padding: 20px;
     background-color: rgba(0,0,0,.93);

@@ -1,3 +1,5 @@
+//components/Landing/Landing.jsx
+import './views/Landing.css';
 const Landing = () => {
   return (
     <main>
