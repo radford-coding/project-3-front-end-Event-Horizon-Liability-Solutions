@@ -3,3 +3,7 @@ body {
     background-image: url('/BH_accretion_disk_viz.png');
     background-position: center;
 }
+
+.App {
+    text-align: center;
+}
