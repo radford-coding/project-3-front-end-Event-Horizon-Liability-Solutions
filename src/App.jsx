@@ -10,6 +10,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import EmployeeList from './components/EmployeeList/EmployeeList';
 import EmployeeDetails from './components/EmployeeDetails/EmployeeDetails';
 import MissionList from './components/MissionList/MissionList';
+import MissionDetails from './components/MissionDetails/MissionDetails';
 
 import { UserContext } from './contexts/UserContext';
 import * as userService from './services/userService';
@@ -41,6 +42,7 @@ const App = () => {
             <Route path='/employees' element={<EmployeeList employees={employees} />}></Route>
             <Route path='/employees/:employeeId' element={<EmployeeDetails />}></Route>
             <Route path='/missions' element={<MissionList missions={missions} />}></Route>
+            <Route path='/missions/:missionId' element={<MissionDetails />}></Route>
           </>
         ) : (
           <>
