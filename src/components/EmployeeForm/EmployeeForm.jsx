@@ -19,15 +19,11 @@ const allPermissions = [
     'execute',
 ];
 
-const EmployeeForm = () => {
+const EmployeeForm = (props) => {
     const [employeeFormData, setEmployeeFormData] = useState(initialEmployeeFormData);
     const { employeeId } = useParams();
     const { user } = useContext(UserContext);
     const [employeePermissionCheckboxes, setEmployeePermissionCheckboxes] = useState(new Array(allPermissions.length).fill(false));
-    // const [employeeFileCheckboxes, setEmployeeFileCheckboxes] = useState([]);
-    // console.log('employeePermissionCheckboxes', employeePermissionCheckboxes);
-
-
 
     useEffect(() => {
         const fetchEmployee = async () => {
@@ -40,8 +36,6 @@ const EmployeeForm = () => {
         if (employeeId) fetchEmployee();
         return () => setEmployeeFormData(initialEmployeeFormData);
     }, [user, employeeId]);
-
-
 
     const handleEasyChange = (evt) => {
         setEmployeeFormData({
@@ -76,6 +70,16 @@ const EmployeeForm = () => {
         });
     };
 
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        props.handleAddEmployee(employeeFormData);
+        // if (employeeId) {
+        //     props.handleUpdateEmployee(employeeId, employeeFormData)
+        // } else {
+        //     props.handleAddEmployee(employeeFormData);
+        // };
+    };
+
     // useEffect(() => {
     //     console.log('newPermissions', employeeFormData.permissions);
     // }, [employeeFormData]);
@@ -83,7 +87,7 @@ const EmployeeForm = () => {
     return (
         <main>
             <h1>{employeeId ? 'edit' : 'new'}</h1>
-            <form action="">
+            <form onSubmit={handleSubmit}>
                 <label htmlFor='fullname-input'>Name</label>
                 <input
                     required
@@ -156,7 +160,7 @@ const EmployeeForm = () => {
                     ))}
                 </fieldset>
 
-
+                <button type='submit'>{employeeId ? 'update' : 'add this employee'}</button>
             </form>
         </main>
     );
