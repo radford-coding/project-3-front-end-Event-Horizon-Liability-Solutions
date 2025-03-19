@@ -73,7 +73,7 @@ const employeeList = async (playerId) => {
 };
 
 // POST /users/:userId/employees - add a new employee
-const createEmployee = async (playerId, playerFormData) => {
+const createEmployee = async (playerId, employeeFormData) => {
   try {
     const res = await fetch(`${BASE_URL}/${playerId}/employees`, {
       method: 'POST',
@@ -81,7 +81,7 @@ const createEmployee = async (playerId, playerFormData) => {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(playerFormData),
+      body: JSON.stringify(employeeFormData),
     });
     return res.json();
   } catch (err) {
