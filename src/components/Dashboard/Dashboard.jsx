@@ -13,7 +13,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const fetchedUsers = await userService.index();
+        const fetchedUsers = await userService.playerList();
         setUsers(fetchedUsers);
       } catch (err) {
         console.log(err)
@@ -26,7 +26,7 @@ const Dashboard = () => {
     <main>
       <h1>Welcome, {user.username}</h1>
       <p>
-        This is the dashboard page where you can see a list of all the users.
+        This is the dashboard page where you can see a list of all the players.
       </p>
       <ul>
         {users.map(user => (
