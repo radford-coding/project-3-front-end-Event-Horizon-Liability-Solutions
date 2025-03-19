@@ -24,10 +24,10 @@ const EmployeeForm = () => {
     const { employeeId } = useParams();
     const { user } = useContext(UserContext);
     const [employeePermissionCheckboxes, setEmployeePermissionCheckboxes] = useState(new Array(allPermissions.length).fill(false));
+    // const [employeeFileCheckboxes, setEmployeeFileCheckboxes] = useState([]);
     // console.log('employeePermissionCheckboxes', employeePermissionCheckboxes);
 
 
-    // const [employeeFiles, setEmployeeFiles] = useState([]);
 
     useEffect(() => {
         const fetchEmployee = async () => {
@@ -46,7 +46,7 @@ const EmployeeForm = () => {
     const handleEasyChange = (evt) => {
         setEmployeeFormData({
             ...employeeFormData,
-            [evt.target.name]: evt.target.type === 'checkbox' ? evt.target.checked : evt.target.value
+            [evt.target.name]: evt.target.value,
         });
     };
 
@@ -58,16 +58,27 @@ const EmployeeForm = () => {
         const newPermissions = allPermissions.filter((permission, index) => (
             employeePermissionCheckboxes[index]
         ));
-        
+
         setEmployeeFormData({
             ...employeeFormData,
             permissions: newPermissions,
         });
     };
 
-    useEffect(() => {
-        console.log('newPermissions', employeeFormData.permissions);
-    }, [employeeFormData]);
+    const handleFileDelete = (evt) => {
+        evt.preventDefault();
+        console.log('id', evt.target.id);
+        const newFiles = [...employeeFormData.files].filter((_, i) => i !== Number(evt.target.id.split('-')[0]));
+        console.log('newFiles', newFiles);
+        setEmployeeFormData({
+            ...employeeFormData,
+            files: newFiles,
+        });
+    };
+
+    // useEffect(() => {
+    //     console.log('newPermissions', employeeFormData.permissions);
+    // }, [employeeFormData]);
 
     return (
         <main>
@@ -137,7 +148,10 @@ const EmployeeForm = () => {
                     {employeeFormData.files.map((file, index) => (
                         <div key={index}>
                             <p key={index}>{file}</p>
-                            <button>x</button>
+                            <button
+                                id={`${index}-delete-button`}
+                                onClick={handleFileDelete}
+                            >x</button>
                         </div>
                     ))}
                 </fieldset>
