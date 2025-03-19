@@ -1,5 +1,6 @@
+
+import './App.css';
 import { useContext, useEffect, useState } from 'react';
-// import { Routes, Route, useSearchParams } from 'react-router';
 import { Routes, Route } from 'react-router';
 
 import NavBar from './components/NavBar/NavBar';
