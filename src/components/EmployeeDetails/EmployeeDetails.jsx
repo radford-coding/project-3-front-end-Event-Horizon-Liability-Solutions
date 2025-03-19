@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, NavLink } from "react-router";
 import * as userService from '../../services/userService';
 import { UserContext } from "../../contexts/UserContext";
 
@@ -27,6 +27,7 @@ const EmployeeDetails = () => {
             <p>role: {employee.role}</p>
             <p>permissions: {employee.permissions.map(p => p + ', ')}</p>
             <p>files: {employee.files.map(f => f + ', ')}</p>
+            <NavLink to={`/employees/${employeeId}/edit`}>edit</NavLink>
         </main>
     );
 };

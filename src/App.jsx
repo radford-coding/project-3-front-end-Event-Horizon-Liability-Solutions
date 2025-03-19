@@ -9,6 +9,7 @@ import Landing from './components/Landing/Landing';
 import Dashboard from './components/Dashboard/Dashboard';
 import EmployeeList from './components/EmployeeList/EmployeeList';
 import EmployeeDetails from './components/EmployeeDetails/EmployeeDetails';
+import EmployeeForm from './components/EmployeeForm/EmployeeForm';
 import MissionList from './components/MissionList/MissionList';
 import MissionDetails from './components/MissionDetails/MissionDetails';
 
@@ -41,6 +42,8 @@ const App = () => {
           <>
             <Route path='/employees' element={<EmployeeList employees={employees} />}></Route>
             <Route path='/employees/:employeeId' element={<EmployeeDetails />}></Route>
+            <Route path='/employees/:employeeId/edit' element={<EmployeeForm />}></Route>
+            <Route path='/employees/new' element={<EmployeeForm />}></Route>
             <Route path='/missions' element={<MissionList missions={missions} />}></Route>
             <Route path='/missions/:missionId' element={<MissionDetails />}></Route>
           </>
