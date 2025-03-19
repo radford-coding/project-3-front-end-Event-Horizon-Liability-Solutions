@@ -8,6 +8,7 @@ import SignInForm from './components/SignInForm/SignInForm';
 import Landing from './components/Landing/Landing';
 import Dashboard from './components/Dashboard/Dashboard';
 import EmployeeList from './components/EmployeeList/EmployeeList';
+import EmployeeDetails from './components/EmployeeDetails/EmployeeDetails';
 import MissionList from './components/MissionList/MissionList';
 
 import { UserContext } from './contexts/UserContext';
@@ -38,6 +39,7 @@ const App = () => {
         {user ? (
           <>
             <Route path='/employees' element={<EmployeeList employees={employees} />}></Route>
+            <Route path='/employees/:employeeId' element={<EmployeeDetails />}></Route>
             <Route path='/missions' element={<MissionList missions={missions} />}></Route>
           </>
         ) : (

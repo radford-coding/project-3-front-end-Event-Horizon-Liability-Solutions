@@ -1,3 +1,5 @@
+import { NavLink } from "react-router";
+
 const EmployeeList = (props) => {
 
     return (
@@ -5,7 +7,9 @@ const EmployeeList = (props) => {
             <h2>EHLS Employees</h2>
             <ul>
                 {props.employees.map((employee) => (
-                    <li key={employee._id}>{employee.fullname}</li>
+                    <NavLink key={employee._id} to={`/employees/${employee._id}`}>
+                        <li>{employee.fullname}</li>
+                    </NavLink>
                 ))}
             </ul>
         </main>
