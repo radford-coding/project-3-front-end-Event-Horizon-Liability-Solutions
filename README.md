@@ -4,6 +4,16 @@ You've been hired as a security consultant at Event Horizon Liability Solutions,
 
 ----------------
 
+## to-dos
+
+- [ ] plan gameplay views for each route
+- [ ] define mission requirements & descriptions
+- [ ] add logic for checking whether a mission is completed
+- [ ] conditionally render the list of missions? to make a flow for gameplay?
+
+
+----------------
+
 ### EE roles
 - Corporate & Legal Roles (The Suits)
     - Celestial Risk Assessor – Evaluates the "acceptable" dangers of a mining operation or exoplanet colony (probably underestimates them to avoid payouts).
