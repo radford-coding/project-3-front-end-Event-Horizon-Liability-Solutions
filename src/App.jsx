@@ -16,12 +16,15 @@ import EmployeeDetails from './components/EmployeeDetails/EmployeeDetails';
 import EmployeeForm from './components/EmployeeForm/EmployeeForm';
 import MissionList from './components/MissionList/MissionList';
 import MissionDetails from './components/MissionDetails/MissionDetails';
+import WelcomeScreen from './components/WelcomeScreen/WelcomeScreen';
 import OrgChart from './components/OrgChart/OrgChart';
 
 import { UserContext } from './contexts/UserContext';
 import * as userService from './services/userService';
 
 import './App.css';
+
+const initialMissionState = [];
 
 const App = () => {
   const { user } = useContext(UserContext);
@@ -36,8 +39,24 @@ const App = () => {
       // setEmployees(employeeData);
       setMissions(missionData);
     };
+
     if (user) fetchData();
   }, [user]);
+
+  // useEffect(() => {
+  //   console.log('Fetched Missions:', missions.length);
+  //   console.log('Missions', missions);
+  //   // make sure we have a user and missions before navigating
+  //   if (!user || missions.length === 0) return;
+  //   // if user still has 6 missions, direct to welcome screen
+  //   // if user has made progress, let them go to dashboard
+  //   // TODO: CHANGE THIS NUMBER when we update the set number of missions
+  //   if (missions.length === 6) {
+  //     navigate('/welcome');
+  //   } else {
+  //     navigate('/');
+  //   }
+  // }, [missions, user, navigate]);
 
   const handleAddEmployee = async (employeeFormData) => {
     await userService.createEmployee(user._id, employeeFormData);
@@ -62,11 +81,12 @@ const App = () => {
         {user ? (
           <>
             <Route path='/employees' element={<EmployeeList />}></Route>
-            <Route path='/employees/:employeeId' element={<EmployeeDetails handleDeleteEmployee={handleDeleteEmployee}/>}></Route>
-            <Route path='/employees/:employeeId/edit' element={<EmployeeForm handleUpdateEmployee={handleUpdateEmployee}/>}></Route>
+            <Route path='/employees/:employeeId' element={<EmployeeDetails handleDeleteEmployee={handleDeleteEmployee} />}></Route>
+            <Route path='/employees/:employeeId/edit' element={<EmployeeForm handleUpdateEmployee={handleUpdateEmployee} />}></Route>
             <Route path='/employees/new' element={<EmployeeForm handleAddEmployee={handleAddEmployee} />}></Route>
             <Route path='/missions' element={<MissionList missions={missions} />}></Route>
             <Route path='/missions/:missionId' element={<MissionDetails />}></Route>
+            <Route path='/welcome' element={<WelcomeScreen />} />
             <Route path='/orgchart' element={<OrgChart />} ></Route>
           </>
         ) : (
