@@ -25,24 +25,26 @@ import './App.css';
 const App = () => {
   const { user } = useContext(UserContext);
   const [missions, setMissions] = useState([]);
-  const [employees, setEmployees] = useState([]);
+  // const [employees, setEmployees] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
-      const employeeData = await userService.employeeList(user._id);
+      // const employeeData = await userService.employeeList(user._id);
       const missionData = await userService.missionList(user._id);
-      setEmployees(employeeData);
+      // setEmployees(employeeData);
       setMissions(missionData);
     };
     if (user) fetchData();
   }, [user]);
 
   const handleAddEmployee = async (employeeFormData) => {
-    console.log('employeeFormData', employeeFormData);
-    const newEmployee = await userService.createEmployee(user._id, employeeFormData);
-    setEmployees([...employees, newEmployee]);
-    console.log('newEmployee', newEmployee);
+    await userService.createEmployee(user._id, employeeFormData);
+    navigate('/employees');
+  };
+
+  const handleUpdateEmployee = async (employeeId, employeeFormData) => {
+    await userService.editEmployee(user._id, employeeId, employeeFormData);
     navigate('/employees');
   };
 
@@ -55,7 +57,7 @@ const App = () => {
           <>
             <Route path='/employees' element={<EmployeeList />}></Route>
             <Route path='/employees/:employeeId' element={<EmployeeDetails />}></Route>
-            <Route path='/employees/:employeeId/edit' element={<EmployeeForm />}></Route>
+            <Route path='/employees/:employeeId/edit' element={<EmployeeForm handleUpdateEmployee={handleUpdateEmployee}/>}></Route>
             <Route path='/employees/new' element={<EmployeeForm handleAddEmployee={handleAddEmployee} />}></Route>
             <Route path='/missions' element={<MissionList missions={missions} />}></Route>
             <Route path='/missions/:missionId' element={<MissionDetails />}></Route>
