@@ -26,7 +26,7 @@ const SignInForm = () => {
     try {
       const signedInUser = await signIn(formData);
       setUser(signedInUser);
-      navigate('/');
+      navigate('/welcome');
     } catch (err) {
       setMessage(err.message);
     }
@@ -38,7 +38,7 @@ const SignInForm = () => {
       <p>{message}</p>
       <form autoComplete='off' onSubmit={handleSubmit}>
         <div>
-          <label htmlFor='email'>Username:</label>
+          <label htmlFor='username'>Username:</label>
           <input
             type='text'
             autoComplete='off'

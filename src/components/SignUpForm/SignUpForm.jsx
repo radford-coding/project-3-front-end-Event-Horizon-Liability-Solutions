@@ -48,7 +48,7 @@ const SignUpForm = () => {
           <label htmlFor='username'>Username:</label>
           <input
             type='text'
-            id='name'
+            id='username'
             value={username}
             name='username'
             onChange={handleChange}
