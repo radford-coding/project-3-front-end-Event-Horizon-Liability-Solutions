@@ -63,7 +63,7 @@ const SignInForm = () => {
         </div>
         <div>
           <button>Sign In</button>
-          <button onClick={() => navigate('/')}>Cancel</button>
+          <button onClick={() => navigate('/welcome')}>Cancel</button>
         </div>
       </form>
     </main>
