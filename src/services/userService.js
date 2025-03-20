@@ -22,9 +22,9 @@ const playerList = async () => {
 };
 
 // PUT /users/:userId - update a player's information
-const updatePlayer = async (playerId, playerFormData) => {
+const updatePlayer = async (userId, playerFormData) => {
   try {
-    const res = await fetch(`${BASE_URL}/${playerId}`, {
+    const res = await fetch(`${BASE_URL}/${userId}`, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -40,9 +40,9 @@ const updatePlayer = async (playerId, playerFormData) => {
 };
 
 // DELETE /users/:userId - delete a player account - needs to also log out
-// const deletePlayer = async (playerId) => {
+// const deletePlayer = async (userId) => {
 //   try {
-//     const res = await fetch(`${BASE_URL}/${playerId}`, {
+//     const res = await fetch(`${BASE_URL}/${userId}`, {
 //       method: 'DELETE',
 //       headers: {
 //         Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -56,9 +56,9 @@ const updatePlayer = async (playerId, playerFormData) => {
 // };
 
 // GET /users/:userId/employees - view all employees
-const employeeList = async (playerId) => {
+const employeeList = async (userId) => {
   try {
-    const res = await fetch(`${BASE_URL}/${playerId}/employees`, {
+    const res = await fetch(`${BASE_URL}/${userId}/employees`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     });
     const data = await res.json();
@@ -73,9 +73,9 @@ const employeeList = async (playerId) => {
 };
 
 // POST /users/:userId/employees - add a new employee
-const createEmployee = async (playerId, employeeFormData) => {
+const createEmployee = async (userId, employeeFormData) => {
   try {
-    const res = await fetch(`${BASE_URL}/${playerId}/employees`, {
+    const res = await fetch(`${BASE_URL}/${userId}/employees`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -91,9 +91,9 @@ const createEmployee = async (playerId, employeeFormData) => {
 };
 
 // GET /users/:userId/employees/:employeeId - view one employee's details
-const employeeDetails = async (playerId, employeeId) => {
+const employeeDetails = async (userId, employeeId) => {
   try {
-    const res = await fetch(`${BASE_URL}/${playerId}/employees/${employeeId}`, {
+    const res = await fetch(`${BASE_URL}/${userId}/employees/${employeeId}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     });
     const data = await res.json();
@@ -108,9 +108,9 @@ const employeeDetails = async (playerId, employeeId) => {
 };
 
 // PUT /users/:userId/employees/:employeeId - edit an employee (or delete/add to their permissions or files)
-const editEmployee = async (playerId, employeeId, employeeFormData) => {
+const editEmployee = async (userId, employeeId, employeeFormData) => {
   try {
-    const res = await fetch(`${BASE_URL}/${playerId}/employees/${employeeId}`, {
+    const res = await fetch(`${BASE_URL}/${userId}/employees/${employeeId}`, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -126,9 +126,9 @@ const editEmployee = async (playerId, employeeId, employeeFormData) => {
 };
 
 // DELETE /users/:userId/employees/:employeeId - delete an entire employee
-const deleteEmployee = async (playerId, employeeId) => {
+const deleteEmployee = async (userId, employeeId) => {
   try {
-    const res = await fetch(`${BASE_URL}/${playerId}/employees/${employeeId}`, {
+    const res = await fetch(`${BASE_URL}/${userId}/employees/${employeeId}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -142,9 +142,9 @@ const deleteEmployee = async (playerId, employeeId) => {
 };
 
 // GET /users/:userId/missions - view all missions
-const missionList = async (playerId) => {
+const missionList = async (userId) => {
   try {
-    const res = await fetch(`${BASE_URL}/${playerId}/missions`, {
+    const res = await fetch(`${BASE_URL}/${userId}/missions`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     });
     const data = await res.json();
@@ -159,9 +159,9 @@ const missionList = async (playerId) => {
 };
 
 // GET /users/:userId/missions/:missionId - view a mission's details
-const missionDetails = async (playerId, missionId) => {
+const missionDetails = async (userId, missionId) => {
   try {
-    const res = await fetch(`${BASE_URL}/${playerId}/missions/${missionId}`, {
+    const res = await fetch(`${BASE_URL}/${userId}/missions/${missionId}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     });
     const data = await res.json();
@@ -176,9 +176,9 @@ const missionDetails = async (playerId, missionId) => {
 };
 
 // PUT /users/:userId/missions/:missionId - update a mission
-const editMission = async (playerId, missionId, missionFormData) => {
+const editMission = async (userId, missionId, missionFormData) => {
   try {
-    const res = await fetch(`${BASE_URL}/${playerId}/employees/${missionId}`, {
+    const res = await fetch(`${BASE_URL}/${userId}/employees/${missionId}`, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,

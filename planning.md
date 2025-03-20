@@ -7,8 +7,10 @@ You've been hired as a security consultant at Event Horizon Liability Solutions,
 ## to-dos
 
 - [x] backend (Sera)
+- [ ] decide if we want the DELETE /users/:userId route or nah (Sera)
 - [ ] frontend route linking (Matt)
-- [ ] README.md
+- [ ] add a softlock-escape button for resetting the employee list and missions to the starter arrays
+- [ ] README.md (Bel)
 - [ ] any third-party APIs to research?
 - [ ] check off low hanging fruit from project requirements
 - [ ] plan gameplay views for each route (Bel)
@@ -63,6 +65,8 @@ thursday morning: finish routes
 | GET | users | 200 | /users/:userId/missions/ | get index of missions |
 | GET | users | 200 | /users/:userId/missions/:missionId | get one mission's details |
 | PUT | users | 200 | /users/:userId/missions/:missionId | edit an mission |
+
+
 
 
 <!-- | POST | users | 201 | /users/:userId/missions/ | create new mission | -->

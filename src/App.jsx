@@ -48,6 +48,11 @@ const App = () => {
     navigate('/employees');
   };
 
+  const handleDeleteEmployee = async (employeeId) => {
+    await userService.deleteEmployee(user._id, employeeId);
+    navigate('/employees');
+  };
+
   return (
     <>
       <NavBar />
@@ -56,7 +61,7 @@ const App = () => {
         {user ? (
           <>
             <Route path='/employees' element={<EmployeeList />}></Route>
-            <Route path='/employees/:employeeId' element={<EmployeeDetails />}></Route>
+            <Route path='/employees/:employeeId' element={<EmployeeDetails handleDeleteEmployee={handleDeleteEmployee}/>}></Route>
             <Route path='/employees/:employeeId/edit' element={<EmployeeForm handleUpdateEmployee={handleUpdateEmployee}/>}></Route>
             <Route path='/employees/new' element={<EmployeeForm handleAddEmployee={handleAddEmployee} />}></Route>
             <Route path='/missions' element={<MissionList missions={missions} />}></Route>
