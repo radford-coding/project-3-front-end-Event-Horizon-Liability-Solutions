@@ -1,3 +1,5 @@
+//components/NavBar/NavBar.jsx
+import '../../views/NavBar.css';
 import { useContext } from 'react';
 import { NavLink } from 'react-router';
 

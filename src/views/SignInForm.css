@@ -1,0 +1,17 @@
+main {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #0b0c10;
+    border-radius: 8px;
+  }
+  
+  form div {
+    margin: 10px 0;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #66fcf1;
+  }
