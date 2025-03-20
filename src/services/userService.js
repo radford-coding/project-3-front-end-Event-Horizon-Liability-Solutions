@@ -178,7 +178,7 @@ const missionDetails = async (userId, missionId) => {
 // PUT /users/:userId/missions/:missionId - update a mission
 const editMission = async (userId, missionId, missionFormData) => {
   try {
-    const res = await fetch(`${BASE_URL}/${userId}/employees/${missionId}`, {
+    const res = await fetch(`${BASE_URL}/${userId}/missions/${missionId}`, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,

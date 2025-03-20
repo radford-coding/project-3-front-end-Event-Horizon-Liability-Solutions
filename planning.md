@@ -9,14 +9,20 @@ You've been hired as a security consultant at Event Horizon Liability Solutions,
 - [x] backend (Sera)
 - [ ] decide if we want the DELETE /users/:userId route or nah (Sera)
 - [ ] frontend route linking (Matt)
-- [ ] add a softlock-escape button for resetting the employee list and missions to the starter arrays
+- [ ] add a softlock-escape button for resetting the employee list and missions to the starter arrays (Matt)
 - [ ] README.md (Bel)
-- [ ] any third-party APIs to research?
+- [ ] plan gameplay flow
+- [ ] draw org chart of employee relationships
 - [ ] check off low hanging fruit from project requirements
 - [ ] plan gameplay views for each route (Bel)
 - [ ] define mission requirements & descriptions
-- [ ] add logic for checking whether a mission is completed
+- [ ] add logic for determining whether a mission is completed
 - [ ] conditionally render the list of missions? to make a flow for gameplay?
+- [ ] add-ons:
+    - [ ] replicate on React Native?! marketable, separate app, 
+    - [ ] any third-party APIs to research?
+    - [ ] super-responsive - divide work by 3 screen size buckets (within media queries to avoid conflicts)
+
 
 
 ## time flow
