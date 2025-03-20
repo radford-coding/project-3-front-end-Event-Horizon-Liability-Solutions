@@ -37,25 +37,19 @@ const App = () => {
       const missionData = await userService.missionList(user._id);
       // setEmployees(employeeData);
       setMissions(missionData);
+
+      const completedMissions = missionData.filter( (mission) => mission.isCompleted);
+      console.log(completedMissions);
+      
+      if (completedMissions.length === 0) {
+        navigate('/welcome'); // Redirect to the welcome screen if they still have all missions
+      } else {
+        navigate('/'); // otherwise, send them to the dashboard if they've made progress
+      }
     };
 
     if (user) fetchData();
   }, [user]);
-
-  // useEffect(() => {
-  //   console.log('Fetched Missions:', missions.length);
-  //   console.log('Missions', missions);
-  //   // make sure we have a user and missions before navigating
-  //   if (!user || missions.length === 0) return;
-  //   // if user still has 6 missions, direct to welcome screen
-  //   // if user has made progress, let them go to dashboard
-  //   // TODO: CHANGE THIS NUMBER when we update the set number of missions
-  //   if (missions.length === 6) {
-  //     navigate('/welcome');
-  //   } else {
-  //     navigate('/');
-  //   }
-  // }, [missions, user, navigate]);
 
   const handleAddEmployee = async (employeeFormData) => {
     await userService.createEmployee(user._id, employeeFormData);

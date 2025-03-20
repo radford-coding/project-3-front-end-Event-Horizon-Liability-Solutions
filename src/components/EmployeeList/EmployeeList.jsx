@@ -11,6 +11,7 @@ const EmployeeList = () => {
     useEffect(() => {
         const fetchEmployees = async () => {
             const fetchedEmployees = await userService.employeeList(user._id);
+            console.log(user);
             setEmployees(fetchedEmployees);
         };
         fetchEmployees();
