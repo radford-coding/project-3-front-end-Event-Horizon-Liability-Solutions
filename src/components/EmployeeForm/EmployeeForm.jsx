@@ -45,14 +45,17 @@ const EmployeeForm = (props) => {
     };
 
     const handlePermissionsChange = (position) => {
+        //TODO: this function is wrong somehow. State is 1 click behind always
+        // set the checkbox true/false values
         const updatedPermissions = employeePermissionCheckboxes.map((item, index) => (
             index === position ? !item : item
         ));
         setEmployeePermissionCheckboxes(updatedPermissions);
-        const newPermissions = allPermissions.filter((permission, index) => (
-            employeePermissionCheckboxes[index]
+        // set the form data state values correspondingly????
+        const newPermissions = allPermissions.filter((_, index) => (
+            employeePermissionCheckboxes[index] === true
         ));
-
+        // console.log('newPermissions', newPermissions)
         setEmployeeFormData({
             ...employeeFormData,
             permissions: newPermissions,

@@ -40,9 +40,9 @@ const App = () => {
 
   const handleAddEmployee = async (employeeFormData) => {
     console.log('employeeFormData', employeeFormData);
-    //TODO: check if this is correct - want to add an employee to a user's array
-    // const newEmployee = await userService.createEmployee(user._id, employeeFormData);
-    // setEmployees([...employees, newEmployee]);
+    const newEmployee = await userService.createEmployee(user._id, employeeFormData);
+    setEmployees([...employees, newEmployee]);
+    console.log('newEmployee', newEmployee);
     navigate('/employees');
   };
 
@@ -53,7 +53,7 @@ const App = () => {
         <Route path='/' element={user ? <Dashboard /> : <Landing />} />
         {user ? (
           <>
-            <Route path='/employees' element={<EmployeeList employees={employees} />}></Route>
+            <Route path='/employees' element={<EmployeeList />}></Route>
             <Route path='/employees/:employeeId' element={<EmployeeDetails />}></Route>
             <Route path='/employees/:employeeId/edit' element={<EmployeeForm />}></Route>
             <Route path='/employees/new' element={<EmployeeForm handleAddEmployee={handleAddEmployee} />}></Route>
