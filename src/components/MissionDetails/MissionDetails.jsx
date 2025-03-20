@@ -22,6 +22,7 @@ const MissionDetails = () => {
     return (
         <main>
             <h2>{mission.title}</h2>
+            <p>completed: {`${mission.isCompleted}`}</p>
             <p>{mission.description}</p>
             {mission.report
             ? <p>{mission.report}</p>

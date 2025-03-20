@@ -24,7 +24,7 @@ const Dashboard = () => {
 
   return (
     <main>
-      <h1>Welcome, {user.username}</h1>
+      <h1>Hi, {user.username}</h1>
       <p>
         This is the dashboard page where you can see a list of all the players.
       </p>

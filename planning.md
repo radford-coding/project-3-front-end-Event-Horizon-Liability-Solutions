@@ -11,8 +11,8 @@ You've been hired as a security consultant at Event Horizon Liability Solutions,
 - [ ] frontend route linking (Matt)
 - [ ] add a softlock-escape button for resetting the employee list and missions to the starter arrays (Matt)
 - [ ] README.md (Bel)
-- [ ] plan gameplay flow
-- [ ] draw org chart of employee relationships
+- [ ] plan gameplay flow (Sera)
+- [ ] draw org chart of employee relationships (Matt)
 - [ ] check off low hanging fruit from project requirements
 - [ ] plan gameplay views for each route (Bel)
 - [ ] define mission requirements & descriptions
