@@ -11,7 +11,6 @@ const initialEmployeeFormData = {
     files: [],
 };
 
-//TODO: needs to be all possible permissions
 const allPermissions = [
     'admin',
     'read',
@@ -24,12 +23,12 @@ const EmployeeForm = (props) => {
     const { employeeId } = useParams();
     const { user } = useContext(UserContext);
     const [employeePermissionCheckboxes, setEmployeePermissionCheckboxes] = useState(new Array(allPermissions.length).fill(false));
+    const [newFile, setNewFile] = useState('');
 
     useEffect(() => {
         const fetchEmployee = async () => {
             const employeeData = await userService.employeeDetails(user._id, employeeId);
             setEmployeeFormData(employeeData);
-            //TODO change variable name
             const newPermissions = [...allPermissions].map(p => employeeData.permissions.includes(p));
             setEmployeePermissionCheckboxes(newPermissions);
         };
@@ -45,21 +44,32 @@ const EmployeeForm = (props) => {
     };
 
     const handlePermissionsChange = (position) => {
-        //TODO: this function is wrong somehow. State is 1 click behind always
-        // set the checkbox true/false values
-        const updatedPermissions = employeePermissionCheckboxes.map((item, index) => (
-            index === position ? !item : item
-        ));
-        setEmployeePermissionCheckboxes(updatedPermissions);
-        // set the form data state values correspondingly????
-        const newPermissions = allPermissions.filter((_, index) => (
-            employeePermissionCheckboxes[index] === true
-        ));
-        // console.log('newPermissions', newPermissions)
+        setEmployeePermissionCheckboxes((prevState) => {
+            const updatedPermissions = prevState.map((item, index) => (
+                index === position ? !item : item
+            ));
+            const newPermissions = allPermissions.filter((_, index) => (
+                updatedPermissions[index] === true
+            ));
+            setEmployeeFormData({
+                ...employeeFormData,
+                permissions: newPermissions,
+            });
+            return updatedPermissions;
+        });
+    };
+
+    const handleFileChange = (evt) => {
+        setNewFile(evt.target.value);
+    };
+
+    const handleAddFile = (evt) => {
+        evt.preventDefault();
         setEmployeeFormData({
             ...employeeFormData,
-            permissions: newPermissions,
+            files: [...employeeFormData.files, newFile],
         });
+        setNewFile('');
     };
 
     const handleFileDelete = (evt) => {
@@ -81,10 +91,6 @@ const EmployeeForm = (props) => {
             props.handleAddEmployee(employeeFormData);
         };
     };
-
-    // useEffect(() => {
-    //     console.log('newPermissions', employeeFormData.permissions);
-    // }, [employeeFormData]);
 
     return (
         <main>
@@ -150,6 +156,20 @@ const EmployeeForm = (props) => {
                 </fieldset>
                 <br />
                 <fieldset>
+                    <legend>Add file</legend>
+                    <input
+                        type="text"
+                        value={newFile}
+                        onChange={handleFileChange}
+                    />
+                    <button
+                        onClick={handleAddFile}
+                    >
+                        add
+                    </button>
+                </fieldset>
+                <br />
+                <fieldset>
                     <legend>Files</legend>
                     {employeeFormData.files.map((file, index) => (
                         <div key={index}>
@@ -157,7 +177,9 @@ const EmployeeForm = (props) => {
                             <button
                                 id={`${index}-delete-button`}
                                 onClick={handleFileDelete}
-                            >x</button>
+                            >
+                                x
+                            </button>
                         </div>
                     ))}
                 </fieldset>

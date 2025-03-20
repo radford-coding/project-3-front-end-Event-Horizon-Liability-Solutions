@@ -32,7 +32,7 @@ const SignUpForm = () => {
       navigate('/');
     } catch (err) {
       setMessage(err.message);
-    }
+    };
   };
 
   const isFormInvalid = () => {
