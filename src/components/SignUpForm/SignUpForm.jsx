@@ -1,5 +1,5 @@
 //components/SignUpForm/SignUpForm.jsx
-import './views/SignUpForm.css';
+import '../../views/SignUpForm.css'
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
 

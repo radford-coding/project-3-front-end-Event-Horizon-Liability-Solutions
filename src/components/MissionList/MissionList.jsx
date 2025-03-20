@@ -1,3 +1,5 @@
+import { NavLink } from "react-router";
+
 const MissionList = (props) => {
 
     return (
@@ -5,7 +7,9 @@ const MissionList = (props) => {
             <h2>missions</h2>
             <ul>
                 {props.missions.map((mission) => (
-                    <li key={mission._id}>{mission.title}</li>
+                    <NavLink key={mission._id} to={`/missions/${mission._id}`}>
+                        <li>{mission.title}</li>
+                    </NavLink>
                 ))}
             </ul>
         </main>

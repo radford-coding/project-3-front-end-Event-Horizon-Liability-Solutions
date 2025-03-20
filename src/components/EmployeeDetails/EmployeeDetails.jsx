@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, NavLink } from "react-router";
 import * as userService from '../../services/userService';
 import { UserContext } from "../../contexts/UserContext";
 
-const EmployeeDetails = () => {
+const EmployeeDetails = (props) => {
     const { employeeId } = useParams();
     const {user} = useContext(UserContext);
     const [employee, setEmployee] = useState(null);
@@ -25,8 +25,10 @@ const EmployeeDetails = () => {
             <h2>{employee.fullname}</h2>
             <p>age: {employee.age}</p>
             <p>role: {employee.role}</p>
-            <p>permissions: {employee.permissions.map(p => p + ', ')}</p>
-            <p>files: {employee.files.map(f => f + ', ')}</p>
+            <p>permissions: {employee.permissions.length ? employee.permissions.map(p => p + ', ') : '[none]'}</p>
+            <p>files: {employee.files.length ? employee.files.map(f => f + ', ') : '[none]'}</p>
+            <NavLink to={`/employees/${employeeId}/edit`}>edit</NavLink>
+            <button onClick={() => props.handleDeleteEmployee(employeeId)}>delete</button>
         </main>
     );
 };
