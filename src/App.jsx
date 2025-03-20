@@ -16,6 +16,7 @@ import EmployeeDetails from './components/EmployeeDetails/EmployeeDetails';
 import EmployeeForm from './components/EmployeeForm/EmployeeForm';
 import MissionList from './components/MissionList/MissionList';
 import MissionDetails from './components/MissionDetails/MissionDetails';
+import WelcomeScreen from '/.components/WelcomeScreen/WelcomeScreen';
 
 import { UserContext } from './contexts/UserContext';
 import * as userService from './services/userService';
@@ -71,6 +72,7 @@ const App = () => {
           <>
             <Route path='/sign-up' element={<SignUpForm />} />
             <Route path='/sign-in' element={<SignInForm />} />
+            <Route path='/welcome' element={<WelcomeScreen />} />
           </>
         )}
       </Routes>
