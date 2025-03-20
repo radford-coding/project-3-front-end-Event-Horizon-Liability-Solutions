@@ -18,3 +18,17 @@ body {
 form > button {
     margin-top: 20px;
 }
+
+.org {
+    font-family: monospace;
+}
+
+.org > div{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+}
+
+.org > div > div > div {
+    margin: 15px 0;
+}
