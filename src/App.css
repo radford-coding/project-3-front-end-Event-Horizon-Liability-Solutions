@@ -11,24 +11,41 @@ body {
 
 #root {
     padding: 20px;
-    background-color: rgba(0,0,0,.93);
+    background-color: rgba(0, 0, 0, .93);
     border-radius: 5%;
 }
 
-form > button {
+form>button {
     margin-top: 20px;
 }
 
 .org {
-    font-family: monospace;
+    font-family: monospace, monospace;
+    --bord-col: rgba(255, 255, 255, .35);
 }
 
-.org > div{
+.org-group {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.org>div {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-evenly;
 }
 
-.org > div > div > div {
-    margin: 15px 0;
+.org>div:nth-child(1) {
+    border-bottom: 1px solid var(--bord-col);
+}
+
+.org-group::before,
+.org-group::after {
+    content: '|';
+    color: var(--bord-col);
+}
+
+.org-group~* {
+    border: 1px solid var(--bord-col);
+    margin: 1px 5px;
 }
