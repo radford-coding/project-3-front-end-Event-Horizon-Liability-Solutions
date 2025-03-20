@@ -14,3 +14,7 @@ body {
     background-color: rgba(0,0,0,.93);
     border-radius: 5%;
 }
+
+form > button {
+    margin-top: 20px;
+}

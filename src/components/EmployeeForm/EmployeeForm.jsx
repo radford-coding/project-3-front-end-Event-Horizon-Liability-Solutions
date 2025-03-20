@@ -75,12 +75,11 @@ const EmployeeForm = (props) => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        props.handleAddEmployee(employeeFormData);
-        // if (employeeId) {
-        //     props.handleUpdateEmployee(employeeId, employeeFormData)
-        // } else {
-        //     props.handleAddEmployee(employeeFormData);
-        // };
+        if (employeeId) {
+            props.handleUpdateEmployee(employeeId, employeeFormData);
+        } else {
+            props.handleAddEmployee(employeeFormData);
+        };
     };
 
     // useEffect(() => {
