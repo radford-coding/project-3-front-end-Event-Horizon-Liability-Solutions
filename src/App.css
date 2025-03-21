@@ -1,6 +1,6 @@
 /* Walpaper with spatial image */
 body {
-    background-image: url('src/views/spatial.jpg');
+    background-image: url('src/assets/spatial.jpg');
     background-blend-mode: lighten;
     background-position: center;
     background-size: cover;
@@ -58,7 +58,7 @@ form > button {
     margin: 1px 5px;
 }
 
-/* Media query for4 medium screens (tablets and laptops) */
+/* Media query for medium screens (tablets and laptops) */
 @media (min-width: 768px) {
     .App {
         max-width: 80%;

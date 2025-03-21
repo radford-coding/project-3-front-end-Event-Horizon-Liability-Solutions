@@ -1,7 +1,7 @@
 # Event Horizon Liability Solutions
 
 ## Logo:
-![Hacker](src/views/Logo.jpg)
+![Hacker](src/assets/Logo.jpg)
 
 ## GitHub repository link:
 [Back End](https://github.com/seradelarosa/EHLS-project-backend.git)
@@ -64,7 +64,7 @@ The game "Event Horizon Liability Solutions" is an immersive experience set in a
 
 * Porting the application to React Native is feasible, since component logic and state management in React can be easily moved. However, some challenges include:
 
-* *Navigation: Instead of using React Router, React Navigation would be used.
+* Navigation: Instead of using React Router, React Navigation would be used.
 
 * User Interface: Interface components such as buttons and forms must be adapted to the mobile environment using native components such as View, Text, and TouchableOpacity.
 

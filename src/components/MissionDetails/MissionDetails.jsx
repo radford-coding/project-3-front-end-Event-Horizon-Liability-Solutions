@@ -28,10 +28,6 @@ const MissionDetails = () => {
             {mission.report
             ? <p>{mission.report}</p>
             : <MissionForm mission={mission} />}
-           <button onClick={() => {
-    if (window.confirm("Are you sure you want to delete this employee?")) {
-      //props.handleDeleteEmployee(employeeId);
-    }}}>Delete</button>
         </main>
     );
 };
