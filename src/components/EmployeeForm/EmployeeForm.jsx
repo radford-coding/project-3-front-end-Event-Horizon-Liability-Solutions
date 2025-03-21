@@ -12,10 +12,10 @@ const initialEmployeeFormData = {
 };
 
 const allPermissions = [
-    'admin',
-    'read',
-    'write',
-    'execute',
+    'view-tasks',
+    'edit-records',
+    'manage-files',
+    'assign-tasks',
 ];
 
 const EmployeeForm = (props) => {

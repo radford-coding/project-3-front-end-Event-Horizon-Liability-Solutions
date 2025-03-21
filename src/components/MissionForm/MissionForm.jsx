@@ -55,6 +55,27 @@ const MissionForm = (props) => {
                 }
                 break;
 
+            case 'Promotion System Update':
+                // Find Zane Ortega specifically
+                const promotedEmployee = employees.find(employee => employee.fullname === "Zane Ortega");
+
+                const promotion = promotedEmployee && promotedEmployee.role === "Space Habitat Manager";
+                const permission = promotedEmployee && promotedEmployee.permissions.includes('manage-files');
+
+                if (promotion && permission) {
+                    console.log("Mission success: Zane Ortega's role and permissions updated.");
+                } else if (promotion && !permission) {
+                    console.log("Mission failure: Zane Ortega's permissions not updated.");
+                } else if (!promotion && permission) {
+                    console.log("Mission failure: Zane Ortega's role not updated.");
+                } else {
+                    console.log("Mission failure: Zane Ortega's role and permissions not updated.");
+                }
+                break;
+
+
+
+
 
             default:
                 console.log("Unknown mission. Verify mission parameters.");
