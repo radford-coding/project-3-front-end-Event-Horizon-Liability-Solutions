@@ -10,7 +10,7 @@ const MissionForm = (props) => {
     const [employees, setEmployees] = useState([]);
     const navigate = useNavigate();
 
-    useEffect( () => {
+    useEffect(() => {
         const fetchEmployees = async () => {
             const fetchedEmployees = await userService.employeeList(user._id);
             setEmployees(fetchedEmployees);
@@ -42,7 +42,20 @@ const MissionForm = (props) => {
                     console.log("Mission failed: File still exists.");
                 }
                 break;
-            
+
+            case 'Imposter Removal':
+                const targetEmployee = employees.find(employee =>
+                    employee.fullname === "Xalex'Thira-Zar'Nex"
+                );
+
+                if (!targetEmployee) {
+                    console.log("Mission success: Imposter has been removed.");
+                } else {
+                    console.log("Mission failed: Imposter still exists in the system.");
+                }
+                break;
+
+
             default:
                 console.log("Unknown mission. Verify mission parameters.");
         }
