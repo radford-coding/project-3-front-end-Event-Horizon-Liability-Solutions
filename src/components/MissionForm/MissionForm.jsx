@@ -27,9 +27,9 @@ const MissionForm = (props) => {
 
     // set criteria for each mission success
     const checkMission = () => {
-        // switch case
-        // make default if mission not found
+  
         switch (props.mission.title) {
+            // "delete" (update) a file
             case 'Log Purge':
                 const targetFile = employees.find(employee =>
                     employee.files.includes('colony-incident-log.json')
@@ -37,12 +37,12 @@ const MissionForm = (props) => {
 
                 if (!targetFile) {
                     console.log("Mission success: Found and removed file.");
-                    // Here, you would actually remove the file from the database
                 } else {
                     console.log("Mission failed: File still exists.");
                 }
                 break;
 
+            // delete the imposter employee
             case 'Imposter Removal':
                 const targetEmployee = employees.find(employee =>
                     employee.fullname === "Xalex'Thira-Zar'Nex"
@@ -55,9 +55,10 @@ const MissionForm = (props) => {
                 }
                 break;
 
+            // update an employee bc promotion
             case 'Promotion System Update':
                 // Find Zane Ortega specifically
-                const promotedEmployee = employees.find(employee => employee.fullname === "Zane Ortega");
+                const promotedEmployee = employees.find(employee => employee.fullname === "Ortega, Zane");
 
                 const promotion = promotedEmployee && promotedEmployee.role === "Space Habitat Manager";
                 const permission = promotedEmployee && promotedEmployee.permissions.includes('manage-files');
@@ -73,14 +74,12 @@ const MissionForm = (props) => {
                 }
                 break;
 
-                // case to create employee
+            // create an employee
             case 'New Aquisition':
-                const newEmployee = employees.find(employee => employee.fullname === "Ariella Voss");
+                const newEmployee = employees.find(employee => employee.fullname === "Voss, Ariella");
                 const hasAge = newEmployee && newEmployee.age === 29; 
                 const hasRole = newEmployee && newEmployee.role === 'Astrobiologist';
 
-                //add check to make sure they have the correct name?
-                //currently name needs to be accurate in order to follow rest of the checks
                 if (hasAge && hasRole) {
                     console.log("Mission success: New aquisition added to the database with age and role.");
                 } else if (!hasAge && hasRole) {
@@ -92,9 +91,9 @@ const MissionForm = (props) => {
                 }
                 break;
 
-                // case to... read piece of info, have it match to report field
+            // case to... read piece of info, have it match to report field
             case 'Corrupt File Resync': 
-                const manager = employees.find(employee => employee.fullname === "Vera Stone");
+                const manager = employees.find(employee => employee.fullname === "Stone, Vera");
                 const correctFile = manager.files.includes("key-file.pdf");
                 const matchReport = missionFormData.report === "key-file.pdf";
 
@@ -105,10 +104,16 @@ const MissionForm = (props) => {
                 }
                 break;
 
-                // case to delete virus
+            // case to delete virus
+            case 'Remove Virus Infiltration':
+                const virus = employees.find(employee => employee.files.includes("virus.exe"));
 
-                //TODO: if all missions completed... sign out?
-
+                if (!virus) {
+                    console.log("Mission success: The virus has been removed from the system.");
+                } else {
+                    console.log("Mission failure: The system still detects a virus in the database.");
+                }
+                break;
 
             default:
                 console.log("Unknown mission. Verify mission parameters.");
@@ -117,17 +122,15 @@ const MissionForm = (props) => {
 
     const handleSubmit = async (evt) => {
         evt.preventDefault();
-        // check mission completion(pass mission formData to use info)
+        // check mission completion
         checkMission(props.mission.title);
-        // if yes show success msg, and continue below
-        // database call for what exists on backend to compare
-        // await userService.editMission(user._id, missionId, {
-        //     ...missionFormData,
-        //     isCompleted: false,
-        // });
+        
+        await userService.editMission(user._id, missionId, {
+            ...missionFormData,
+            isCompleted: true,
+        });
         // navigate to completion message component (success or fail)
         navigate('/missions');
-        // if no, fail msg
     };
 
     return (
