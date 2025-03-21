@@ -1,24 +1,32 @@
+/* Walpaper with spatial image */
 body {
-    /* from https://svs.gsfc.nasa.gov/14146/ */
-    background-image: url('/BH_accretion_disk_viz.png');
+    background-image: url('src/assets/spatial.jpg');
     background-blend-mode: lighten;
     background-position: center;
+    background-size: cover;
 }
 
+/* Application style */
 .App {
     text-align: center;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
+/* Main container style */
 #root {
     padding: 20px;
     background-color: rgba(0, 0, 0, .93);
     border-radius: 5%;
+    margin: auto;
 }
 
-form>button {
+/* Forms button */
+form > button {
     margin-top: 20px;
 }
 
+/* Style of the organizational graphg */
 .org {
     font-family: monospace, monospace;
     --bord-col: rgba(255, 255, 255, .35);
@@ -29,13 +37,13 @@ form>button {
     flex-flow: column nowrap;
 }
 
-.org>div {
+.org > div {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-evenly;
 }
 
-.org>div:nth-child(1) {
+.org > div:nth-child(1) {
     border-bottom: 1px solid var(--bord-col);
 }
 
@@ -45,7 +53,48 @@ form>button {
     color: var(--bord-col);
 }
 
-.org-group~* {
+.org-group ~ * {
     border: 1px solid var(--bord-col);
     margin: 1px 5px;
+}
+
+/* Media query for medium screens (tablets and laptops) */
+@media (min-width: 768px) {
+    .App {
+        max-width: 80%;
+    }
+
+    #root {
+        padding: 30px;
+        border-radius: 2%;
+    }
+
+    form > button {
+        margin-top: 30px;
+        font-size: 1.2rem;
+    }
+
+    .org > div {
+        justify-content: space-around;
+    }
+}
+
+/* Media query for large screens (large desks and monitors ) */
+@media (min-width: 1200px) {
+    .App {
+        max-width: 60%;
+    }
+
+    #root {
+        padding: 40px;
+    }
+
+    form > button {
+        margin-top: 40px;
+        font-size: 1.5rem;
+    }
+
+    .org > div {
+        justify-content: space-between;
+    }
 }

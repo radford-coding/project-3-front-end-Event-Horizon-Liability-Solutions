@@ -1,0 +1,37 @@
+.org {
+    font-family: monospace;
+    --bord-col: rgba(255, 255, 255, 0.35);
+    margin: 20px auto;
+  }
+  
+  .org-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .org > div {
+    display: flex;
+    justify-content: center;
+    margin: 5px 0;
+  }
+  
+  .org > div:nth-child(1) {
+    border-bottom: 1px solid var(--bord-col);
+    padding-bottom: 10px;
+  }
+  
+  .org-group::before,
+  .org-group::after {
+    content: '|';
+    color: var(--bord-col);
+    margin: 0 5px;
+  }
+  
+  .org-group ~ * {
+    border: 1px solid var(--bord-col);
+    margin: 1px 5px;
+    padding: 5px;
+    border-radius: 4px;
+  }

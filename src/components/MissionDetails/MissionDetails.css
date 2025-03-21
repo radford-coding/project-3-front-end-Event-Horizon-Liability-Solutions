@@ -1,0 +1,26 @@
+.mission-details {
+    padding: 20px;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.mission-details h2 {
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+.mission-details p {
+    margin: 8px 0;
+}
+
+.mission-details p:first-of-type {
+    font-weight: bold;
+}
+
+.mission-details p:last-of-type {
+    margin-top: 15px;
+    font-style: italic;
+}
