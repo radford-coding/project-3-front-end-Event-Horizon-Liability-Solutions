@@ -1,4 +1,4 @@
-main {
+/* main {
     margin: 20px auto;
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.8);
@@ -57,6 +57,9 @@ main {
   
   button[type="submit"] {
     margin-top: 15px;
+
+  } */
+
   }
 
   .error {
@@ -64,3 +67,4 @@ main {
     margin: 10px 0;
     font-weight: bold;
 }
+

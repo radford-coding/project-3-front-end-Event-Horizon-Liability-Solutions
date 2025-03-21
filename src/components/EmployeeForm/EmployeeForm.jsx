@@ -2,7 +2,8 @@ import { useParams } from "react-router";
 import { useState, useEffect, useContext } from "react";
 import * as userService from '../../services/userService';
 import { UserContext } from "../../contexts/UserContext";
-import './EmployeeForm.css';
+import NavBar from "../NavBar/NavBar";
+// import './EmployeeForm.css';
 
 const initialEmployeeFormData = {
     fullname: '',
@@ -137,6 +138,7 @@ const EmployeeForm = (props) => {
         };
 
     return (
+
         <main>
             <h1>{employeeId ? 'edit' : 'new'}</h1>
             {errorMessage && <p className="error">{errorMessage}</p>}
@@ -198,52 +200,40 @@ const EmployeeForm = (props) => {
                     <legend>Permissions</legend>
                     {allPermissions.map((permission, index) => (
                         <div key={index}>
-                            <input
-                                type='checkbox'
-                                id={`permission-${index}-input`}
-                                //TODO: what to name?
-                                name={permission}
-                                value={permission}
-                                checked={employeePermissionCheckboxes[index]}
-                                onChange={() => handlePermissionsChange(index)}
-                            />
-                            <label htmlFor={`permission-${index}-input`}>{permission}</label>
-                        </div>
-                    ))}
-                </fieldset>
-                <br />
-                <fieldset>
-                    <legend>Add file</legend>
-                    <input
-                        type="text"
-                        value={newFile}
-                        onChange={handleFileChange}
-                    />
-                    <button
-                        onClick={handleAddFile}
-                    >
-                        add
-                    </button>
-                </fieldset>
-                <br />
-                <fieldset>
-                    <legend>Files</legend>
-                    {employeeFormData.files.map((file, index) => (
-                        <div key={index}>
-                            <p key={index}>{file}</p>
-                            <button
-                                id={`${index}-delete-button`}
-                                onClick={handleFileDelete}
-                            >
-                                x
-                            </button>
-                        </div>
-                    ))}
-                </fieldset>
 
-                <button type='submit'>{employeeId ? 'update' : 'add this employee'}</button>
-            </form>
-        </main>
+                            <input
+                                type="text"
+                                value={newFile}
+                                onChange={handleFileChange}
+                            />
+                            <button
+                                onClick={handleAddFile}
+                            >
+                                add
+                            </button>
+                        </fieldset>
+                        <br />
+                        <fieldset>
+                            <legend>files</legend>
+                            {employeeFormData.files.map((file, index) => (
+                                <div key={index}>
+                                    <p key={index}>{file}</p>
+                                    <button
+                                        id={`${index}-delete-button`}
+                                        onClick={handleFileDelete}
+                                    >
+                                        x
+                                    </button>
+                                </div>
+                            ))}
+                        </fieldset>
+                        <section className="button-container">
+                            <button type='submit'>{employeeId ? 'update' : 'add this employee'}</button>
+                        </section>
+                    </form>
+                </section>
+            </main>
+        </>
     );
 };
 
