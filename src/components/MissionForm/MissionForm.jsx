@@ -73,6 +73,26 @@ const MissionForm = (props) => {
                 }
                 break;
 
+                // case to create employee
+            case 'New Aquisition':
+                const newEmployee = employees.find(employee => employee.fullname === "Ariella Voss");
+                const hasAge = newEmployee && newEmployee.age === 29; 
+                const hasRole = newEmployee && newEmployee.role === 'Astrobiologist';
+
+                //add check to make sure they have the correct name?
+                //currently name needs to be accurate in order to follow rest of the checks
+                if (hasAge && hasRole) {
+                    console.log("Mission success: New aquisition added to the database with age and role.");
+                } else if (!hasAge && hasRole) {
+                    console.log("Mission failure: New acquisition is missing age data.");
+                } else if (hasAge && !hasRole) {
+                    console.log("Mission failure: New aquisition is missing role data.");
+                } else {
+                    console.log("Mission failure: New aquisition is missing age and role data.");
+                }
+                break;
+
+                // case to... read piece of info, have it match to report field
 
 
 
