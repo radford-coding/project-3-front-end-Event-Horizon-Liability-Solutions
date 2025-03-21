@@ -28,7 +28,7 @@ const EmployeeList = () => {
                     </NavLink>
                 ))}
             </ul>
-            <NavLink to='/orgchart/'>Org Chart</NavLink>
+            <NavLink to='/orgchart/'><button type='button'>Org Chart</button></NavLink>
         </main>
     );
 };

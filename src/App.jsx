@@ -24,19 +24,14 @@ import * as userService from './services/userService';
 
 import './App.css';
 
-const initialMissionState = [];
-
 const App = () => {
   const { user } = useContext(UserContext);
   const [missions, setMissions] = useState([]);
-  // const [employees, setEmployees] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
-      // const employeeData = await userService.employeeList(user._id);
       const missionData = await userService.missionList(user._id);
-      // setEmployees(employeeData);
       setMissions(missionData);
 
       const completedMissions = missionData.filter( (mission) => mission.isCompleted);
