@@ -18,6 +18,11 @@ const EmployeeDetails = (props) => {
     }, [user, employeeId]);
 
     // console.log('employee:', employee);
+    const handleDelete = () => {
+        if (window.confirm("Are you sure you want to delete this employee?")) {
+            props.handleDeleteEmployee(employeeId);
+    };
+};
 
     if (!employee) return <main>Loading...</main>
 
@@ -29,7 +34,7 @@ const EmployeeDetails = (props) => {
             <p>permissions: {employee.permissions.length ? employee.permissions.map(p => p + ', ') : '[none]'}</p>
             <p>files: {employee.files.length ? employee.files.map(f => f + ', ') : '[none]'}</p>
             <NavLink to={`/employees/${employeeId}/edit`}>edit</NavLink>
-            <button onClick={() => props.handleDeleteEmployee(employeeId)}>delete</button>
+            <button onClick={handleDelete}>Delete</button>
         </main>
     );
 };
