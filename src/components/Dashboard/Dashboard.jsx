@@ -29,6 +29,9 @@ const Dashboard = () => {
         <NavLink to='/employees'>employee_database</NavLink>
         <br />
         <br />
+        <NavLink to='/employees/new'>add_employee</NavLink>
+        <br />
+        <br />
         <NavLink to='/missions'>mission_control</NavLink>
         <br />
         <br />

@@ -136,7 +136,7 @@ const MissionForm = (props) => {
 
     return (
         <>
-            <h3>submit report</h3>
+            <header>submit report</header>
             { }
             <form>
                 <textarea
@@ -146,13 +146,15 @@ const MissionForm = (props) => {
                     onChange={handleupdateReport}
                 ></textarea>
                 <br />
-                <button
-                    type='submit'
-                    disabled={!missionFormData.report.length > 0}
-                    onClick={handleSubmit}
-                >
-                    submit
-                </button>
+                <div className="button-container">
+                    <button
+                        type='submit'
+                        disabled={!missionFormData.report.length > 0}
+                        onClick={handleSubmit}
+                    >
+                        submit
+                    </button>
+                </div>
             </form>
         </>
     );

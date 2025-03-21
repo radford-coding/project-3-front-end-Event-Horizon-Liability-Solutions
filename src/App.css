@@ -23,44 +23,7 @@ form > button {
 }
 
 
-@media (min-width: 768px) {
-    .App {
-        max-width: 80%;
-    }
-
-    #root {
-        padding: 30px;
-        border-radius: 2%;
-    }
-
-    form > button {
-        margin-top: 30px;
-        font-size: 1.2rem;
-    }
-
-    .org > div {
-        justify-content: space-around;
-    }
-}
-
-@media (min-width: 1200px) {
-    .App {
-        max-width: 60%;
-    }
-
-    #root {
-        padding: 40px;
-    }
-
-    form > button {
-        margin-top: 40px;
-        font-size: 1.5rem;
-    }
-
-    .org > div {
-        justify-content: space-between;
-    }
-} */
+*/
 
 * {
     box-sizing: border-box;
@@ -147,9 +110,57 @@ main>section {
 
 main p::before,
 form label::before,
+legend::before,
 main button::before,
 main button::after {
     content: '_';
+}
+
+form {
+    padding-top: calc(2 * var(--shift-step));
+}
+
+.files-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+fieldset>div {
+    padding-left: calc(2 * var(--shift-step));
+}
+
+input {
+    background-color: var(--bg);
+    border: 1px solid gray;
+    accent-color: var(--blue);
+    font-family: monospace, monospace;
+    padding: calc(0.5 * var(--shift-step));
+}
+
+textarea {
+    width: 100%;
+    aspect-ratio: 3/1;
+    color: var(--blue);
+    padding: calc(0.5 * var(--shift-step));
+}
+
+form>div>input[type='text'] {
+    width: fit-content;
+}
+
+label,
+input {
+    color: var(--blue);
+}
+
+fieldset {
+    border: none;
+    margin: var(--shift-step) 0;
+}
+
+legend {
+    margin-bottom: var(--shift-step);
 }
 
 main p {
@@ -218,4 +229,43 @@ a:hover {
     margin: calc(0.5 * var(--shift-step));
     text-align: center;
     padding: calc(0.5 * var(--shift-step));
+}
+
+@media (min-width: 768px) {
+    .App {
+        max-width: 80%;
+    }
+
+    #root {
+        padding: 30px;
+        border-radius: 2%;
+    }
+
+    form>button {
+        margin-top: 30px;
+        font-size: 1.2rem;
+    }
+
+    .org>div {
+        justify-content: space-around;
+    }
+}
+
+@media (min-width: 1200px) {
+    .App {
+        max-width: 60%;
+    }
+
+    #root {
+        padding: 40px;
+    }
+
+    form>button {
+        margin-top: 40px;
+        font-size: 1.5rem;
+    }
+
+    .org>div {
+        justify-content: space-between;
+    }
 }
