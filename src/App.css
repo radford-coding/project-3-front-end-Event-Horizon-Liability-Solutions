@@ -1,19 +1,16 @@
-/* Walpaper with spatial image */
-body {
+/* body {
     background-image: url('src/assets/spatial.jpg');
     background-blend-mode: lighten;
     background-position: center;
     background-size: cover;
 }
 
-/* Application style */
 .App {
     text-align: center;
     margin: 0 auto;
     max-width: 1200px;
 }
 
-/* Main container style */
 #root {
     padding: 20px;
     background-color: rgba(0, 0, 0, .93);
@@ -21,44 +18,11 @@ body {
     margin: auto;
 }
 
-/* Forms button */
 form > button {
     margin-top: 20px;
 }
 
-/* Style of the organizational graphg */
-.org {
-    font-family: monospace, monospace;
-    --bord-col: rgba(255, 255, 255, .35);
-}
 
-.org-group {
-    display: flex;
-    flex-flow: column nowrap;
-}
-
-.org > div {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-evenly;
-}
-
-.org > div:nth-child(1) {
-    border-bottom: 1px solid var(--bord-col);
-}
-
-.org-group::before,
-.org-group::after {
-    content: '|';
-    color: var(--bord-col);
-}
-
-.org-group ~ * {
-    border: 1px solid var(--bord-col);
-    margin: 1px 5px;
-}
-
-/* Media query for medium screens (tablets and laptops) */
 @media (min-width: 768px) {
     .App {
         max-width: 80%;
@@ -79,7 +43,6 @@ form > button {
     }
 }
 
-/* Media query for large screens (large desks and monitors ) */
 @media (min-width: 1200px) {
     .App {
         max-width: 60%;
@@ -97,4 +60,162 @@ form > button {
     .org > div {
         justify-content: space-between;
     }
+} */
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    font-family: monospace, monospace;
+    line-height: 1.2;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    --blue: #66FCF1;
+    --white: rgba(255, 255, 255, 0.87);
+    --red: #EB5B55;
+    --bg: #141218;
+    --shift-step: 10px;
+    color: var(--blue);
+    background-color: var(--bg);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#root>header {
+    position: sticky;
+    top: 0;
+    background-color: var(--bg);
+    padding: var(--shift-step);
+}
+
+#root>header>h1,
+#root>header>h2,
+#root>header>h3,
+#root>header>h4 {
+    padding: calc(2 * var(--shift-step)) 0;
+    text-align: center;
+}
+
+nav {
+    padding: var(--shift-step);
+}
+
+nav::before {
+    content: '<_';
+}
+
+a {
+    text-decoration: none;
+    color: var(--blue);
+    cursor: pointer;
+}
+
+main {
+    padding: var(--shift-step);
+    margin-left: calc(3 * var(--shift-step));
+}
+
+main>header::before,
+main>a::before {
+    content: '>_';
+}
+
+main>header {
+    padding: var(--shift-step) 0;
+}
+
+main>section {
+    margin-left: calc(2 * var(--shift-step));
+}
+
+.button-container {
+    padding-right: calc(3 * var(--shift-step));
+    margin: calc(3 * var(--shift-step)) 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+main p::before,
+form label::before,
+main button::before,
+main button::after {
+    content: '_';
+}
+
+main p {
+    padding: var(--shift-step) 0;
+}
+
+main article {
+    padding: var(--shift-step);
+    text-indent: calc(2 * var(--shift-step));
+}
+
+li {
+    list-style: none;
+}
+
+ul a li::before {
+    content: '>_';
+}
+
+ul a li {
+    padding: var(--shift-step) 0;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+button:hover,
+a:hover {
+    font-weight: bold;
+}
+
+.red-text {
+    color: var(--red);
+}
+
+.org {
+    --bord-col: rgba(255, 255, 255, .35);
+}
+
+.org-group {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.org>div {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+}
+
+.org>div:nth-child(1) {
+    border-bottom: 1px solid var(--bord-col);
+}
+
+.org-group::before,
+.org-group::after {
+    content: '|';
+    color: var(--bord-col);
+}
+
+.org-group~* {
+    border: 1px solid var(--bord-col);
+    margin: calc(0.5 * var(--shift-step));
+    text-align: center;
+    padding: calc(0.5 * var(--shift-step));
 }

@@ -1,40 +1,47 @@
-//components/Dashboard/Dashboard.jsx
-import './Dashboard.css';
-import { useEffect, useState, useContext } from 'react';
-
+// import './Dashboard.css';
+import { useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
-
-import * as userService from '../../services/userService';
+import { NavLink } from 'react-router';
 
 const Dashboard = () => {
-  const { user } = useContext(UserContext);
-  const [ users, setUsers ] = useState([]);
+  const { user, setUser } = useContext(UserContext);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const fetchedUsers = await userService.playerList();
-        setUsers(fetchedUsers);
-      } catch (err) {
-        console.log(err)
-      }
-    }
-    if (user) fetchUsers();
-  }, [user]);
+  const handleSignOut = () => {
+    localStorage.removeItem('token');
+    setUser(null);
+  };
 
   return (
-    <main>
-      <h1>Hi, {user.username}</h1>
-      <p>
-        This is the dashboard page where you can see a list of all the players.
-      </p>
-      <ul>
-        {users.map(user => (
-          <li key={user._id}>{user.username}</li>
-        ))}
-      </ul>
-    </main>
+    <>
+      <header>
+        <h4>Event Horizon Liability Solutions, Inc.</h4>
+        <nav>
+          <NavLink to='/' onClick={handleSignOut}>sign_out</NavLink>
+        </nav>
+      </header>
+      <main>
+        <h2>Welcome to EHLS, {user.username}.</h2>
+        <article>
+          This is the dashboard page.
+        </article>
+        <br />
+        <br />
+        <NavLink to='/employees'>employee_database</NavLink>
+        <br />
+        <br />
+        <NavLink to='/missions'>mission_control</NavLink>
+        <br />
+        <br />
+        <NavLink to='/orgchart'>company_resources</NavLink>
+      </main>
+    </>
   );
 };
 
 export default Dashboard;
+
+{/* <li><NavLink to='/welcome'>Welcome, {user.username}</NavLink></li> */}
+  //         <li><NavLink to='/'>Dashboard</NavLink></li>
+  //         <li><NavLink to='/employees'>employees</NavLink></li>
+  //         <li><NavLink to='/employees/new'>new employee</NavLink></li>
+  //         <li></li>
