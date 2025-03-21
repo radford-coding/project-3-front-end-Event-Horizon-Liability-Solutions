@@ -93,8 +93,21 @@ const MissionForm = (props) => {
                 break;
 
                 // case to... read piece of info, have it match to report field
+            case 'Corrupt File Resync': 
+                const manager = employees.find(employee => employee.fullname === "Vera Stone");
+                const correctFile = manager.files.includes("key-file.pdf");
+                const matchReport = missionFormData.report === "key-file.pdf";
 
+                if (correctFile && matchReport) {
+                    console.log("Mission success: Corrupted file has been resynced with the database and restored.");
+                } else {
+                    console.log("Mission failure: The report does not match the file in the database.");
+                }
+                break;
 
+                // case to delete virus
+
+                //TODO: if all missions completed... sign out?
 
 
             default:
