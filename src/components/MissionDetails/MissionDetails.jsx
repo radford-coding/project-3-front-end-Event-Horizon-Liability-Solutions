@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import './MissionDetails.css';
 import { useParams } from "react-router";
 import * as userService from '../../services/userService'
 import { UserContext } from "../../contexts/UserContext";
@@ -27,7 +28,10 @@ const MissionDetails = () => {
             {mission.report
             ? <p>{mission.report}</p>
             : <MissionForm mission={mission} />}
-            <br />
+           <button onClick={() => {
+    if (window.confirm("Are you sure you want to delete this employee?")) {
+      //props.handleDeleteEmployee(employeeId);
+    }}}>Delete</button>
         </main>
     );
 };

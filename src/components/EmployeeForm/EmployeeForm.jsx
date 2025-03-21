@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import { useState, useEffect, useContext } from "react";
 import * as userService from '../../services/userService';
 import { UserContext } from "../../contexts/UserContext";
+import './EmployeeForm.css';
 
 const initialEmployeeFormData = {
     fullname: '',

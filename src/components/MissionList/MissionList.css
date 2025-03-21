@@ -1,0 +1,39 @@
+.mission-list {
+    padding: 20px;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.mission-list h2 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.mission-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.mission-list li {
+    margin: 5px 0;
+    padding: 8px;
+    background-color: #333;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.mission-list li:hover {
+    background-color: #555;
+}
+
+.mission-list a {
+    text-decoration: none;
+    color: #e0e0e0;
+}
+
+.mission-list a:hover {
+    color: #007bff;
+}

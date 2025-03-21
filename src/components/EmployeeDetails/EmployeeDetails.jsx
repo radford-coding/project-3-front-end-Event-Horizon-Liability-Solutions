@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams, NavLink } from "react-router";
 import * as userService from '../../services/userService';
 import { UserContext } from "../../contexts/UserContext";
+import './EmployeeDetails.css';
 
 const EmployeeDetails = (props) => {
     const { employeeId } = useParams();

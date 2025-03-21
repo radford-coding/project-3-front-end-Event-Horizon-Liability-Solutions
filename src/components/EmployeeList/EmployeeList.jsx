@@ -2,6 +2,7 @@ import { NavLink } from "react-router";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import * as userService from '../../services/userService';
+import './EmployeeList.css';
 
 const EmployeeList = () => {
 
