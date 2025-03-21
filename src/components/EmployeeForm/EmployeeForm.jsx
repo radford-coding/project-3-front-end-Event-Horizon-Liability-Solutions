@@ -26,6 +26,25 @@ const EmployeeForm = (props) => {
     const [employeePermissionCheckboxes, setEmployeePermissionCheckboxes] = useState(new Array(allPermissions.length).fill(false));
     const [newFile, setNewFile] = useState('');
 
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const validateName = (name) => {
+        const nameRegex = /^[a-zA-Z\s]+$/;
+        return nameRegex.test(name);
+    };
+    const validateAge = (age) => {
+        const ageRegex = /^[1-9][0-9]*$/;
+        return ageRegex.test(age);
+    };
+    const validatePassword = (password) => {
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        return passwordRegex.test(password);
+    };
+    const validateFileName = (fileName) => {
+        const fileRegex = /^[a-zA-Z0-9_-]{1,50}\.[a-zA-Z0-9]+$/;
+        return fileRegex.test(fileName);
+    };
+
     useEffect(() => {
         const fetchEmployee = async () => {
             const employeeData = await userService.employeeDetails(user._id, employeeId);
@@ -64,15 +83,6 @@ const EmployeeForm = (props) => {
         setNewFile(evt.target.value);
     };
 
-    const handleAddFile = (evt) => {
-        evt.preventDefault();
-        setEmployeeFormData({
-            ...employeeFormData,
-            files: [...employeeFormData.files, newFile],
-        });
-        setNewFile('');
-    };
-
     const handleFileDelete = (evt) => {
         evt.preventDefault();
         console.log('id', evt.target.id);
@@ -86,16 +96,50 @@ const EmployeeForm = (props) => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        if (employeeId) {
-            props.handleUpdateEmployee(employeeId, employeeFormData);
-        } else {
-            props.handleAddEmployee(employeeFormData);
+      
+    if (!validateName(employeeFormData.fullname)) {
+        setErrorMessage("Invalid name. Only letters and spaces are allowed.");
+        return;
+    }
+    if (!validatePassword(employeeFormData.password)) {
+        setErrorMessage("Invalid password. At least 8 characters, including a number, an uppercase letter, a lowercase letter, and a special character.");
+        return;
+    }
+    if (!validateAge(employeeFormData.age)) {
+        setErrorMessage("Invalid age. Age must be a positive integer.");
+        return;
+    }
+    // clean error message
+    setErrorMessage(''); 
+
+            if (employeeId) {
+                props.handleUpdateEmployee(employeeId, employeeFormData);
+            } else {
+                props.handleAddEmployee(employeeFormData);
+            }
         };
-    };
+        
+        const handleAddFile = (evt) => {
+            evt.preventDefault();
+
+            if (!validateFileName(newFile)) {
+                setErrorMessage("Invalid file name. Ensure the file name is up to 50 characters and has a valid extension.");
+                return;
+            }
+            setEmployeeFormData({
+                ...employeeFormData,
+                files: [...employeeFormData.files, newFile],
+            });
+            setNewFile('');
+
+             // clean error message
+            setErrorMessage('');
+        };
 
     return (
         <main>
             <h1>{employeeId ? 'edit' : 'new'}</h1>
+            {errorMessage && <p className="error">{errorMessage}</p>}
             <form onSubmit={handleSubmit}>
                 <label htmlFor='fullname-input'>Name</label>
                 <input
@@ -127,6 +171,18 @@ const EmployeeForm = (props) => {
                     onChange={handleEasyChange}
                 />
                 <br />
+
+                <label htmlFor='age-input'>Age</label>
+                <input
+                required
+                type='number'
+                name='age'
+                id='age-input'
+                value={employeeFormData.age}
+                onChange={handleEasyChange}
+                />
+                {!validateAge(employeeFormData.age) && <p className="error">Invalid age.</p>}
+                
                 {/* <label htmlFor='permissions-input'>Permissions</label>
                 <select
                     multiple
