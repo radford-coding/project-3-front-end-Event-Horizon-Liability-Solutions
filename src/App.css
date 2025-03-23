@@ -1,32 +1,200 @@
-body {
-    /* from https://svs.gsfc.nasa.gov/14146/ */
-    background-image: url('/BH_accretion_disk_viz.png');
+/* body {
+    background-image: url('src/assets/spatial.jpg');
     background-blend-mode: lighten;
     background-position: center;
+    background-size: cover;
 }
 
 .App {
     text-align: center;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 #root {
     padding: 20px;
     background-color: rgba(0, 0, 0, .93);
     border-radius: 5%;
+    margin: auto;
 }
 
-form>button {
+form > button {
     margin-top: 20px;
 }
 
-.org {
+
+@media (min-width: 768px) {
+    .App {
+        max-width: 80%;
+    }
+
+    #root {
+        padding: 30px;
+        border-radius: 2%;
+    }
+
+    form > button {
+        margin-top: 30px;
+        font-size: 1.2rem;
+    }
+
+    .org > div {
+        justify-content: space-around;
+    }
+}
+
+@media (min-width: 1200px) {
+    .App {
+        max-width: 60%;
+    }
+
+    #root {
+        padding: 40px;
+    }
+
+    form > button {
+        margin-top: 40px;
+        font-size: 1.5rem;
+    }
+
+    .org > div {
+        justify-content: space-between;
+    }
+} */
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
     font-family: monospace, monospace;
+    line-height: 1.2;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    --blue: #66FCF1;
+    --white: rgba(255, 255, 255, 0.87);
+    --red: #EB5B55;
+    --bg: #141218;
+    --shift-step: 10px;
+    color: var(--blue);
+    background-color: var(--bg);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#root>header {
+    position: sticky;
+    top: 0;
+    background-color: var(--bg);
+    padding: var(--shift-step);
+}
+
+#root>header>h1,
+#root>header>h2,
+#root>header>h3,
+#root>header>h4 {
+    padding: calc(2 * var(--shift-step)) 0;
+    text-align: center;
+}
+
+nav {
+    padding: var(--shift-step);
+}
+
+nav::before {
+    content: '<_';
+}
+
+a {
+    text-decoration: none;
+    color: var(--blue);
+    cursor: pointer;
+}
+
+main {
+    padding: var(--shift-step);
+    margin-left: calc(3 * var(--shift-step));
+}
+
+main>header::before,
+main>a::before {
+    content: '>_';
+}
+
+main>header {
+    padding: var(--shift-step) 0;
+}
+
+main>section {
+    margin-left: calc(2 * var(--shift-step));
+}
+
+.button-container {
+    padding-right: calc(3 * var(--shift-step));
+    margin: calc(3 * var(--shift-step)) 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+main p::before,
+form label::before,
+main button::before,
+main button::after {
+    content: '_';
+}
+
+main p {
+    padding: var(--shift-step) 0;
+}
+
+main article {
+    padding: var(--shift-step);
+    text-indent: calc(2 * var(--shift-step));
+}
+
+li {
+    list-style: none;
+}
+
+ul a li::before {
+    content: '>_';
+}
+
+ul a li {
+    padding: var(--shift-step) 0;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+button:hover,
+a:hover {
+    font-weight: bold;
+}
+
+.red-text {
+    color: var(--red);
+}
+
+.org {
     --bord-col: rgba(255, 255, 255, .35);
 }
 
 .org-group {
     display: flex;
     flex-flow: column nowrap;
+    align-items: center;
 }
 
 .org>div {
@@ -47,5 +215,7 @@ form>button {
 
 .org-group~* {
     border: 1px solid var(--bord-col);
-    margin: 1px 5px;
+    margin: calc(0.5 * var(--shift-step));
+    text-align: center;
+    padding: calc(0.5 * var(--shift-step));
 }

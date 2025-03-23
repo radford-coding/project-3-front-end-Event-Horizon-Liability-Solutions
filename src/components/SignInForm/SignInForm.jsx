@@ -1,5 +1,5 @@
 //components/SignInForm/SignInForm.jsx
-import '../../views/SignInForm.css';
+import './SignInForm.css';
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
 
@@ -29,13 +29,13 @@ const SignInForm = () => {
       navigate('/welcome');
     } catch (err) {
       setMessage(err.message);
-    }
+    };
   };
 
   return (
     <main>
       <h1>Sign In</h1>
-      <p>{message}</p>
+      {message ? <p>{message}</p> : <></>}
       <form autoComplete='off' onSubmit={handleSubmit}>
         <div>
           <label htmlFor='username'>Username:</label>

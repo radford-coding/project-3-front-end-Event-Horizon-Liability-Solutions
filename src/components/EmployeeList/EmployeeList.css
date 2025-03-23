@@ -1,0 +1,44 @@
+/* .employee-list {
+    padding: 20px;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.employee-list h2 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.employee-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.employee-list li {
+    margin: 8px 0;
+    padding: 8px;
+    background-color: #3a3a3a;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.employee-list li:hover {
+    background-color: #555;
+}
+
+.org-chart-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.org-chart-link:hover {
+    background-color: #0056b3;
+} */
