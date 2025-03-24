@@ -14,10 +14,10 @@ const initialEmployeeFormData = {
 };
 
 const allPermissions = [
-    'admin',
-    'read',
-    'write',
-    'execute',
+    'view-tasks',
+    'edit-records',
+    'manage-files',
+    'assign-tasks',
 ];
 
 const EmployeeForm = (props) => {
@@ -26,6 +26,24 @@ const EmployeeForm = (props) => {
     const { user } = useContext(UserContext);
     const [employeePermissionCheckboxes, setEmployeePermissionCheckboxes] = useState(new Array(allPermissions.length).fill(false));
     const [newFile, setNewFile] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const validateName = (name) => {
+        const nameRegex = /^[a-zA-Z\s/./,]+$/;
+        return nameRegex.test(name);
+    };
+    const validateAge = (age) => {
+        const ageRegex = /^[1-9][0-9]*$/;
+        return ageRegex.test(age);
+    };
+    const validateRole = (role) => {
+        const roleRegex = /[\w ]+/;
+        return roleRegex.test(role);
+    };
+    const validateFileName = (fileName) => {
+        const fileRegex = /^[a-zA-Z0-9_-]{1,50}\.[a-zA-Z0-9]+$/;
+        return fileRegex.test(fileName);
+    };
 
     useEffect(() => {
         const fetchEmployee = async () => {
@@ -67,11 +85,19 @@ const EmployeeForm = (props) => {
 
     const handleAddFile = (evt) => {
         evt.preventDefault();
+
+        if (!validateFileName(newFile)) {
+            setErrorMessage("Invalid file name. Ensure the file name is up to 50 characters and has a valid extension.");
+            return;
+        }
         setEmployeeFormData({
             ...employeeFormData,
             files: [...employeeFormData.files, newFile],
         });
         setNewFile('');
+
+        // clean error message
+        setErrorMessage('');
     };
 
     const handleFileDelete = (evt) => {
@@ -87,11 +113,27 @@ const EmployeeForm = (props) => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
+
+        if (!validateName(employeeFormData.fullname)) {
+            setErrorMessage("Invalid name. Only letters and spaces are allowed.");
+            return;
+        }
+        if (!validateRole(employeeFormData.role)) {
+            setErrorMessage("Invalid role. Must be only alphanumeric characters and spaces.");
+            return;
+        }
+        if (!validateAge(employeeFormData.age)) {
+            setErrorMessage("Invalid age. Age must be a positive integer.");
+            return;
+        }
+        // clean error message
+        setErrorMessage('');
+
         if (employeeId) {
             props.handleUpdateEmployee(employeeId, employeeFormData);
         } else {
             props.handleAddEmployee(employeeFormData);
-        };
+        }
     };
 
     return (
@@ -157,18 +199,20 @@ const EmployeeForm = (props) => {
                         <br />
                         <fieldset>
                             <legend>files:</legend>
-                            {employeeFormData.files.map((file, index) => (
-                                <div key={index} className="files-container">
-                                    <p key={index}>{file}</p>
-                                    <button
-                                        id={`${index}-delete-button`}
-                                        onClick={handleFileDelete}
-                                        className="red-text"
-                                    >
-                                        X
-                                    </button>
-                                </div>
-                            ))}
+                            {employeeFormData.files.length
+                                ? employeeFormData.files.map((file, index) => (
+                                    <div key={index} className="files-container">
+                                        <p key={index}>{file}</p>
+                                        <button
+                                            id={`${index}-delete-button`}
+                                            onClick={handleFileDelete}
+                                            className="red-text"
+                                        >
+                                            ✖
+                                        </button>
+                                    </div>
+                                ))
+                                : <div>[none]</div>}
                         </fieldset>
                         <br />
                         <fieldset className="files-container">
@@ -188,6 +232,7 @@ const EmployeeForm = (props) => {
                             <button type='submit'>{employeeId ? 'update' : 'add_employee'}</button>
                         </section>
                     </form>
+                    {errorMessage && <p className="error">{errorMessage}</p>}
                 </section>
             </main>
         </>
