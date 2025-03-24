@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import * as userService from '../../services/userService';
 import { UserContext } from "../../contexts/UserContext";
 import NavBar from "../NavBar/NavBar";
-// import './EmployeeForm.css';
+import './EmployeeForm.css';
 
 const initialEmployeeFormData = {
     fullname: '',
@@ -98,41 +98,47 @@ const EmployeeForm = (props) => {
         <>
             <NavBar target={'employee-database'}></NavBar>
             <main>
-                <header>{employeeId ? `${employeeId}/edit` : 'new'}</header>
+                <header>{employeeId ? `edit_${employeeId}` : 'new'}</header>
                 <section>
                     <form onSubmit={handleSubmit}>
-                        <label htmlFor='fullname-input'>name</label>
-                        <input
-                            required
-                            type='text'
-                            name='fullname'
-                            id='fullname-input'
-                            value={employeeFormData.fullname}
-                            onChange={handleEasyChange}
-                        />
+                        <div>
+                            <label htmlFor='fullname-input'>name: </label>
+                            <input
+                                required
+                                type='text'
+                                name='fullname'
+                                id='fullname-input'
+                                value={employeeFormData.fullname}
+                                onChange={handleEasyChange}
+                            />
+                        </div>
                         <br />
-                        <label htmlFor='age-input'>age</label>
-                        <input
-                            required
-                            type='number'
-                            name='age'
-                            id='age-input'
-                            value={employeeFormData.age}
-                            onChange={handleEasyChange}
-                        />
+                        <div>
+                            <label htmlFor='age-input'>age: </label>
+                            <input
+                                required
+                                type='number'
+                                name='age'
+                                id='age-input'
+                                value={employeeFormData.age}
+                                onChange={handleEasyChange}
+                            />
+                        </div>
                         <br />
-                        <label htmlFor='role-input'>role</label>
-                        <input
-                            required
-                            type='text'
-                            name='role'
-                            id='role-input'
-                            value={employeeFormData.role}
-                            onChange={handleEasyChange}
-                        />
+                        <div>
+                            <label htmlFor='role-input'>role: </label>
+                            <input
+                                required
+                                type='text'
+                                name='role'
+                                id='role-input'
+                                value={employeeFormData.role}
+                                onChange={handleEasyChange}
+                            />
+                        </div>
                         <br />
                         <fieldset>
-                            <legend>permissions</legend>
+                            <legend>permissions:</legend>
                             {allPermissions.map((permission, index) => (
                                 <div key={index}>
                                     <input
@@ -150,7 +156,23 @@ const EmployeeForm = (props) => {
                         </fieldset>
                         <br />
                         <fieldset>
-                            <legend>add file</legend>
+                            <legend>files:</legend>
+                            {employeeFormData.files.map((file, index) => (
+                                <div key={index} className="files-container">
+                                    <p key={index}>{file}</p>
+                                    <button
+                                        id={`${index}-delete-button`}
+                                        onClick={handleFileDelete}
+                                        className="red-text"
+                                    >
+                                        X
+                                    </button>
+                                </div>
+                            ))}
+                        </fieldset>
+                        <br />
+                        <fieldset className="files-container">
+                            <legend>add_file:</legend>
                             <input
                                 type="text"
                                 value={newFile}
@@ -162,23 +184,8 @@ const EmployeeForm = (props) => {
                                 add
                             </button>
                         </fieldset>
-                        <br />
-                        <fieldset>
-                            <legend>files</legend>
-                            {employeeFormData.files.map((file, index) => (
-                                <div key={index}>
-                                    <p key={index}>{file}</p>
-                                    <button
-                                        id={`${index}-delete-button`}
-                                        onClick={handleFileDelete}
-                                    >
-                                        x
-                                    </button>
-                                </div>
-                            ))}
-                        </fieldset>
                         <section className="button-container">
-                            <button type='submit'>{employeeId ? 'update' : 'add this employee'}</button>
+                            <button type='submit'>{employeeId ? 'update' : 'add_employee'}</button>
                         </section>
                     </form>
                 </section>

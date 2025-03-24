@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import * as userService from '../../services/userService';
 import NavBar from "../NavBar/NavBar";
-// import './EmployeeList.css';
 
 const EmployeeList = () => {
 

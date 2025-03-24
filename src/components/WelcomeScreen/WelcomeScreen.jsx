@@ -1,11 +1,10 @@
 import { NavLink } from 'react-router';
-// import './WelcomeScreen.css';
 
 const WelcomeScreen = () => {
 
   return (
     <>
-    <header>
+      <header>
         <h4>Event Horizon Liability Solutions, Inc.</h4>
       </header>
       <main>

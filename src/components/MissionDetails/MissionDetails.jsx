@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-// import './MissionDetails.css';
 import { useParams } from "react-router";
 import * as userService from '../../services/userService'
 import { UserContext } from "../../contexts/UserContext";
@@ -25,7 +24,7 @@ const MissionDetails = () => {
         <>
             <NavBar target={'mission-control'}></NavBar>
             <main>
-                <h2>{mission.title}</h2>
+                <header>{mission.title}</header>
                 <p>completed: {`${mission.isCompleted}`}</p>
                 <p>description: {mission.description}</p>
                 {mission.report
