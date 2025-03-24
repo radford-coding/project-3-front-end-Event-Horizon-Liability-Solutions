@@ -12,7 +12,6 @@ const EmployeeList = () => {
     useEffect(() => {
         const fetchEmployees = async () => {
             const fetchedEmployees = await userService.employeeList(user._id);
-            console.log(user);
             const sortedEmployees = fetchedEmployees.sort((a, b) =>
                 a.fullname.localeCompare(b.fullname)
             );

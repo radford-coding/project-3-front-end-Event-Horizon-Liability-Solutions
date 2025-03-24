@@ -44,8 +44,12 @@ nav {
     padding: var(--shift-step);
 }
 
-nav::before {
+nav a::before {
     content: '<_';
+}
+
+nav:hover::before {
+    font-weight: bold;
 }
 
 a {
@@ -65,6 +69,10 @@ main>header::before {
 
 main>a::before {
     content: '>_';
+}
+
+main>a:hover::before {
+    font-weight: bold;
 }
 
 main>header {
@@ -91,6 +99,11 @@ legend::before,
 main button::before,
 main button::after {
     content: '_';
+}
+
+main button:hover::before,
+main button:hover::after {
+    font-weight: bold;
 }
 
 form {
@@ -190,7 +203,6 @@ a:hover {
     from {
         width: 0;
     }
-
     to {
         width: 100%;
     }
