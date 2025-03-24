@@ -1,6 +1,6 @@
 import NavBar from "../NavBar/NavBar";
 import './BalanceSheet.css';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const BalanceSheet = () => {
 
