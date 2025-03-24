@@ -2,7 +2,7 @@ import { NavLink } from "react-router";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import * as userService from '../../services/userService';
-import './EmployeeForm.css';
+import './EmployeeList.css';
 
 const EmployeeList = () => {
 
@@ -13,22 +13,29 @@ const EmployeeList = () => {
         const fetchEmployees = async () => {
             const fetchedEmployees = await userService.employeeList(user._id);
             console.log(user);
-            setEmployees(fetchedEmployees);
+             //sort EmployeeList alphabetically first name 
+             const sortedEmployees = fetchedEmployees.sort((a, b) => 
+                a.fullname.localeCompare(b.fullname)
+            );
+            setEmployees(sortedEmployees);
         };
         fetchEmployees();
     }, [user]);
+    
 
     return (
         <main>
             <h2>EHLS Employees</h2>
             <ul>
+            <div className="typewriter">
                 {employees.map((employee) => (
                     <NavLink key={employee._id} to={`/employees/${employee._id}`}>
                         <li>{employee.fullname}</li>
                     </NavLink>
                 ))}
+                </div>
             </ul>
-            <NavLink to='/orgchart/'>Org Chart</NavLink>
+            <NavLink to='/orgchart/'><button type='button'>Org Chart</button></NavLink>
         </main>
     );
 };

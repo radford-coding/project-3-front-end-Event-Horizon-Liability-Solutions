@@ -2,7 +2,8 @@ import { useParams } from "react-router";
 import { useState, useEffect, useContext } from "react";
 import * as userService from '../../services/userService';
 import { UserContext } from "../../contexts/UserContext";
-import './EmployeeForm.css';
+import NavBar from "../NavBar/NavBar";
+// import './EmployeeForm.css';
 
 const initialEmployeeFormData = {
     fullname: '',
@@ -94,100 +95,95 @@ const EmployeeForm = (props) => {
     };
 
     return (
-        <main>
-            <h1>{employeeId ? 'edit' : 'new'}</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor='fullname-input'>Name</label>
-                <input
-                    required
-                    type='text'
-                    name='fullname'
-                    id='fullname-input'
-                    value={employeeFormData.fullname}
-                    onChange={handleEasyChange}
-                />
-                <br />
-                <label htmlFor='age-input'>Age</label>
-                <input
-                    required
-                    type='number'
-                    name='age'
-                    id='age-input'
-                    value={employeeFormData.age}
-                    onChange={handleEasyChange}
-                />
-                <br />
-                <label htmlFor='role-input'>Role</label>
-                <input
-                    required
-                    type='text'
-                    name='role'
-                    id='role-input'
-                    value={employeeFormData.role}
-                    onChange={handleEasyChange}
-                />
-                <br />
-                {/* <label htmlFor='permissions-input'>Permissions</label>
-                <select
-                    multiple
-                    name="permissions"
-                    id="permissions-input"
-                    onChange={handleChange}
-                >
-                    {allPermissions.map((permission, index) => (
-                        <option key={index} value={permission}>{permission}</option>
-                    ))}
-                </select> */}
-                <fieldset>
-                    <legend>Permissions</legend>
-                    {allPermissions.map((permission, index) => (
-                        <div key={index}>
+        <>
+            <NavBar target={'employee-database'}></NavBar>
+            <main>
+                <header>{employeeId ? `${employeeId}/edit` : 'new'}</header>
+                <section>
+                    <form onSubmit={handleSubmit}>
+                        <label htmlFor='fullname-input'>name</label>
+                        <input
+                            required
+                            type='text'
+                            name='fullname'
+                            id='fullname-input'
+                            value={employeeFormData.fullname}
+                            onChange={handleEasyChange}
+                        />
+                        <br />
+                        <label htmlFor='age-input'>age</label>
+                        <input
+                            required
+                            type='number'
+                            name='age'
+                            id='age-input'
+                            value={employeeFormData.age}
+                            onChange={handleEasyChange}
+                        />
+                        <br />
+                        <label htmlFor='role-input'>role</label>
+                        <input
+                            required
+                            type='text'
+                            name='role'
+                            id='role-input'
+                            value={employeeFormData.role}
+                            onChange={handleEasyChange}
+                        />
+                        <br />
+                        <fieldset>
+                            <legend>permissions</legend>
+                            {allPermissions.map((permission, index) => (
+                                <div key={index}>
+                                    <input
+                                        type='checkbox'
+                                        id={`permission-${index}-input`}
+                                        //TODO: what to name?
+                                        name={permission}
+                                        value={permission}
+                                        checked={employeePermissionCheckboxes[index]}
+                                        onChange={() => handlePermissionsChange(index)}
+                                    />
+                                    <label htmlFor={`permission-${index}-input`}>{permission}</label>
+                                </div>
+                            ))}
+                        </fieldset>
+                        <br />
+                        <fieldset>
+                            <legend>add file</legend>
                             <input
-                                type='checkbox'
-                                id={`permission-${index}-input`}
-                                //TODO: what to name?
-                                name={permission}
-                                value={permission}
-                                checked={employeePermissionCheckboxes[index]}
-                                onChange={() => handlePermissionsChange(index)}
+                                type="text"
+                                value={newFile}
+                                onChange={handleFileChange}
                             />
-                            <label htmlFor={`permission-${index}-input`}>{permission}</label>
-                        </div>
-                    ))}
-                </fieldset>
-                <br />
-                <fieldset>
-                    <legend>Add file</legend>
-                    <input
-                        type="text"
-                        value={newFile}
-                        onChange={handleFileChange}
-                    />
-                    <button
-                        onClick={handleAddFile}
-                    >
-                        add
-                    </button>
-                </fieldset>
-                <br />
-                <fieldset>
-                    <legend>Files</legend>
-                    {employeeFormData.files.map((file, index) => (
-                        <div key={index}>
-                            <p key={index}>{file}</p>
                             <button
-                                id={`${index}-delete-button`}
-                                onClick={handleFileDelete}
+                                onClick={handleAddFile}
                             >
-                                x
+                                add
                             </button>
-                        </div>
-                    ))}
-                </fieldset>
-
-                <button type='submit'>{employeeId ? 'update' : 'add this employee'}</button>
-            </form>
-        </main>
+                        </fieldset>
+                        <br />
+                        <fieldset>
+                            <legend>files</legend>
+                            {employeeFormData.files.map((file, index) => (
+                                <div key={index}>
+                                    <p key={index}>{file}</p>
+                                    <button
+                                        id={`${index}-delete-button`}
+                                        onClick={handleFileDelete}
+                                    >
+                                        x
+                                    </button>
+                                </div>
+                            ))}
+                        </fieldset>
+                        <section className="button-container">
+                            <button type='submit'>{employeeId ? 'update' : 'add this employee'}</button>
+                        </section>
+                    </form>
+                </section>
+            </main>
+        </>
     );
 };
 

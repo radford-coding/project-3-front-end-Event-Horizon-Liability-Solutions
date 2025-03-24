@@ -29,13 +29,13 @@ const SignInForm = () => {
       navigate('/welcome');
     } catch (err) {
       setMessage(err.message);
-    }
+    };
   };
 
   return (
     <main>
       <h1>Sign In</h1>
-      <p>{message}</p>
+      {message ? <p>{message}</p> : <></>}
       <form autoComplete='off' onSubmit={handleSubmit}>
         <div>
           <label htmlFor='username'>Username:</label>
