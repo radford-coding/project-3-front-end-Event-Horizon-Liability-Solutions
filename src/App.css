@@ -116,6 +116,11 @@ main button:not([disabled]):focus::after {
     font-weight: bold;
 }
 
+button:not([disabled]):focus {
+    box-shadow: inset 0 0 0 2px var(--bord-col);
+    border-radius: 10%;
+}
+
 button {
     all: unset;
     cursor: pointer;
@@ -192,9 +197,7 @@ input[type="checkbox"] {
     margin-right: calc(3 * var(--shift-step));
 }
 
-input[type="checkbox"]:checked 
-
-label,
+input[type="checkbox"]:checked label,
 input {
     color: var(--blue);
 }
@@ -240,8 +243,7 @@ ul a li {
 .typewriter {
     white-space: nowrap;
     overflow: hidden;
-    /* border-right: 1px solid; */
-    animation: typing 2s steps(30, end), blink 0.75s step-end infinite;
+    animation: typing 1.2s steps(30, end), blink 0.75s step-end infinite;
 }
 
 @keyframes typing {
