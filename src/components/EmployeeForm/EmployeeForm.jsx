@@ -29,7 +29,7 @@ const EmployeeForm = (props) => {
     const [errorMessage, setErrorMessage] = useState('');
 
     const validateName = (name) => {
-        const nameRegex = /^[a-zA-Z\s/./,]+$/;
+        const nameRegex = /^[a-zA-Z]+, \s*[a-zA-Z]+$/;
         return nameRegex.test(name);
     };
     const validateAge = (age) => {
@@ -44,6 +44,8 @@ const EmployeeForm = (props) => {
         const fileRegex = /^[a-zA-Z0-9_-]{1,50}\.[a-zA-Z0-9]+$/;
         return fileRegex.test(fileName);
     };
+
+
 
     useEffect(() => {
         const fetchEmployee = async () => {
@@ -115,7 +117,7 @@ const EmployeeForm = (props) => {
         evt.preventDefault();
 
         if (!validateName(employeeFormData.fullname)) {
-            setErrorMessage("Invalid name. Only letters and spaces are allowed.");
+            setErrorMessage("Invalid name. Only lastname coma firtname and spaces and are allowed.");
             return;
         }
         if (!validateRole(employeeFormData.role)) {
