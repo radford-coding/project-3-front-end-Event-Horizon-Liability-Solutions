@@ -98,7 +98,7 @@ const EmployeeForm = (props) => {
         <>
             <NavBar target={'employee-database'}></NavBar>
             <main>
-                <header>{employeeId ? `${employeeId}/edit` : 'new'}</header>
+                <header>{employeeId ? `edit_${employeeId}` : 'new'}</header>
                 <section>
                     <form onSubmit={handleSubmit}>
                         <div>

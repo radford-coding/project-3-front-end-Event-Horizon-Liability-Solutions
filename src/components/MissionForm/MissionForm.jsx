@@ -2,7 +2,6 @@ import { useParams, useNavigate } from "react-router";
 import * as userService from '../../services/userService';
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext";
-// import './MissionForm.css';
 
 const MissionForm = (props) => {
     const { user } = useContext(UserContext);

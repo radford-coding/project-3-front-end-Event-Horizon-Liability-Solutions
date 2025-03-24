@@ -1,4 +1,3 @@
-// import './Dashboard.css';
 import { useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import { NavLink } from 'react-router';
@@ -20,22 +19,23 @@ const Dashboard = () => {
         </nav>
       </header>
       <main>
-        <h2>Welcome to EHLS, {user.username}.</h2>
-        <article>
-          This is the dashboard page.
-        </article>
+        <header>dashboard</header>
+        <section>
+          <ul>
+            <NavLink to='/employees'><li>employee_database</li></NavLink>
+            <NavLink to='/employees/new'><li>add_employee</li></NavLink>
+            <NavLink to='/missions'><li>mission_control</li></NavLink>
+            <NavLink to='/resources'><li>company_resources</li></NavLink>
+          </ul>
+        </section>
         <br />
         <br />
-        <NavLink to='/employees'>employee_database</NavLink>
-        <br />
-        <br />
-        <NavLink to='/employees/new'>add_employee</NavLink>
-        <br />
-        <br />
-        <NavLink to='/missions'>mission_control</NavLink>
-        <br />
-        <br />
-        <NavLink to='/orgchart'>company_resources</NavLink>
+        <section>
+          <h2>Welcome to EHLS, {user.username}.</h2>
+          <article>
+            Select a resource.
+          </article>
+        </section>
       </main>
     </>
   );
@@ -43,8 +43,8 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-{/* <li><NavLink to='/welcome'>Welcome, {user.username}</NavLink></li> */}
-  //         <li><NavLink to='/'>Dashboard</NavLink></li>
-  //         <li><NavLink to='/employees'>employees</NavLink></li>
-  //         <li><NavLink to='/employees/new'>new employee</NavLink></li>
-  //         <li></li>
+{/* <li><NavLink to='/welcome'>Welcome, {user.username}</NavLink></li> */ }
+//         <li><NavLink to='/'>Dashboard</NavLink></li>
+//         <li><NavLink to='/employees'>employees</NavLink></li>
+//         <li><NavLink to='/employees/new'>new employee</NavLink></li>
+//         <li></li>

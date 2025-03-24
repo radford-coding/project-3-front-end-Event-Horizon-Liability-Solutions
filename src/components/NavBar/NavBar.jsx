@@ -1,4 +1,3 @@
-//components/NavBar/NavBar.jsx
 import './NavBar.css';
 import { useContext, useState, useEffect } from 'react';
 import { NavLink } from 'react-router';
@@ -15,6 +14,7 @@ const NavBar = (props) => {
       switch (props.target) {
         case 'employee-database': return '/employees';
         case 'mission-control': return '/missions';
+        case 'company-resources': return '/resources';
         case 'dashboard': return '/';
         default: return '/';
       };

@@ -3,7 +3,6 @@ import { useParams, NavLink } from "react-router";
 import * as userService from '../../services/userService';
 import { UserContext } from "../../contexts/UserContext";
 import NavBar from '../NavBar/NavBar';
-// import './EmployeeDetails.css';
 
 const EmployeeDetails = (props) => {
     const { employeeId } = useParams();

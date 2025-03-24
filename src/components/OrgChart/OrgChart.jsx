@@ -6,9 +6,9 @@ const OrgChart = () => {
 
     return (
         <>
-            <NavBar target={'dashboard'}></NavBar>
+            <NavBar target={'company-resources'}></NavBar>
             <main>
-                <h1>Org Chart</h1>
+                <header>org_chart</header>
                 <br />
                 <div className="org">
                     <div>Event Horizon Liability Solutions</div>

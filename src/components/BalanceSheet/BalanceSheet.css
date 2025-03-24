@@ -1,0 +1,14 @@
+table,
+th,
+td {
+    border: 1px solid var(--bord-col);
+    border-collapse: collapse;
+}
+
+td {
+    padding: calc(0.5 * var(--shift-step));
+}
+
+th {
+    padding: var(--shift-step);
+}
