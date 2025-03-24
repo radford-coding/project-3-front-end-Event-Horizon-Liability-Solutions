@@ -134,6 +134,10 @@ fieldset>div {
     padding-left: calc(2 * var(--shift-step));
 }
 
+fieldset>button {
+    padding-right: calc(3 * var(--shift-step));
+}
+
 input {
     background-color: var(--bg);
     border: 1px solid gray;
@@ -192,6 +196,10 @@ ul a li {
 
 .red-text {
     color: var(--red);
+}
+
+.red-text:hover {
+    text-shadow: 0 0 5px red;
 }
 
 .typewriter {
