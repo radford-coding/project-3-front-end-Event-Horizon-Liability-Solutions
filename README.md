@@ -74,7 +74,7 @@ The game "Event Horizon Liability Solutions" is an immersive experience set in a
 
 # Technical Requirements
 
-| MVP Requirements                                                                                                                      | Complete?|
+| MVP Requirements                                                                                                           | Complete?|
 |---------------------------------------------------------------------------------------------------------------------------------------|----------|
 | The back-end application is built with Express and Node.                                                                              | Complete |
 | The front-end application is built with React.                                                                                        | Complete |
@@ -110,7 +110,7 @@ The game "Event Horizon Liability Solutions" is an immersive experience set in a
 
 | Git and GitHub Requirements                                                                                                           | Complete?|
 |---------------------------------------------------------------------------------------------------------------------------------------|----------|
-| You are shown as the only contributor to the project on GitHub.                                                                       | Complete |
+| All your group shown as contributor to the project on GitHub.                                                                        | Complete |
 | GitHub repositories are appropriately named and publicly accessible.                                                                  | Complete |
 | Commit history dates back to the beginning of the project, and old repos are preserved if starting over.                              | Complete |
 | Commit messages are descriptive of the work done in each commit.                                                                      | Complete |
