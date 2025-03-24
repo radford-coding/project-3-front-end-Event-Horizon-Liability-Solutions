@@ -72,3 +72,64 @@ The game "Event Horizon Liability Solutions" is an immersive experience set in a
 
 * API services: Communication with the backend will continue to be with fetch or axios, but adjustments in the management of routes may be required.
 
+# Technical Requirements
+
+| MVP Requirements                                                                                                           | Complete?|
+|---------------------------------------------------------------------------------------------------------------------------------------|----------|
+| The back-end application is built with Express and Node.                                                                              | Complete |
+| The front-end application is built with React.                                                                                        | Complete |
+| MongoDB is used as the database management system.                                                                                    | Complete |
+| The back-end and front-end applications implement JWT token-based authentication to sign up, sign in, and sign out users.             | Complete |
+| Authorization is implemented across the front-end and back-end. Guest users (not signed in) should not create, update, or delete data.| Complete |
+| The project has at least two data entities besides the User model, with at least one having a relationship with the User model.       | Complete |
+| The project has full CRUD functionality on both the back-end and front-end.                                                           | Complete |
+| The front-end application does not hold secret keys. Public APIs requiring secret keys must be accessed from the back-end.            | Complete |
+| The project is deployed online so that the rest of the world can use it.                                                              | Complete |
+
+| Code Convention Requirements                                                                                                          | Complete?|
+|---------------------------------------------------------------------------------------------------------------------------------------|----------|
+| Files in the back-end and front-end are organized according to conventions demonstrated in lectures.                                  | Complete |
+| Code in the back-end and front-end adheres to coding conventions demonstrated in lectures, like using plural names for arrays.        | Complete |
+| No dead code, commented-out sections, or console logs in the back-end and front-end applications.                                     | Complete |
+| The back-end application runs without errors in the terminal.                                                                         | Complete |
+| The front-end application runs without errors in the browser's console.                                                               | Complete |
+| The back-end application follows RESTful routing conventions for routes.                                                              | Complete |
+| The back-end and front-end applications are coded using proper indentation.                                                           | Complete |
+
+| UI/UX Requirements                                                                                                                    | Complete?|
+|---------------------------------------------------------------------------------------------------------------------------------------|----------|
+| The application has a visual theme, including a consistent color palette and cohesive layout across pages.                            | Complete |
+| The application is easily navigable by a first-time user.                                                                             | Complete |
+| The application uses CSS Flexbox and/or Grid for page layout.                                                                         | Complete |
+| Colors used in the app meet the WCAG 2.0 level AA standard for contrast.                                                              | Complete |
+| When editing an item, the form is pre-filled with that item's details.                                                                | Complete |
+| Only the creator of a piece of data can see and interact with the UI for editing or deleting that data.                               | Complete |
+| All images have alt text.                                                                                                             | Complete |
+| No text is placed on top of images in a way that makes the text inaccessible.                                                         | Complete |
+| All buttons are styled.                                                                                                               | Complete |
+
+| Git and GitHub Requirements                                                                                                           | Complete?|
+|---------------------------------------------------------------------------------------------------------------------------------------|----------|
+| You are shown as the only contributor to the project on GitHub.                                                                       | Complete |
+| GitHub repositories are appropriately named and publicly accessible.                                                                  | Complete |
+| Commit history dates back to the beginning of the project, and old repos are preserved if starting over.                              | Complete |
+| Commit messages are descriptive of the work done in each commit.                                                                      | Complete |
+
+| README Requirements                                                                                                                   | Complete?|
+|---------------------------------------------------------------------------------------------------------------------------------------|----------|
+| Screenshot/Logo: A screenshot of the app or a logo is included.                                                                       | Complete |
+| App name and description: Include a description of your app and its functionality.                                                    | Complete |
+| Getting started: Link to deployed app, planning materials, and back-end repository.                                                   | Complete |
+| Attributions: Links to any external resources requiring attribution.                                                                  | Complete |
+| Technologies used: List of principal technologies used in the application.                                                            | Complete |
+| Next steps: Planned future enhancements (stretch goals).                                                                              | Complete |
+| Back-end README: Contains the project name and a link to the front-end repository on GitHub.                                          | Complete |
+
+| Presentation Requirements                                                                                                             | Complete?|
+|---------------------------------------------------------------------------------------------------------------------------------------|----------|
+| Present your project in front of the class on the scheduled presentation day.                                                         | Complete |
+| Present the project that was approved by your instructor.                                                                             | Complete |
+
+| Summary                                                                                                                               | Complete?|
+|---------------------------------------------------------------------------------------------------------------------------------------|----------|
+| Project meets minimum requirements and passes.                                                                                        | Complete |
