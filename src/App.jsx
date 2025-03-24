@@ -18,6 +18,9 @@ import MissionList from './components/MissionList/MissionList';
 import MissionDetails from './components/MissionDetails/MissionDetails';
 import WelcomeScreen from './components/WelcomeScreen/WelcomeScreen';
 import OrgChart from './components/OrgChart/OrgChart';
+import CompanyResourcesList from './components/CompanyResourcesList/CompanyResourcesList';
+import BalanceSheet from './components/BalanceSheet/BalanceSheet';
+import MissionResult from './components/MissionResult/MissionResult';
 
 import { UserContext } from './contexts/UserContext';
 import * as userService from './services/userService';
@@ -77,7 +80,10 @@ const App = () => {
             <Route path='/missions' element={<MissionList missions={missions} />}></Route>
             <Route path='/missions/:missionId' element={<MissionDetails />}></Route>
             <Route path='/welcome' element={<WelcomeScreen />} />
+            <Route path='/resources' element={<CompanyResourcesList />} ></Route>
             <Route path='/orgchart' element={<OrgChart />} ></Route>
+            <Route path='/balancesheet' element={<BalanceSheet />} ></Route>
+            <Route path='/missionresult' element={<MissionResult />} ></Route>
           </>
         ) : (
           <>

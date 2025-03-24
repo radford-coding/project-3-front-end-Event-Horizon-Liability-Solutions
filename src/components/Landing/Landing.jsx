@@ -1,18 +1,22 @@
-// import './Landing.css';
 import { NavLink } from 'react-router';
 
 const Landing = () => {
   return (
     <>
       <header>
-        <h1>Event Horizon Liability Solutions, Incorporated</h1>
-        <h3>est. 2063</h3>
+        <h4>Event Horizon Liability Solutions, Inc.</h4>
+        <nav></nav>
       </header>
       <main>
-        <NavLink to='/sign-in'>sign_in</NavLink>
+        <ul>
+          <NavLink to='/sign-in'><li>sign_in</li></NavLink>
+          <NavLink to='/sign-up'><li>sign_up</li></NavLink>
+        </ul>
         <br />
         <br />
-        <NavLink to='/sign-up'>sign_up</NavLink>
+        <section>
+          <h4>Incorporated c. 2063</h4>
+        </section>
       </main>
     </>
   );
