@@ -24,9 +24,10 @@ const MissionDetails = () => {
         <>
             <NavBar target={'mission-control'}></NavBar>
             <main>
-                <header>{mission._id}</header>
+                <header className="typewriter">{mission._id}</header>
                 <br />
-                <h4>{mission.title}</h4>
+                <h3>{mission.title}</h3>
+                <br />
                 <p>completed: {`${mission.isCompleted}`}</p>
                 <p>description: {mission.description}</p>
                 {mission.report

@@ -29,7 +29,7 @@ const EmployeeDetails = (props) => {
         <>
             <NavBar target={'employee-database'}></NavBar>
             <main>
-                <header>{employeeId}</header>
+                <header className="typewriter">{employeeId}</header>
                 <section>
                     <p>name: {employee.fullname}</p>
                     <p>age: {employee.age}</p>

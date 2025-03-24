@@ -218,7 +218,7 @@ const MissionForm = (props) => {
 
     return (
         <>
-            <p>submit_report:</p>
+            <p>submit_detailed_report:</p>
             <form>
                 <textarea
                     name='report'

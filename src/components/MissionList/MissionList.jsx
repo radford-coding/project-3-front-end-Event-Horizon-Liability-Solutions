@@ -21,7 +21,7 @@ const MissionList = () => {
         <>
             <NavBar target={'dashboard'}></NavBar>
             <main>
-                <header>missions</header>
+                <header className="typewriter">missions</header>
                 <section>
                     <ul>
                         {missions.filter(m => !m.isCompleted).map((mission) => (
@@ -33,7 +33,7 @@ const MissionList = () => {
                 </section>
                 <br />
                 <br />
-                <header>completed</header>
+                <header className="typewriter">completed</header>
                 <section>
                     <ul>
                         {missions.filter(m => m.isCompleted).map((mission) => (

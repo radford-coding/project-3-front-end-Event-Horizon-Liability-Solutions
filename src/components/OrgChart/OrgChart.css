@@ -1,3 +1,7 @@
+.org {
+  margin: calc(0.25 * var(--shift-step));
+}
+
 .org-group {
   display: flex;
   flex-flow: column nowrap;
@@ -22,7 +26,8 @@
 
 .org-group~* {
   border: 1px solid var(--bord-col);
-  margin: calc(0.5 * var(--shift-step));
+  margin: calc(0.25 * var(--shift-step));
   text-align: center;
-  padding: calc(0.5 * var(--shift-step));
+  padding: calc(0.25 * var(--shift-step));
+  /* font-size: 0.75rem; */
 }

@@ -31,20 +31,12 @@ const EmployeeList = () => {
         <>
             <NavBar target={'dashboard'}></NavBar>
             <main>
-                <header className="typewriter">employee-database</header>
+                <header>employee-database</header>
                 <section>
-                    {/* <h4>by:</h4>
-                    <form>
-                        <select id="by-select" value={by}>
-                            <option value="name">name</option>
-                            <option value="role">role</option>
-                            <option value="age">age</option>
-                        </select>
-                    </form> */}
                     <ul>
                         {employees.map((employee) => (
                             <NavLink key={employee._id} to={`/employees/${employee._id}`}>
-                                <li>{employee.fullname}</li>
+                                <li className="typewriter">{employee.fullname}</li>
                             </NavLink>
                         ))}
                     </ul>
