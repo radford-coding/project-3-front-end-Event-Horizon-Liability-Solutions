@@ -24,7 +24,9 @@ const MissionDetails = () => {
         <>
             <NavBar target={'mission-control'}></NavBar>
             <main>
-                <header>{mission.title}</header>
+                <header>{mission._id}</header>
+                <br />
+                <h4>{mission.title}</h4>
                 <p>completed: {`${mission.isCompleted}`}</p>
                 <p>description: {mission.description}</p>
                 {mission.report

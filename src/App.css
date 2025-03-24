@@ -44,8 +44,12 @@ nav {
     padding: var(--shift-step);
 }
 
-nav::before {
+nav a::before {
     content: '<_';
+}
+
+nav:hover::before {
+    font-weight: bold;
 }
 
 a {
@@ -65,6 +69,10 @@ main>header::before {
 
 main>a::before {
     content: '>_';
+}
+
+main>a:hover::before {
+    font-weight: bold;
 }
 
 main>header {
@@ -93,6 +101,25 @@ main button::after {
     content: '_';
 }
 
+button:not([disabled]):hover,
+main button:not([disabled]):hover::before,
+main button:not([disabled]):hover::after {
+    font-weight: bold;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+button:disabled {
+    color: gray;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
 form {
     padding-top: calc(2 * var(--shift-step));
 }
@@ -116,10 +143,12 @@ input {
 }
 
 textarea {
-    width: 100%;
+    width: calc(100% - calc(3 * var(--shift-step)));
     aspect-ratio: 3/1;
     color: var(--blue);
     padding: calc(0.5 * var(--shift-step));
+    resize: vertical;
+    line-height: 1.2;
 }
 
 form>div>input[type='text'] {
@@ -161,20 +190,6 @@ ul a li {
     padding: var(--shift-step) 0;
 }
 
-button {
-    all: unset;
-    cursor: pointer;
-}
-
-button:disabled {
-    color: gray;
-}
-
-button:hover,
-a:hover {
-    font-weight: bold;
-}
-
 .red-text {
     color: var(--red);
 }
@@ -190,7 +205,6 @@ a:hover {
     from {
         width: 0;
     }
-
     to {
         width: 100%;
     }

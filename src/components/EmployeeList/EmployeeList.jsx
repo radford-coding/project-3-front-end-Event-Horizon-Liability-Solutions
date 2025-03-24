@@ -9,11 +9,15 @@ const EmployeeList = () => {
 
     const { user } = useContext(UserContext);
     const [employees, setEmployees] = useState([]);
+    // const [by, setBy] = useState('name');
+
+    // const handleUpdateBy = (evt) => {
+    //     setBy(evt.target.value);
+    // };
 
     useEffect(() => {
         const fetchEmployees = async () => {
             const fetchedEmployees = await userService.employeeList(user._id);
-            console.log(user);
             const sortedEmployees = fetchedEmployees.sort((a, b) =>
                 a.fullname.localeCompare(b.fullname)
             );
@@ -29,7 +33,14 @@ const EmployeeList = () => {
             <main>
                 <header className="typewriter">employee-database</header>
                 <section>
-
+                    {/* <h4>by:</h4>
+                    <form>
+                        <select id="by-select" value={by}>
+                            <option value="name">name</option>
+                            <option value="role">role</option>
+                            <option value="age">age</option>
+                        </select>
+                    </form> */}
                     <ul>
                         {employees.map((employee) => (
                             <NavLink key={employee._id} to={`/employees/${employee._id}`}>
