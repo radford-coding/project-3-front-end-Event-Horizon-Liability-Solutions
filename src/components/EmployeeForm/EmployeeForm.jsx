@@ -201,18 +201,20 @@ const EmployeeForm = (props) => {
                         <br />
                         <fieldset>
                             <legend>files:</legend>
-                            {employeeFormData.files.map((file, index) => (
-                                <div key={index} className="files-container">
-                                    <p key={index}>{file}</p>
-                                    <button
-                                        id={`${index}-delete-button`}
-                                        onClick={handleFileDelete}
-                                        className="red-text"
-                                    >
-                                        X
-                                    </button>
-                                </div>
-                            ))}
+                            {employeeFormData.files.length
+                                ? employeeFormData.files.map((file, index) => (
+                                    <div key={index} className="files-container">
+                                        <p key={index}>{file}</p>
+                                        <button
+                                            id={`${index}-delete-button`}
+                                            onClick={handleFileDelete}
+                                            className="red-text"
+                                        >
+                                            ✖
+                                        </button>
+                                    </div>
+                                ))
+                                : <div>[none]</div>}
                         </fieldset>
                         <br />
                         <fieldset className="files-container">

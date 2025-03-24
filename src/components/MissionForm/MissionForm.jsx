@@ -138,10 +138,26 @@ const MissionForm = (props) => {
                 const correctFile = manager.files.includes("key-file.pdf");
                 const matchReport = missionFormData.report === "key-file.pdf";
 
-                if (correctFile && matchReport) {
+                if (manager && correctFile && matchReport) {
                     result = {
                         hasSucceeded: true,
                         msg: "Mission success: Corrupted file has been resynced with the database and restored."
+                    }
+                }
+                else if (!manager && correctFile && matchReport) {
+                    result = {
+                        hasSucceeded: false,
+                        msg: "Mission failure: Manager cannot be found."
+                    }
+                } else if (manager && correctFile && !matchReport) {
+                    result = {
+                        hasSucceeded: false,
+                        msg: "Mission failure: File name in report does not match file name in database. Cannot resync."
+                    }
+                } else if (!manager && correctFile && !matchReport) {
+                    result = {
+                        hasSucceeded: false,
+                        msg: "Mission failure: Manager and file name cannot be found."
                     }
                 } else {
                     result = {
@@ -197,13 +213,12 @@ const MissionForm = (props) => {
         // navigate to missionresult component
         // pass the message through the navigate function's state property
         // the state property is stored in the location state and can contain any data you want to pass
-        navigate('/missionresult', { state: { msg: result.msg, mission: props.mission.title, description: props.mission.description } });
+        navigate('/missionresult', { state: { msg: result.msg, mission: props.mission.title, description: props.mission.description, id: missionId } });
     };
 
     return (
         <>
-            <header>submit report</header>
-            { }
+            <p>submit_report:</p>
             <form>
                 <textarea
                     name='report'
