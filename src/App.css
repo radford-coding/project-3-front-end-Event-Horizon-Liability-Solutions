@@ -1,64 +1,207 @@
-/* Walpaper with spatial image */
-body {
-    background-image: url('src/assets/spatial.jpg');
-    background-blend-mode: lighten;
-    background-position: center;
-    background-size: cover;
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
-/* Application style */
-.App {
-    text-align: center;
-    margin: 0 auto;
-    max-width: 1200px;
-}
-
-/* Main container style */
-#root {
-    padding: 20px;
-    background-color: rgba(0, 0, 0, .93);
-    border-radius: 5%;
-    margin: auto;
-}
-
-/* Forms button */
-form > button {
-    margin-top: 20px;
-}
-
-/* Style of the organizational graphg */
-.org {
+:root {
     font-family: monospace, monospace;
+    line-height: 1.2;
+    font-weight: 400;
+
+    color-scheme: light dark;
+    --blue: #66FCF1;
+    --white: rgba(255, 255, 255, 0.87);
+    --red: #EB5B55;
+    --bg: #141218;
+    --shift-step: 10px;
     --bord-col: rgba(255, 255, 255, .35);
+    color: var(--blue);
+    background-color: var(--bg);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.org-group {
-    display: flex;
-    flex-flow: column nowrap;
+#root>header {
+    position: sticky;
+    top: 0;
+    background-color: var(--bg);
+    padding: var(--shift-step);
 }
 
-.org > div {
+#root>header>h1,
+#root>header>h2,
+#root>header>h3,
+#root>header>h4 {
+    padding: calc(2 * var(--shift-step)) 0;
+    text-align: center;
+}
+
+nav {
+    padding: var(--shift-step);
+}
+
+nav::before {
+    content: '<_';
+}
+
+a {
+    text-decoration: none;
+    color: var(--blue);
+    cursor: pointer;
+}
+
+main {
+    padding: var(--shift-step);
+    margin-left: calc(3 * var(--shift-step));
+}
+
+main>header::before {
+    content: '#_';
+}
+
+main>a::before {
+    content: '>_';
+}
+
+main>header {
+    padding: var(--shift-step) 0;
+}
+
+main>section {
+    margin-left: calc(2 * var(--shift-step));
+}
+
+.button-container {
+    padding-right: calc(3 * var(--shift-step));
+    margin: calc(3 * var(--shift-step)) 0;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
-.org > div:nth-child(1) {
-    border-bottom: 1px solid var(--bord-col);
+main p::before,
+form label::before,
+legend::before,
+main button::before,
+main button::after {
+    content: '_';
 }
 
-.org-group::before,
-.org-group::after {
-    content: '|';
-    color: var(--bord-col);
+form {
+    padding-top: calc(2 * var(--shift-step));
 }
 
-.org-group ~ * {
-    border: 1px solid var(--bord-col);
-    margin: 1px 5px;
+.files-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
 }
 
-/* Media query for medium screens (tablets and laptops) */
+fieldset>div {
+    padding-left: calc(2 * var(--shift-step));
+}
+
+input {
+    background-color: var(--bg);
+    border: 1px solid gray;
+    accent-color: var(--blue);
+    font-family: monospace, monospace;
+    padding: calc(0.5 * var(--shift-step));
+}
+
+textarea {
+    width: 100%;
+    aspect-ratio: 3/1;
+    color: var(--blue);
+    padding: calc(0.5 * var(--shift-step));
+}
+
+form>div>input[type='text'] {
+    width: fit-content;
+}
+
+label,
+input {
+    color: var(--blue);
+}
+
+fieldset {
+    border: none;
+    margin: var(--shift-step) 0;
+}
+
+legend {
+    margin-bottom: var(--shift-step);
+}
+
+main p {
+    padding: var(--shift-step) 0;
+}
+
+main article {
+    padding: var(--shift-step);
+    text-indent: calc(2 * var(--shift-step));
+}
+
+li {
+    list-style: none;
+}
+
+ul a li::before {
+    content: '>_';
+}
+
+ul a li {
+    padding: var(--shift-step) 0;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+button:disabled {
+    color: gray;
+}
+
+button:hover,
+a:hover {
+    font-weight: bold;
+}
+
+.red-text {
+    color: var(--red);
+}
+
+.typewriter {
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid;
+    animation: typing 3s steps(30, end), blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
 @media (min-width: 768px) {
     .App {
         max-width: 80%;
@@ -69,17 +212,16 @@ form > button {
         border-radius: 2%;
     }
 
-    form > button {
+    form>button {
         margin-top: 30px;
         font-size: 1.2rem;
     }
 
-    .org > div {
+    .org>div {
         justify-content: space-around;
     }
 }
 
-/* Media query for large screens (large desks and monitors ) */
 @media (min-width: 1200px) {
     .App {
         max-width: 60%;
@@ -89,12 +231,12 @@ form > button {
         padding: 40px;
     }
 
-    form > button {
+    form>button {
         margin-top: 40px;
         font-size: 1.5rem;
     }
 
-    .org > div {
+    .org>div {
         justify-content: space-between;
     }
 }

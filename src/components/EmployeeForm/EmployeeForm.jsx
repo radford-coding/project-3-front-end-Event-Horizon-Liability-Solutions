@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import { useState, useEffect, useContext } from "react";
 import * as userService from '../../services/userService';
 import { UserContext } from "../../contexts/UserContext";
+import NavBar from "../NavBar/NavBar";
 import './EmployeeForm.css';
 
 const initialEmployeeFormData = {
@@ -13,10 +14,10 @@ const initialEmployeeFormData = {
 };
 
 const allPermissions = [
-    'admin',
-    'read',
-    'write',
-    'execute',
+    'view-tasks',
+    'edit-records',
+    'manage-files',
+    'assign-tasks',
 ];
 
 const EmployeeForm = (props) => {
@@ -25,7 +26,6 @@ const EmployeeForm = (props) => {
     const { user } = useContext(UserContext);
     const [employeePermissionCheckboxes, setEmployeePermissionCheckboxes] = useState(new Array(allPermissions.length).fill(false));
     const [newFile, setNewFile] = useState('');
-
     const [errorMessage, setErrorMessage] = useState('');
 
     const validateName = (name) => {
@@ -36,9 +36,9 @@ const EmployeeForm = (props) => {
         const ageRegex = /^[1-9][0-9]*$/;
         return ageRegex.test(age);
     };
-    const validatePassword = (password) => {
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-        return passwordRegex.test(password);
+    const validateRole = (role) => {
+        const roleRegex = /[\w ]+/;
+        return roleRegex.test(role);
     };
     const validateFileName = (fileName) => {
         const fileRegex = /^[a-zA-Z0-9_-]{1,50}\.[a-zA-Z0-9]+$/;
@@ -83,6 +83,23 @@ const EmployeeForm = (props) => {
         setNewFile(evt.target.value);
     };
 
+    const handleAddFile = (evt) => {
+        evt.preventDefault();
+
+        if (!validateFileName(newFile)) {
+            setErrorMessage("Invalid file name. Ensure the file name is up to 50 characters and has a valid extension.");
+            return;
+        }
+        setEmployeeFormData({
+            ...employeeFormData,
+            files: [...employeeFormData.files, newFile],
+        });
+        setNewFile('');
+
+        // clean error message
+        setErrorMessage('');
+    };
+
     const handleFileDelete = (evt) => {
         evt.preventDefault();
         console.log('id', evt.target.id);
@@ -96,154 +113,127 @@ const EmployeeForm = (props) => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-      
-    if (!validateName(employeeFormData.fullname)) {
-        setErrorMessage("Invalid name. Only letters and spaces are allowed.");
-        return;
-    }
-    if (!validatePassword(employeeFormData.password)) {
-        setErrorMessage("Invalid password. At least 8 characters, including a number, an uppercase letter, a lowercase letter, and a special character.");
-        return;
-    }
-    if (!validateAge(employeeFormData.age)) {
-        setErrorMessage("Invalid age. Age must be a positive integer.");
-        return;
-    }
-    // clean error message
-    setErrorMessage(''); 
 
-            if (employeeId) {
-                props.handleUpdateEmployee(employeeId, employeeFormData);
-            } else {
-                props.handleAddEmployee(employeeFormData);
-            }
-        };
-        
-        const handleAddFile = (evt) => {
-            evt.preventDefault();
+        if (!validateName(employeeFormData.fullname)) {
+            setErrorMessage("Invalid name. Only letters and spaces are allowed.");
+            return;
+        }
+        if (!validateRole(employeeFormData.role)) {
+            setErrorMessage("Invalid role. Must be only alphanumeric characters and spaces.");
+            return;
+        }
+        if (!validateAge(employeeFormData.age)) {
+            setErrorMessage("Invalid age. Age must be a positive integer.");
+            return;
+        }
+        // clean error message
+        setErrorMessage('');
 
-            if (!validateFileName(newFile)) {
-                setErrorMessage("Invalid file name. Ensure the file name is up to 50 characters and has a valid extension.");
-                return;
-            }
-            setEmployeeFormData({
-                ...employeeFormData,
-                files: [...employeeFormData.files, newFile],
-            });
-            setNewFile('');
-
-             // clean error message
-            setErrorMessage('');
-        };
+        if (employeeId) {
+            props.handleUpdateEmployee(employeeId, employeeFormData);
+        } else {
+            props.handleAddEmployee(employeeFormData);
+        }
+    };
 
     return (
-        <main>
-            <h1>{employeeId ? 'edit' : 'new'}</h1>
-            {errorMessage && <p className="error">{errorMessage}</p>}
-            <form onSubmit={handleSubmit}>
-                <label htmlFor='fullname-input'>Name</label>
-                <input
-                    required
-                    type='text'
-                    name='fullname'
-                    id='fullname-input'
-                    value={employeeFormData.fullname}
-                    onChange={handleEasyChange}
-                />
-                <br />
-                <label htmlFor='age-input'>Age</label>
-                <input
-                    required
-                    type='number'
-                    name='age'
-                    id='age-input'
-                    value={employeeFormData.age}
-                    onChange={handleEasyChange}
-                />
-                <br />
-                <label htmlFor='role-input'>Role</label>
-                <input
-                    required
-                    type='text'
-                    name='role'
-                    id='role-input'
-                    value={employeeFormData.role}
-                    onChange={handleEasyChange}
-                />
-                <br />
-
-                <label htmlFor='age-input'>Age</label>
-                <input
-                required
-                type='number'
-                name='age'
-                id='age-input'
-                value={employeeFormData.age}
-                onChange={handleEasyChange}
-                />
-                {!validateAge(employeeFormData.age) && <p className="error">Invalid age.</p>}
-                
-                {/* <label htmlFor='permissions-input'>Permissions</label>
-                <select
-                    multiple
-                    name="permissions"
-                    id="permissions-input"
-                    onChange={handleChange}
-                >
-                    {allPermissions.map((permission, index) => (
-                        <option key={index} value={permission}>{permission}</option>
-                    ))}
-                </select> */}
-                <fieldset>
-                    <legend>Permissions</legend>
-                    {allPermissions.map((permission, index) => (
-                        <div key={index}>
+        <>
+            <NavBar target={'employee-database'}></NavBar>
+            <main>
+                <header>{employeeId ? `edit_${employeeId}` : 'new'}</header>
+                <section>
+                    <form onSubmit={handleSubmit}>
+                        <div>
+                            <label htmlFor='fullname-input'>name: </label>
                             <input
-                                type='checkbox'
-                                id={`permission-${index}-input`}
-                                //TODO: what to name?
-                                name={permission}
-                                value={permission}
-                                checked={employeePermissionCheckboxes[index]}
-                                onChange={() => handlePermissionsChange(index)}
+                                required
+                                type='text'
+                                name='fullname'
+                                id='fullname-input'
+                                value={employeeFormData.fullname}
+                                onChange={handleEasyChange}
                             />
-                            <label htmlFor={`permission-${index}-input`}>{permission}</label>
                         </div>
-                    ))}
-                </fieldset>
-                <br />
-                <fieldset>
-                    <legend>Add file</legend>
-                    <input
-                        type="text"
-                        value={newFile}
-                        onChange={handleFileChange}
-                    />
-                    <button
-                        onClick={handleAddFile}
-                    >
-                        add
-                    </button>
-                </fieldset>
-                <br />
-                <fieldset>
-                    <legend>Files</legend>
-                    {employeeFormData.files.map((file, index) => (
-                        <div key={index}>
-                            <p key={index}>{file}</p>
+                        <br />
+                        <div>
+                            <label htmlFor='age-input'>age: </label>
+                            <input
+                                required
+                                type='number'
+                                name='age'
+                                id='age-input'
+                                value={employeeFormData.age}
+                                onChange={handleEasyChange}
+                            />
+                        </div>
+                        <br />
+                        <div>
+                            <label htmlFor='role-input'>role: </label>
+                            <input
+                                required
+                                type='text'
+                                name='role'
+                                id='role-input'
+                                value={employeeFormData.role}
+                                onChange={handleEasyChange}
+                            />
+                        </div>
+                        <br />
+                        <fieldset>
+                            <legend>permissions:</legend>
+                            {allPermissions.map((permission, index) => (
+                                <div key={index}>
+                                    <input
+                                        type='checkbox'
+                                        id={`permission-${index}-input`}
+                                        //TODO: what to name?
+                                        name={permission}
+                                        value={permission}
+                                        checked={employeePermissionCheckboxes[index]}
+                                        onChange={() => handlePermissionsChange(index)}
+                                    />
+                                    <label htmlFor={`permission-${index}-input`}>{permission}</label>
+                                </div>
+                            ))}
+                        </fieldset>
+                        <br />
+                        <fieldset>
+                            <legend>files:</legend>
+                            {employeeFormData.files.map((file, index) => (
+                                <div key={index} className="files-container">
+                                    <p key={index}>{file}</p>
+                                    <button
+                                        id={`${index}-delete-button`}
+                                        onClick={handleFileDelete}
+                                        className="red-text"
+                                    >
+                                        X
+                                    </button>
+                                </div>
+                            ))}
+                        </fieldset>
+                        <br />
+                        <fieldset className="files-container">
+                            <legend>add_file:</legend>
+                            <input
+                                type="text"
+                                value={newFile}
+                                onChange={handleFileChange}
+                            />
                             <button
-                                id={`${index}-delete-button`}
-                                onClick={handleFileDelete}
+                                onClick={handleAddFile}
                             >
-                                x
+                                add
                             </button>
-                        </div>
-                    ))}
-                </fieldset>
-
-                <button type='submit'>{employeeId ? 'update' : 'add this employee'}</button>
-            </form>
-        </main>
+                        </fieldset>
+                        <section className="button-container">
+                            <button type='submit'>{employeeId ? 'update' : 'add_employee'}</button>
+                        </section>
+                    </form>
+                    {errorMessage && <p className="error">{errorMessage}</p>}
+                </section>
+            </main>
+        </>
     );
 };
 

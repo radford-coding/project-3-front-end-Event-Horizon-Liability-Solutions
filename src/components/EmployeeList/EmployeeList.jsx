@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import * as userService from '../../services/userService';
 import './EmployeeList.css';
+import NavBar from "../NavBar/NavBar";
 
 const EmployeeList = () => {
 
@@ -13,8 +14,7 @@ const EmployeeList = () => {
         const fetchEmployees = async () => {
             const fetchedEmployees = await userService.employeeList(user._id);
             console.log(user);
-             //sort EmployeeList alphabetically first name 
-             const sortedEmployees = fetchedEmployees.sort((a, b) => 
+            const sortedEmployees = fetchedEmployees.sort((a, b) =>
                 a.fullname.localeCompare(b.fullname)
             );
             setEmployees(sortedEmployees);
@@ -24,19 +24,22 @@ const EmployeeList = () => {
     
 
     return (
-        <main>
-            <h2>EHLS Employees</h2>
-            <ul>
-            <div className="typewriter">
-                {employees.map((employee) => (
-                    <NavLink key={employee._id} to={`/employees/${employee._id}`}>
-                        <li>{employee.fullname}</li>
-                    </NavLink>
-                ))}
-                </div>
-            </ul>
-            <NavLink to='/orgchart/'><button type='button'>Org Chart</button></NavLink>
-        </main>
+        <>
+            <NavBar target={'dashboard'}></NavBar>
+            <main>
+                <header className="typewriter">employee-database</header>
+                <section>
+
+                    <ul>
+                        {employees.map((employee) => (
+                            <NavLink key={employee._id} to={`/employees/${employee._id}`}>
+                                <li>{employee.fullname}</li>
+                            </NavLink>
+                        ))}
+                    </ul>
+                </section>
+            </main>
+        </>
     );
 };
 
