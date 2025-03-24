@@ -208,7 +208,7 @@ const EmployeeForm = (props) => {
                                             onClick={handleFileDelete}
                                             className="red-text"
                                         >
-                                            X
+                                            ✖
                                         </button>
                                     </div>
                                 ))

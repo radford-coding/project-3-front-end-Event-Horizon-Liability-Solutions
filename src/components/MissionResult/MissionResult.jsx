@@ -1,4 +1,4 @@
-import { useLocation, Link } from "react-router";
+import { useLocation } from "react-router";
 import NavBar from "../NavBar/NavBar";
 
 const MissionResult = () => {
@@ -8,9 +8,7 @@ const MissionResult = () => {
     const msg = location.state?.msg;
     const mission = location.state?.mission;
     const description = location.state?.description;
-
-    console.log(mission);
-    console.log(msg);
+    const id = location.state?.id;
 
     if (!mission) return <main>Loading...</main>
 
@@ -18,11 +16,15 @@ const MissionResult = () => {
         <>
             <NavBar target={'mission-control'}></NavBar>
             <main>
-                <h4>{msg}</h4>
+                <header>{id}</header>
                 <br />
-                <br />
-                <h4>{mission}</h4>
-                <p>{description}</p>
+                <section>
+                    <h4>{msg}</h4>
+                    <br />
+                    <br />
+                    <h4>{mission}</h4>
+                    <p>{description}</p>
+                </section>
             </main>
         </>
     );

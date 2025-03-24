@@ -101,8 +101,22 @@ main button::after {
     content: '_';
 }
 
-main button:hover::before,
-main button:hover::after {
+button:not([disabled]):hover,
+main button:not([disabled]):hover::before,
+main button:not([disabled]):hover::after {
+    font-weight: bold;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+button:disabled {
+    color: gray;
+}
+
+a:hover {
     font-weight: bold;
 }
 
@@ -129,10 +143,12 @@ input {
 }
 
 textarea {
-    width: 100%;
+    width: calc(100% - calc(3 * var(--shift-step)));
     aspect-ratio: 3/1;
     color: var(--blue);
     padding: calc(0.5 * var(--shift-step));
+    resize: vertical;
+    line-height: 1.2;
 }
 
 form>div>input[type='text'] {
@@ -172,20 +188,6 @@ ul a li::before {
 
 ul a li {
     padding: var(--shift-step) 0;
-}
-
-button {
-    all: unset;
-    cursor: pointer;
-}
-
-button:disabled {
-    color: gray;
-}
-
-button:hover,
-a:hover {
-    font-weight: bold;
 }
 
 .red-text {

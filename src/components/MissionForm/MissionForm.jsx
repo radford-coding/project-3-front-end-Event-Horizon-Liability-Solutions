@@ -197,13 +197,12 @@ const MissionForm = (props) => {
         // navigate to missionresult component
         // pass the message through the navigate function's state property
         // the state property is stored in the location state and can contain any data you want to pass
-        navigate('/missionresult', { state: { msg: result.msg, mission: props.mission.title, description: props.mission.description } });
+        navigate('/missionresult', { state: { msg: result.msg, mission: props.mission.title, description: props.mission.description, id: missionId } });
     };
 
     return (
         <>
-            <header>submit report</header>
-            { }
+            <p>submit_report:</p>
             <form>
                 <textarea
                     name='report'
