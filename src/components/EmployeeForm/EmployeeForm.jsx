@@ -44,6 +44,9 @@ const EmployeeForm = (props) => {
         const fileRegex = /^[a-zA-Z0-9_-]{1,50}\.[a-zA-Z0-9]+$/;
         return fileRegex.test(fileName);
     };
+    const validateUniqueName = (name, existingEmployees) => {
+        return !existingEmployees.some(employee => employee.fullname.toLowerCase() === name.toLowerCase());
+    };
 
 
 
@@ -113,7 +116,7 @@ const EmployeeForm = (props) => {
         });
     };
 
-    const handleSubmit = (evt) => {
+    const handleSubmit = async (evt) => {
         evt.preventDefault();
 
         if (!validateName(employeeFormData.fullname)) {
@@ -128,6 +131,13 @@ const EmployeeForm = (props) => {
             setErrorMessage("Invalid age. Age must be a positive integer.");
             return;
         }
+        // get employee list to check for duplicates
+    const existingEmployees = await userService.employeeList(user._id);
+    
+    if (!validateUniqueName(employeeFormData.fullname, existingEmployees)) {
+        setErrorMessage("This employee already exists. Please use a different name.");
+        return;
+    }
         // clean error message
         setErrorMessage('');
 
