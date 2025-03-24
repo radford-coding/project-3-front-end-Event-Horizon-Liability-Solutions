@@ -74,7 +74,7 @@ The game "Event Horizon Liability Solutions" is an immersive experience set in a
 
 # Technical Requirements
 
-| MVP Requirements                                                                                                           | Complete?|
+| MVP Requirements                                                                                                                      | Complete?|
 |---------------------------------------------------------------------------------------------------------------------------------------|----------|
 | The back-end application is built with Express and Node.                                                                              | Complete |
 | The front-end application is built with React.                                                                                        | Complete |
