@@ -1,67 +1,3 @@
-/* body {
-    background-image: url('src/assets/spatial.jpg');
-    background-blend-mode: lighten;
-    background-position: center;
-    background-size: cover;
-}
-
-.App {
-    text-align: center;
-    margin: 0 auto;
-    max-width: 1200px;
-}
-
-#root {
-    padding: 20px;
-    background-color: rgba(0, 0, 0, .93);
-    border-radius: 5%;
-    margin: auto;
-}
-
-form > button {
-    margin-top: 20px;
-}
-
-
-@media (min-width: 768px) {
-    .App {
-        max-width: 80%;
-    }
-
-    #root {
-        padding: 30px;
-        border-radius: 2%;
-    }
-
-    form > button {
-        margin-top: 30px;
-        font-size: 1.2rem;
-    }
-
-    .org > div {
-        justify-content: space-around;
-    }
-}
-
-@media (min-width: 1200px) {
-    .App {
-        max-width: 60%;
-    }
-
-    #root {
-        padding: 40px;
-    }
-
-    form > button {
-        margin-top: 40px;
-        font-size: 1.5rem;
-    }
-
-    .org > div {
-        justify-content: space-between;
-    }
-} */
-
 * {
     box-sizing: border-box;
     padding: 0;
@@ -79,6 +15,7 @@ form > button {
     --red: #EB5B55;
     --bg: #141218;
     --shift-step: 10px;
+    --bord-col: rgba(255, 255, 255, .35);
     color: var(--blue);
     background-color: var(--bg);
 
@@ -122,7 +59,10 @@ main {
     margin-left: calc(3 * var(--shift-step));
 }
 
-main>header::before,
+main>header::before {
+    content: '#_';
+}
+
 main>a::before {
     content: '>_';
 }
@@ -147,9 +87,57 @@ main>section {
 
 main p::before,
 form label::before,
+legend::before,
 main button::before,
 main button::after {
     content: '_';
+}
+
+form {
+    padding-top: calc(2 * var(--shift-step));
+}
+
+.files-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+fieldset>div {
+    padding-left: calc(2 * var(--shift-step));
+}
+
+input {
+    background-color: var(--bg);
+    border: 1px solid gray;
+    accent-color: var(--blue);
+    font-family: monospace, monospace;
+    padding: calc(0.5 * var(--shift-step));
+}
+
+textarea {
+    width: 100%;
+    aspect-ratio: 3/1;
+    color: var(--blue);
+    padding: calc(0.5 * var(--shift-step));
+}
+
+form>div>input[type='text'] {
+    width: fit-content;
+}
+
+label,
+input {
+    color: var(--blue);
+}
+
+fieldset {
+    border: none;
+    margin: var(--shift-step) 0;
+}
+
+legend {
+    margin-bottom: var(--shift-step);
 }
 
 main p {
@@ -178,6 +166,10 @@ button {
     cursor: pointer;
 }
 
+button:disabled {
+    color: gray;
+}
+
 button:hover,
 a:hover {
     font-weight: bold;
@@ -187,35 +179,64 @@ a:hover {
     color: var(--red);
 }
 
-.org {
-    --bord-col: rgba(255, 255, 255, .35);
+.typewriter {
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid;
+    animation: typing 3s steps(30, end), blink 0.75s step-end infinite;
 }
 
-.org-group {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
 }
 
-.org>div {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-evenly;
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
 }
 
-.org>div:nth-child(1) {
-    border-bottom: 1px solid var(--bord-col);
+@media (min-width: 768px) {
+    .App {
+        max-width: 80%;
+    }
+
+    #root {
+        padding: 30px;
+        border-radius: 2%;
+    }
+
+    form>button {
+        margin-top: 30px;
+        font-size: 1.2rem;
+    }
+
+    .org>div {
+        justify-content: space-around;
+    }
 }
 
-.org-group::before,
-.org-group::after {
-    content: '|';
-    color: var(--bord-col);
-}
+@media (min-width: 1200px) {
+    .App {
+        max-width: 60%;
+    }
 
-.org-group~* {
-    border: 1px solid var(--bord-col);
-    margin: calc(0.5 * var(--shift-step));
-    text-align: center;
-    padding: calc(0.5 * var(--shift-step));
+    #root {
+        padding: 40px;
+    }
+
+    form>button {
+        margin-top: 40px;
+        font-size: 1.5rem;
+    }
+
+    .org>div {
+        justify-content: space-between;
+    }
 }

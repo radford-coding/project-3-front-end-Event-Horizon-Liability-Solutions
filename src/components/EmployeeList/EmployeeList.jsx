@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import * as userService from '../../services/userService';
 import NavBar from "../NavBar/NavBar";
-// import './EmployeeList.css';
 
 const EmployeeList = () => {
 
@@ -14,7 +13,10 @@ const EmployeeList = () => {
         const fetchEmployees = async () => {
             const fetchedEmployees = await userService.employeeList(user._id);
             console.log(user);
-            setEmployees(fetchedEmployees);
+            const sortedEmployees = fetchedEmployees.sort((a, b) =>
+                a.fullname.localeCompare(b.fullname)
+            );
+            setEmployees(sortedEmployees);
         };
         fetchEmployees();
     }, [user]);
@@ -23,7 +25,7 @@ const EmployeeList = () => {
         <>
             <NavBar target={'dashboard'}></NavBar>
             <main>
-                <header>employee-database</header>
+                <header className="typewriter">employee-database</header>
                 <section>
 
                     <ul>
