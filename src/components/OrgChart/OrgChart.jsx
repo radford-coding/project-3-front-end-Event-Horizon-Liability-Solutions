@@ -46,31 +46,33 @@ const OrgChart = () => {
         fetchEmployees();
     }, [user]);
 
-    employees.length ? console.log(employees.find((ee) => (ee.role === 'Solar Flare Analyst')).role) : console.log('waiting');
-
     return (
         <>
             <NavBar target={'company-resources'}></NavBar>
             <main>
                 <header>org_chart</header>
                 <br />
-                <div className="org">
-                    <div>Event Horizon Liability Solutions</div>
-                    {employees.length
-                        ? <div>
-                            {Object.keys(org).map((key, index) => (
-                                <div key={index}>
-                                    <header className='org-group'>{key}</header>
-                                    {org[key].map((role, index) => (
-                                        <div key={index}>
-                                            {employees.find(e => e.role === role) ? <NavLink to={`/employees/${employees.find(e => e.role === role)._id}`}>{role}</NavLink> : role}
-                                        </div>
-                                    ))}
-                                </div>))}
-                        </div>
-                        : 'Loading...'}
+                <div>
+                    select a role to view that employee
                 </div>
+                <br />
             </main>
+            <div className="org">
+                <div>Event Horizon Liability Solutions</div>
+                {employees.length
+                    ? <div>
+                        {Object.keys(org).map((key, index) => (
+                            <div key={index}>
+                                <header className='org-group'>{key}</header>
+                                {org[key].map((role, index) => (
+                                    <div key={index}>
+                                        {employees.find(e => e.role === role) ? <NavLink to={`/employees/${employees.find(e => e.role === role)._id}`}>{role}</NavLink> : role}
+                                    </div>
+                                ))}
+                            </div>))}
+                    </div>
+                    : 'Loading...'}
+            </div>
         </>
     );
 };

@@ -40,6 +40,10 @@
     text-align: center;
 }
 
+body {
+    width: 100vw;
+}
+
 nav {
     padding: var(--shift-step);
 }
@@ -48,7 +52,8 @@ nav a::before {
     content: '<_';
 }
 
-nav:hover::before {
+nav:hover::before,
+nav:focus::before {
     font-weight: bold;
 }
 
@@ -71,7 +76,8 @@ main>a::before {
     content: '>_';
 }
 
-main>a:hover::before {
+main>a:hover::before,
+main>a:focus::before {
     font-weight: bold;
 }
 
@@ -102,8 +108,11 @@ main button::after {
 }
 
 button:not([disabled]):hover,
+button:not([disabled]):focus,
 main button:not([disabled]):hover::before,
-main button:not([disabled]):hover::after {
+main button:not([disabled]):focus::before,
+main button:not([disabled]):hover::after,
+main button:not([disabled]):focus::after {
     font-weight: bold;
 }
 
@@ -116,7 +125,8 @@ button:disabled {
     color: gray;
 }
 
-a:hover {
+a:hover,
+a:focus {
     font-weight: bold;
 }
 
@@ -124,10 +134,27 @@ form {
     padding-top: calc(2 * var(--shift-step));
 }
 
+.basic-input {
+    display: grid;
+    grid-template-columns: 1fr 80%;
+    grid-template-rows: 100%;
+    align-items: center;
+}
+
+.basic-input>input[type] {
+    width: calc(100% - calc(3 * var(--shift-step)));
+}
+
 .files-container {
+    width: 100%;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: var(--shift-step);
+}
+
+.files-container>input {
+    width: calc(80% - calc(3 * var(--shift-step)));
 }
 
 fieldset>div {
@@ -139,6 +166,8 @@ fieldset>button {
 }
 
 input {
+    line-height: 1.2;
+    font-size: 1rem;
     background-color: var(--bg);
     border: 1px solid gray;
     accent-color: var(--blue);
@@ -158,6 +187,12 @@ textarea {
 form>div>input[type='text'] {
     width: fit-content;
 }
+
+input[type="checkbox"] {
+    margin-right: calc(3 * var(--shift-step));
+}
+
+input[type="checkbox"]:checked 
 
 label,
 input {
@@ -182,7 +217,7 @@ main article {
     text-indent: calc(2 * var(--shift-step));
 }
 
-li {
+ul li {
     list-style: none;
 }
 
@@ -205,14 +240,15 @@ ul a li {
 .typewriter {
     white-space: nowrap;
     overflow: hidden;
-    border-right: 2px solid;
-    animation: typing 3s steps(30, end), blink 0.75s step-end infinite;
+    /* border-right: 1px solid; */
+    animation: typing 2s steps(30, end), blink 0.75s step-end infinite;
 }
 
 @keyframes typing {
     from {
         width: 0;
     }
+
     to {
         width: 100%;
     }
@@ -225,40 +261,21 @@ ul a li {
 }
 
 @media (min-width: 768px) {
-    .App {
-        max-width: 80%;
+    :root {
+        --shift-step: 15px;
     }
 
-    #root {
-        padding: 30px;
-        border-radius: 2%;
-    }
-
-    form>button {
-        margin-top: 30px;
-        font-size: 1.2rem;
-    }
-
-    .org>div {
-        justify-content: space-around;
+    body {
+        padding: 0 10%;
     }
 }
 
 @media (min-width: 1200px) {
-    .App {
-        max-width: 60%;
+    :root {
+        --shift-step: 20px;
     }
 
-    #root {
-        padding: 40px;
-    }
-
-    form>button {
-        margin-top: 40px;
-        font-size: 1.5rem;
-    }
-
-    .org>div {
-        justify-content: space-between;
+    body {
+        padding: 0 20%;
     }
 }

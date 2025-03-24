@@ -7,7 +7,7 @@ import './EmployeeForm.css';
 
 const initialEmployeeFormData = {
     fullname: '',
-    age: 0,
+    age: 1,
     role: '',
     permissions: [],
     files: [],
@@ -41,7 +41,7 @@ const EmployeeForm = (props) => {
         return roleRegex.test(role);
     };
     const validateFileName = (fileName) => {
-        const fileRegex = /^[a-zA-Z0-9_-]{1,50}\.[a-zA-Z0-9]+$/;
+        const fileRegex = /^[a-zA-Z0-9_-]{1,50}\.[a-zA-Z0-9]{2,4}$/;
         return fileRegex.test(fileName);
     };
 
@@ -87,7 +87,7 @@ const EmployeeForm = (props) => {
         evt.preventDefault();
 
         if (!validateFileName(newFile)) {
-            setErrorMessage("Invalid file name. Ensure the file name is up to 50 characters and has a valid extension.");
+            setErrorMessage(`Invalid file name «${newFile}». Ensure the file name is up to 50 characters and has a valid extension.`);
             return;
         }
         setEmployeeFormData({
@@ -140,10 +140,10 @@ const EmployeeForm = (props) => {
         <>
             <NavBar target={'employee-database'}></NavBar>
             <main>
-                <header>{employeeId ? `edit_${employeeId}` : 'new'}</header>
+                <header className="typewriter">{employeeId ? `${employeeId}/edit` : 'new'}</header>
                 <section>
                     <form onSubmit={handleSubmit}>
-                        <div>
+                        <div className="basic-input">
                             <label htmlFor='fullname-input'>name: </label>
                             <input
                                 required
@@ -155,7 +155,7 @@ const EmployeeForm = (props) => {
                             />
                         </div>
                         <br />
-                        <div>
+                        <div className="basic-input">
                             <label htmlFor='age-input'>age: </label>
                             <input
                                 required
@@ -167,7 +167,7 @@ const EmployeeForm = (props) => {
                             />
                         </div>
                         <br />
-                        <div>
+                        <div className="basic-input">
                             <label htmlFor='role-input'>role: </label>
                             <input
                                 required
@@ -186,7 +186,6 @@ const EmployeeForm = (props) => {
                                     <input
                                         type='checkbox'
                                         id={`permission-${index}-input`}
-                                        //TODO: what to name?
                                         name={permission}
                                         value={permission}
                                         checked={employeePermissionCheckboxes[index]}
@@ -202,7 +201,6 @@ const EmployeeForm = (props) => {
                             {employeeFormData.files.length
                                 ? employeeFormData.files.map((file, index) => (
                                     <div key={index} className="files-container">
-                                        <p key={index}>{file}</p>
                                         <button
                                             id={`${index}-delete-button`}
                                             onClick={handleFileDelete}
@@ -210,6 +208,7 @@ const EmployeeForm = (props) => {
                                         >
                                             ✖
                                         </button>
+                                        <p key={index}>{file}</p>
                                     </div>
                                 ))
                                 : <div>[none]</div>}
@@ -217,22 +216,24 @@ const EmployeeForm = (props) => {
                         <br />
                         <fieldset className="files-container">
                             <legend>add_file:</legend>
-                            <input
-                                type="text"
-                                value={newFile}
-                                onChange={handleFileChange}
-                            />
-                            <button
-                                onClick={handleAddFile}
-                            >
-                                add
-                            </button>
+                            <div className="files-container">
+                                <button
+                                    onClick={handleAddFile}
+                                >
+                                    add
+                                </button>
+                                <input
+                                    type="text"
+                                    value={newFile}
+                                    onChange={handleFileChange}
+                                />
+                            </div>
                         </fieldset>
+                        {errorMessage && <p className="error">{errorMessage}</p>}
                         <section className="button-container">
                             <button type='submit'>{employeeId ? 'update' : 'add_employee'}</button>
                         </section>
                     </form>
-                    {errorMessage && <p className="error">{errorMessage}</p>}
                 </section>
             </main>
         </>
