@@ -15,7 +15,7 @@ const CompanyResourcesList = () => {
                     <ul>
                         <NavLink to='/orgchart'><li className="typewriter">org_chart</li></NavLink>
                         <NavLink to='/balancesheet'><li className="typewriter">balance_sheet</li></NavLink>
-                        <NavLink to='/charter'><li>corporate_charter</li></NavLink>
+                        <NavLink to='/charter'><li className="typewriter">corporate_charter</li></NavLink>
                     </ul>
                 </section>
             </main>

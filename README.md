@@ -15,8 +15,8 @@
 [back end](https://event-horizon-liability-sol-6685ee1960ca.herokuapp.com)
 
 ## Project Explanation:
-"You've been hired as a security consultant at Event Horizon Liability Solutions, a large interstellar company."
-The game "Event Horizon Liability Solutions" is an immersive experience set in a cyberpunk future, where players take on the role of cybersecurity and account management administrators in a futuristic mega-corporation. Players can create and manage employee profiles, assign tasks, and carry out missions related to data protection and corporate cybersecurity. The platform also allows the visualization of employees, the editing of their data and the deletion of accounts, providing a dynamic and management-oriented experience.
+"Congratulations on your induction into EHLS. As our newest cybersecurity operative, your expertise is critical to safeguarding our network's integrity."
+We decided to take our CRUD app to the next level, and have CRUD operations comprise the gameplay in this futuristic world. After signing up, the user is taken to the dashboard of their cybersecurity terminal, with access to a database of users on which they have CRUD privileges, a form for creating a new employee entry, a list of missions, and some (un)helpful company resources. The missions assigned to the player take them through various CRUD operations as they clean up the database: updating employee permissions, removing suspect files, handing out a promotion, and removing an imposter. After completing all the missions, their services are appreciated!
 
 ## RESTful Route definitions
 
