@@ -23,11 +23,13 @@ const CorporateCharter = () => {
                 </section>
                 <br />
                 <h4>II: Legal & Jurisdictional Framework</h4>
-                <ol>
-                    <li>Governance & Compliance: EHLS operates under the regulatory oversight of the Interstellar Trade and Commerce Authority (ITCA) and adheres to the Unified Galactic Insurance Code (UGIC-44.7).</li>
-                    <li>Interstellar Jurisdiction: EHLS recognizes legal authority across 27 sovereign planetary governments, three independent trade guilds, and the Celestial Concord Pact (CCP).</li>
-                    <li>Dispute Resolution: Arbitration of interstellar claims shall be conducted through the Quantum Dispute Resolution Consortium (QDRC) to ensure fair and expedient settlements.</li>
-                </ol>
+                <section>
+                    <ol>
+                        <li>Governance & Compliance: EHLS operates under the regulatory oversight of the Interstellar Trade and Commerce Authority (ITCA) and adheres to the Unified Galactic Insurance Code (UGIC-44.7).</li>
+                        <li>Interstellar Jurisdiction: EHLS recognizes legal authority across 27 sovereign planetary governments, three independent trade guilds, and the Celestial Concord Pact (CCP).</li>
+                        <li>Dispute Resolution: Arbitration of interstellar claims shall be conducted through the Quantum Dispute Resolution Consortium (QDRC) to ensure fair and expedient settlements.</li>
+                    </ol>
+                </section>
                 <br />
                 <h4>III: Executive Leadership</h4>
                 <ol>
