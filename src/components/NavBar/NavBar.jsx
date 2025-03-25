@@ -2,6 +2,8 @@ import { useContext, useState, useEffect } from 'react';
 import { NavLink } from 'react-router';
 import { UserContext } from '../../contexts/UserContext';
 
+const ehls = 'Event Horizon Liability Solutions, Inc.';
+
 const NavBar = (props) => {
   const { user } = useContext(UserContext);
 
@@ -23,7 +25,13 @@ const NavBar = (props) => {
     <header>
       {user ? (
         <>
-          <h4>Event Horizon Liability Solutions, Inc.</h4>
+          <h4>
+            {ehls.split('').map((letter, index) => (
+              Math.random() > .95
+              ? <span className='darken' key={index}>{letter}</span>
+              : <span key={index}>{letter}</span>
+            ))}
+          </h4>
           <nav>
             <NavLink to={targetLink}>{props.target}</NavLink>
           </nav>
