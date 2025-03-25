@@ -1,6 +1,10 @@
 import { NavLink } from 'react-router';
+import { UserContext } from '../../contexts/UserContext';
+import { useContext } from 'react';
 
 const WelcomeScreen = () => {
+
+  const {user} = useContext(UserContext);
 
   return (
     <>
@@ -8,7 +12,7 @@ const WelcomeScreen = () => {
         <h4>Event Horizon Liability Solutions, Inc.</h4>
       </header>
       <main>
-        <h1>Welcome to Event Horizon Liability Solutions, Incorporated</h1>
+        <h1>Welcome to Event Horizon Liability Solutions, Incorporated, {user.username}</h1>
         <article>Congratulations on your induction into EHLS. As our newest cybersecurity operative, your expertise is critical to safeguarding our network's integrity.</article>
         <article>Your first directive: Navigate to Missions to retrieve your daily objectives. Each task is time-sensitive and requires precision. Upon completion, submit a detailed report to verify your execution.</article>
         <article>If you require guidance, access the Org Chart should you need to decipher internal protocols.</article>

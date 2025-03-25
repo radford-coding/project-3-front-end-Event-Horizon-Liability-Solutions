@@ -26,7 +26,7 @@ const SignUpForm = () => {
     try {
       const newUser = await signUp(formData);
       setUser(newUser);
-      navigate('/');
+      navigate('/welcome');
     } catch (err) {
       setMessage(err.message);
     };

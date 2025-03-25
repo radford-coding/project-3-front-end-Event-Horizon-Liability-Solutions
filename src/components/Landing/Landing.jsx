@@ -5,7 +5,15 @@ const Landing = () => {
     <>
       <header>
         <h4>Event Horizon Liability Solutions, Inc.</h4>
-        <nav></nav>
+        <nav>
+          <a
+            href="/"
+            className='red-text'
+            style={{ pointerEvents: 'none', cursor: 'default' }}
+          >
+
+          </a>
+        </nav>
       </header>
       <main>
         <ul>
