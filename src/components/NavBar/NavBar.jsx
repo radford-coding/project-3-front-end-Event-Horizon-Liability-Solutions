@@ -27,10 +27,11 @@ const NavBar = (props) => {
         <>
           <h4>
             {ehls.split('').map((letter, index) => (
-              /[A-Z ]/.test(letter) ? letter
+              /[A-Z ]/.test(letter)
+              ? letter
                 : (
                   Math.random() > .97
-                    ? <span className='darken' key={index}>{String.fromCharCode(letter.charCodeAt() + 1)}</span>
+                    ? <span className='darken' key={index}>{String.fromCharCode(letter.charCodeAt() + Math.floor(Math.random() * 2) - 1)}</span>
                     : letter
                 )
             )

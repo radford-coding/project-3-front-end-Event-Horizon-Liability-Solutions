@@ -90,7 +90,7 @@ const EmployeeForm = (props) => {
         evt.preventDefault();
 
         if (!validateFileName(newFile)) {
-            setErrorMessage(`Invalid file name «${newFile}». Ensure the file name is up to 50 characters and has a valid extension.`);
+            setErrorMessage(`Invalid file name «${newFile}». Ensure the file name is less than 50 characters and has a valid extension.`);
             return;
         }
         setEmployeeFormData({
@@ -125,13 +125,14 @@ const EmployeeForm = (props) => {
             setErrorMessage(`Invalid age «${employeeFormData.age}». Age must be a positive integer from 1 to 9999.`);
             return;
         }
+
         const existingEmployees = await userService.employeeList(user._id);
 
         if (!validateUniqueName(employeeFormData.fullname, existingEmployees)) {
             if (!existingEmployees.some(ee => ee._id === employeeId)) {
                 setErrorMessage(`Employee «${employeeFormData.fullname}» already exists. Please use a different name.`);
+                return;
             };
-            return;
         }
         setErrorMessage('');
 
@@ -139,7 +140,7 @@ const EmployeeForm = (props) => {
             props.handleUpdateEmployee(employeeId, employeeFormData);
         } else {
             props.handleAddEmployee(employeeFormData);
-        }
+        };
     };
 
     return (

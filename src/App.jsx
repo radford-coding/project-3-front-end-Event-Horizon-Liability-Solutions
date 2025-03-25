@@ -43,6 +43,7 @@ const App = () => {
 
   const handleUpdateEmployee = async (employeeId, employeeFormData) => {
     await userService.editEmployee(user._id, employeeId, employeeFormData);
+    console.log('here');
     navigate('/employees');
   };
 
