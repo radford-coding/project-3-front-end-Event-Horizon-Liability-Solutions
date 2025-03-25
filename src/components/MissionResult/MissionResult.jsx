@@ -13,7 +13,6 @@ const MissionResult = () => {
 
     const handleSignOut = () => {
         localStorage.removeItem('token');
-        setUser(null);
       };
 
     if (!mission) return <main>Loading...</main>
