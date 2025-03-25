@@ -197,6 +197,14 @@ const MissionForm = (props) => {
         return result;
     };
 
+    const checkIsLastMission = async () => {
+        const fetchedMissions = await userService.missionList(user._id);
+        const incompleteMissions = fetchedMissions.filter(mission => !mission.isCompleted);
+
+        // returns true if all missions are completed
+        return incompleteMissions.length === 0;
+    };
+
     const handleSubmit = async (evt) => {
         evt.preventDefault();
         // check mission completion and pull result from it
@@ -210,10 +218,21 @@ const MissionForm = (props) => {
             });
         }
 
+        const allMissionsCompleted = await checkIsLastMission();
+        console.log('allMissionsCompleted:', allMissionsCompleted);
         // navigate to missionresult component
         // pass the message through the navigate function's state property
         // the state property is stored in the location state and can contain any data you want to pass
-        navigate('/missionresult', { state: { msg: result.msg, mission: props.mission.title, description: props.mission.description, id: missionId } });
+        navigate('/missionresult', { 
+            state: { 
+                msg: result.msg, 
+                mission: props.mission.title, 
+                description: props.mission.description, 
+                id: missionId,
+                allMissionsCompleted 
+            } 
+        });
+
     };
 
     return (
