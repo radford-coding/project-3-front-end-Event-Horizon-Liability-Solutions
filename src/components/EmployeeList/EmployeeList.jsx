@@ -2,18 +2,12 @@ import { NavLink } from "react-router";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import * as userService from '../../services/userService';
-import './EmployeeList.css';
 import NavBar from "../NavBar/NavBar";
 
 const EmployeeList = () => {
 
     const { user } = useContext(UserContext);
     const [employees, setEmployees] = useState([]);
-    // const [by, setBy] = useState('name');
-
-    // const handleUpdateBy = (evt) => {
-    //     setBy(evt.target.value);
-    // };
 
     useEffect(() => {
         const fetchEmployees = async () => {
@@ -25,7 +19,7 @@ const EmployeeList = () => {
         };
         fetchEmployees();
     }, [user]);
-    
+
 
     return (
         <>

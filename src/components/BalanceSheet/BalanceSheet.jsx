@@ -20,12 +20,13 @@ const BalanceSheet = () => {
             <main>
                 <header>balance_sheet</header>
                 <br />
+                <section>Currency units: Millions of Galactic Credits</section>
+                <br />
+                <section>
+                    <h3 className="typewriter">{`fiscal year ${bsNums.year}`}</h3>
+                </section>
+                <br />
                 <table>
-                    <thead>
-                        <tr>
-                            <th colSpan={2}>{`fiscal year ${bsNums.year}`}</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <tr>
                             <td>credits in bank</td>
@@ -51,7 +52,7 @@ const BalanceSheet = () => {
                             <td>gruyere deficit</td>
                             <td>{`╫ ${bsNums.gruyereDeficit}`}</td>
                         </tr>
-                        <tr style={{fontWeight: 'bold'}}>
+                        <tr style={{ fontWeight: 'bold' }}>
                             <td>total</td>
                             <td>{`╫ ${bsNums.credits + bsNums.gruyere + bsNums.income + bsNums.debt + bsNums.wages + bsNums.gruyereDeficit}`}</td>
                         </tr>

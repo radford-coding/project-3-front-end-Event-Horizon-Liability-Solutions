@@ -1,24 +1,24 @@
 # Event Horizon Liability Solutions
+![dashboard of app](src/assets/dashboardScreenshot.png)
 
-## Logo:
-![Hacker](src/assets/Logo.jpg)
+## GitHub repository links:
+[front end](https://github.com/radford-coding/project-3-front-end-Event-Horizon-Liability-Solutions.git)
 
-## GitHub repository link:
-[Back End](https://github.com/seradelarosa/EHLS-project-backend.git)
-[Front End](https://github.com/radford-coding/project-3-front-end-Event-Horizon-Liability-Solutions.git)
+[back end](https://github.com/seradelarosa/EHLS-project-backend.git)
 
 ## Trello link:
 [planning board](https://trello.com/b/67IfCuDU/project-3-mern-stack-crud-cyberpunk-hacking-game)
 
-## Deployed:
-[Front end](https://event-horizon-liability-solutions.netlify.app/)
-[Back end](https://event-horizon-liability-sol-6685ee1960ca.herokuapp.com)
+## Deployed app:
+[front end](https://event-horizon-liability-solutions.netlify.app/)
+
+[back end](https://event-horizon-liability-sol-6685ee1960ca.herokuapp.com)
 
 ## Project Explanation:
 "You've been hired as a security consultant at Event Horizon Liability Solutions, a large interstellar company."
 The game "Event Horizon Liability Solutions" is an immersive experience set in a cyberpunk future, where players take on the role of cybersecurity and account management administrators in a futuristic mega-corporation. Players can create and manage employee profiles, assign tasks, and carry out missions related to data protection and corporate cybersecurity. The platform also allows the visualization of employees, the editing of their data and the deletion of accounts, providing a dynamic and management-oriented experience.
 
-## Route definitions
+## RESTful Route definitions
 
 | HTTP Method              | controller | Response | URI | Use Case |
 | :----------------:       | :------:    | :----:  | :---- | :---- |
@@ -26,39 +26,42 @@ The game "Event Horizon Liability Solutions" is an immersive experience set in a
 | POST        |   auth   | 200 |  /auth/sign-in |  log in  |
 | GET | users | 200 | /users | get all users |
 | GET | users | 200 | /users/:userId | get a user's details |
-| PUT | users | 200 | /users/:userId | update a user's details |
-| DELETE | users | 200 | /users/:userId | delete a user account |
 | GET | users | 200 | /users/:userId/employees | get index of employees |
 | POST | users | 201 | /users/:userId/employees | create new employee |
 | GET | users | 200 | /users/:userId/employees/:employeeId | get one employee's details |
-| PUT | users | 200 | /users/:userId/employees/:employeeId | edit an employee |
+| PUT | users | 200 | /users/:userId/employees/:employeeId | edit an employee's data |
 | DELETE | users | 200 | /users/:userId/employees/:employeeId | delete an employee |
 | GET | users | 200 | /users/:userId/missions/ | get index of missions |
 | GET | users | 200 | /users/:userId/missions/:missionId | get one mission's details |
-| PUT | users | 200 | /users/:userId/missions/:missionId | edit an mission |
+| PUT | users | 200 | /users/:userId/missions/:missionId | edit a mission |
 
+------
 
 ## Technologies Used:
 * Front end: 
-    * React: For the development of the user interface and navigation in a SPA (Single Page Application).
-    * Context API: For the management of the global state of authentication and users.
+    * React: For the development of the user interface and navigation in a SPA (Single Page Application). Included are Context API and React Router.
+    * Figma: For designing the different pages in the app. Wireframes included below.
+    * Lighthouse in Chrome DevTools for checking speed and accessibility.
+    * Of course, HTML/CSS/JS.
 
 * Back End:
-    * Node.js and Express: For the server and the REST API.
-    *  MongoDB and Mongoose: For data storage and management of users, employees and missions.
-    * JSON Web Tokens (JWT): For session management and secure authentication.
-    * : To store the session token in the browser.
+    * Node.js and Express: For the server and the RESTful API.
+    * MongoDB and Mongoose: For data storage and management of users, employees and missions.
+    * JSON Web Tokens (JWT): For session authentication.
 
-## Next steps: 
+## Figma wireframes
+
+![Figma wireframes](src/assets/figmaWireframes.png)
+
+## Possible future improvements: 
 1.	 Roles and Permissions System: Implement specific roles (administrator, manager, employee) to differentiate access levels and available functionalities.
 2.	 Statistics and Progress: Add graphics and statistics on mission performance and player progress.
 3.	 Real-Time Chat: Include a communication system to coordinate strategies between players.
 4.	 Real-Time Notifications: Use WebSockets to show instant updates of mission changes or security alerts.
-5.	 User Interface Improvements:
-    * More futuristic design according to the cyberpunk theme.
-    * Animations and transitions for a more engaging visual experience.
+5.	 User Interface Improvements, including animations and transitions for a more engaging visual experience.
 6.	 Integration of an Achievement System: Rewards and achievements when completing missions or managing employees efficiently.
 7.	 Multiplayer Mode: Ability to collaborate or compete with other players in shared cybersecurity tasks.
+8.  Port the app to React Native (discussed below)
 
 ## Feasibility of portability to React Native
 
@@ -70,7 +73,7 @@ The game "Event Horizon Liability Solutions" is an immersive experience set in a
 
 * Local Storage: Local storage on mobile devices is typically handled with libraries such as AsyncStorage.
 
-* API services: Communication with the backend will continue to be with fetch or axios, but adjustments in the management of routes may be required.
+* API services: Communication with the backend can still be through `fetch`, but adjustments in the management of routes may be required.
 
 # Technical Requirements
 
@@ -104,13 +107,13 @@ The game "Event Horizon Liability Solutions" is an immersive experience set in a
 | Colors used in the app meet the WCAG 2.0 level AA standard for contrast.                                                              | Complete |
 | When editing an item, the form is pre-filled with that item's details.                                                                | Complete |
 | Only the creator of a piece of data can see and interact with the UI for editing or deleting that data.                               | Complete |
-| All images have alt text.                                                                                                             | Complete |
-| No text is placed on top of images in a way that makes the text inaccessible.                                                         | Complete |
+| All images have alt text.                                                                                                             | n/a |
+| No text is placed on top of images in a way that makes the text inaccessible.                                                         | n/a |
 | All buttons are styled.                                                                                                               | Complete |
 
 | Git and GitHub Requirements                                                                                                           | Complete?|
 |---------------------------------------------------------------------------------------------------------------------------------------|----------|
-| All your group shown as contributor to the project on GitHub.                                                                        | Complete |
+| All your group memebrs are shown as contributors to the project on GitHub.                                                                        | Complete |
 | GitHub repositories are appropriately named and publicly accessible.                                                                  | Complete |
 | Commit history dates back to the beginning of the project, and old repos are preserved if starting over.                              | Complete |
 | Commit messages are descriptive of the work done in each commit.                                                                      | Complete |

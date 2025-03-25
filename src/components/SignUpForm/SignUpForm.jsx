@@ -1,7 +1,5 @@
-import './SignUpForm.css'
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
-
 import { signUp } from '../../services/authService';
 import { NavLink } from 'react-router';
 import { UserContext } from '../../contexts/UserContext';
@@ -28,7 +26,7 @@ const SignUpForm = () => {
     try {
       const newUser = await signUp(formData);
       setUser(newUser);
-      navigate('/');
+      navigate('/welcome');
     } catch (err) {
       setMessage(err.message);
     };
@@ -96,4 +94,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default SignUpForm

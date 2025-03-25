@@ -33,7 +33,7 @@ const Dashboard = () => {
         <section>
           <h3 className='typewriter'>Welcome to EHLS, {user.username}.</h3>
           <article className='typewriter'>
-            Select a resource.
+            Select a resource above.
           </article>
           <br />
           <article>
@@ -79,10 +79,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
-
-{/* <li><NavLink to='/welcome'>Welcome, {user.username}</NavLink></li> */ }
-//         <li><NavLink to='/'>Dashboard</NavLink></li>
-//         <li><NavLink to='/employees'>employees</NavLink></li>
-//         <li><NavLink to='/employees/new'>new employee</NavLink></li>
-//         <li></li>
+export default Dashboard

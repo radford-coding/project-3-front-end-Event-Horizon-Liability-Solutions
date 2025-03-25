@@ -13,8 +13,7 @@ const MissionResult = () => {
 
     const handleSignOut = () => {
         localStorage.removeItem('token');
-        setUser(null);
-      };
+    };
 
     if (!mission) return <main>Loading...</main>
 
@@ -25,23 +24,27 @@ const MissionResult = () => {
                 {allMissionsCompleted ? (
                     // if all missions completed, show the win message
                     <section>
-                    <h1>-Incoming Transmission-</h1>
-                    <p><em>Secure Line Established</em></p>
-                    <br />
-                    <p>
-                        <strong>[UNKNOWN SOURCE]:</strong> <br />
-                        We've been monitoring your progress closely. Your efficiency in executing tasks has exceeded our projections.  
-                        Higher authorities are now aware of your capabilities. 
-                    </p>
-                    <br />
-                    <p>
-                        Further directives will be provided when the time is right.  
-                        Until then, you are to terminate this connection and await further instructions.
-                    </p>
-                    <br />
-                    <p><em>Connection Termination Protocol Engaged...</em></p>
-                    <Link to='/' onClick={handleSignOut}><button>click here to terminate connection</button></Link>
-                </section>
+                        <h1 className="typewriter">-Incoming Transmission-</h1>
+                        <p className="typewriter"><em>Secure Line Established</em></p>
+                        <br />
+                        <div>
+                            <strong>[UNKNOWN SOURCE]:</strong> <br />
+                            We've been monitoring your progress closely. Your efficiency in executing tasks has exceeded our projections.
+                            Higher authorities are now aware of your capabilities.
+                        </div>
+                        <br />
+                        <div>
+                            Further directives will be provided when the time is right.
+                            Until then, you are to terminate this connection and await further instructions.
+                        </div>
+                        <br />
+                        <p className="typewriter"><em>Connection Termination Protocol Engaged...</em></p>
+                        <div className="button-container">
+                            <Link to='/' onClick={handleSignOut}>
+                                <button>click here to terminate connection</button>
+                            </Link>
+                        </div>
+                    </section>
                 ) : (
                     // otherwise show the default mission result
                     <>
@@ -59,7 +62,7 @@ const MissionResult = () => {
             </main>
         </>
     );
-    
+
 }
 
 export default MissionResult;

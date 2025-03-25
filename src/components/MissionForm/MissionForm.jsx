@@ -28,7 +28,7 @@ const MissionForm = (props) => {
     // set criteria for each mission success
     const checkMission = (missionTitle) => {
         let result = {};
-  
+
         switch (missionTitle) {
             // "delete" (update) a file
             case 'Log Purge': {
@@ -105,7 +105,7 @@ const MissionForm = (props) => {
             // create an employee
             case 'New Aquisition': {
                 const newEmployee = employees.find(employee => employee.fullname === "Voss, Ariella");
-                const hasAge = newEmployee && newEmployee.age === 29; 
+                const hasAge = newEmployee && newEmployee.age === 29;
                 const hasRole = newEmployee && newEmployee.role === 'Astrobiologist';
 
                 if (hasAge && hasRole) {
@@ -132,7 +132,7 @@ const MissionForm = (props) => {
                 break;
             }
 
-            // case to... read piece of info, have it match to report field
+            // read piece of info, have it match to report field
             case 'Corrupt File Resync': {
                 const manager = employees.find(employee => employee.fullname === "Stone, Vera");
                 const correctFile = manager.files.includes("key-file.pdf");
@@ -258,7 +258,6 @@ const MissionForm = (props) => {
             </form>
         </>
     );
-
 };
 
 export default MissionForm
