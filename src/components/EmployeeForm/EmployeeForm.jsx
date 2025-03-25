@@ -99,8 +99,6 @@ const EmployeeForm = (props) => {
             files: [...employeeFormData.files, newFile],
         });
         setNewFile('');
-
-        // clean error message
         setErrorMessage('');
     };
 
@@ -130,14 +128,12 @@ const EmployeeForm = (props) => {
             setErrorMessage("Invalid age. Age must be a positive integer.");
             return;
         }
-        // get employee list to check for duplicates
-    const existingEmployees = await userService.employeeList(user._id);
-    
-    if (!validateUniqueName(employeeFormData.fullname, existingEmployees)) {
-        setErrorMessage("This employee already exists. Please use a different name.");
-        return;
-    }
-        // clean error message
+        const existingEmployees = await userService.employeeList(user._id);
+
+        if (!validateUniqueName(employeeFormData.fullname, existingEmployees)) {
+            setErrorMessage("This employee already exists. Please use a different name.");
+            return;
+        }
         setErrorMessage('');
 
         if (employeeId) {

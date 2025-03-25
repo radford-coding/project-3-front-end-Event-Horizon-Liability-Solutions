@@ -51,7 +51,7 @@ const BalanceSheet = () => {
                             <td>gruyere deficit</td>
                             <td>{`╫ ${bsNums.gruyereDeficit}`}</td>
                         </tr>
-                        <tr style={{fontWeight: 'bold'}}>
+                        <tr style={{ fontWeight: 'bold' }}>
                             <td>total</td>
                             <td>{`╫ ${bsNums.credits + bsNums.gruyere + bsNums.income + bsNums.debt + bsNums.wages + bsNums.gruyereDeficit}`}</td>
                         </tr>

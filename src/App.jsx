@@ -1,12 +1,8 @@
 
 import './App.css';
 import { useContext, useEffect, useState } from 'react';
-
-// import { Routes, Route, useSearchParams } from 'react-router';
 import { Routes, Route, useNavigate } from 'react-router';
 
-
-// import NavBar from './components/NavBar/NavBar';
 import SignUpForm from './components/SignUpForm/SignUpForm';
 import SignInForm from './components/SignInForm/SignInForm';
 import Landing from './components/Landing/Landing';
@@ -26,8 +22,6 @@ import MissionResult from './components/MissionResult/MissionResult';
 import { UserContext } from './contexts/UserContext';
 import * as userService from './services/userService';
 
-// import './App.css';
-
 const App = () => {
   const { user } = useContext(UserContext);
   const [missions, setMissions] = useState([]);
@@ -37,16 +31,6 @@ const App = () => {
     const fetchData = async () => {
       const missionData = await userService.missionList(user._id);
       setMissions(missionData);
-
-      // const completedMissions = missionData.filter( (mission) => mission.isCompleted);
-      // console.log(completedMissions);
-      
-      //TODO: move this to SignIn instead to prevent re-navigating on page refresh
-      // if (completedMissions.length === 0) {
-      //   navigate('/welcome'); // Redirect to the welcome screen if they still have all missions
-      // } else {
-      //   navigate('/'); // otherwise, send them to the dashboard if they've made progress
-      // }
     };
 
     if (user) fetchData();

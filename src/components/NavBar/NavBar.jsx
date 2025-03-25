@@ -42,26 +42,6 @@ const NavBar = (props) => {
       )}
     </header>
   );
-  // return (
-  //   <nav>
-  //     {user ? (
-  //       <ul>
-  //         <li><NavLink to='/welcome'>Welcome, {user.username}</NavLink></li>
-  //         <li><NavLink to='/'>Dashboard</NavLink></li>
-  //         <li><NavLink to='/employees'>employees</NavLink></li>
-  //         <li><NavLink to='/employees/new'>new employee</NavLink></li>
-  //         <li><NavLink to='/missions'>missions</NavLink></li>
-  //         <li><NavLink to='/' onClick={handleSignOut}>Sign Out</NavLink></li>
-  //       </ul>
-  //     ) : (
-  //       <ul>
-  //         <li><NavLink to='/'>Home</NavLink></li>
-  //         <li><NavLink to='/sign-in'>Sign In</NavLink></li>
-  //         <li><NavLink to='/sign-up'>Sign Up</NavLink></li>
-  //       </ul>
-  //     )}
-  //   </nav>
-  // );
 };
 
-export default NavBar;
+export default NavBar

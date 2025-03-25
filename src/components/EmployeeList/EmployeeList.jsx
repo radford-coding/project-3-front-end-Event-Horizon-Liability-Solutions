@@ -8,11 +8,6 @@ const EmployeeList = () => {
 
     const { user } = useContext(UserContext);
     const [employees, setEmployees] = useState([]);
-    // const [by, setBy] = useState('name');
-
-    // const handleUpdateBy = (evt) => {
-    //     setBy(evt.target.value);
-    // };
 
     useEffect(() => {
         const fetchEmployees = async () => {
@@ -24,7 +19,7 @@ const EmployeeList = () => {
         };
         fetchEmployees();
     }, [user]);
-    
+
 
     return (
         <>

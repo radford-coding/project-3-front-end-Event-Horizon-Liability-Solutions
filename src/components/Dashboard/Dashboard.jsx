@@ -79,10 +79,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
-
-{/* <li><NavLink to='/welcome'>Welcome, {user.username}</NavLink></li> */ }
-//         <li><NavLink to='/'>Dashboard</NavLink></li>
-//         <li><NavLink to='/employees'>employees</NavLink></li>
-//         <li><NavLink to='/employees/new'>new employee</NavLink></li>
-//         <li></li>
+export default Dashboard
