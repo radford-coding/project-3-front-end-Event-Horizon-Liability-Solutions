@@ -49,6 +49,10 @@ The game "Event Horizon Liability Solutions" is an immersive experience set in a
     * MongoDB and Mongoose: For data storage and management of users, employees and missions.
     * JSON Web Tokens (JWT): For session authentication.
 
+## Figma wireframes
+
+![Figma wireframes](src/assets/figmaWireframes.png)
+
 ## Possible future improvements: 
 1.	 Roles and Permissions System: Implement specific roles (administrator, manager, employee) to differentiate access levels and available functionalities.
 2.	 Statistics and Progress: Add graphics and statistics on mission performance and player progress.
