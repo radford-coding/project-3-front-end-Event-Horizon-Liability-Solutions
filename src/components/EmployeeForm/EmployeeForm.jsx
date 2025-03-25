@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import * as userService from '../../services/userService';
 import { UserContext } from "../../contexts/UserContext";
 import NavBar from "../NavBar/NavBar";
+import './EmployeeForm.css';
 
 const initialEmployeeFormData = {
     fullname: '',
@@ -32,11 +33,11 @@ const EmployeeForm = (props) => {
         return nameRegex.test(name);
     };
     const validateAge = (age) => {
-        const ageRegex = /^[1-9][0-9]*$/;
+        const ageRegex = /^[1-9][0-9]{0,3}$/;
         return ageRegex.test(age);
     };
     const validateRole = (role) => {
-        const roleRegex = /[\w ]+/;
+        const roleRegex = /([A-Z][a-z]+\s*)+/;
         return roleRegex.test(role);
     };
     const validateFileName = (fileName) => {
@@ -46,8 +47,6 @@ const EmployeeForm = (props) => {
     const validateUniqueName = (name, existingEmployees) => {
         return !existingEmployees.some(employee => employee.fullname.toLowerCase() === name.toLowerCase());
     };
-
-
 
     useEffect(() => {
         const fetchEmployee = async () => {
@@ -115,21 +114,23 @@ const EmployeeForm = (props) => {
         evt.preventDefault();
 
         if (!validateName(employeeFormData.fullname)) {
-            setErrorMessage("Invalid name. Only lastname coma firtname and spaces and are allowed.");
+            setErrorMessage(`Invalid name «${employeeFormData.fullname}». Must be of format: lastname, firstname.`);
             return;
         }
         if (!validateRole(employeeFormData.role)) {
-            setErrorMessage("Invalid role. Must be only alphanumeric characters and spaces.");
+            setErrorMessage(`Invalid role «${employeeFormData.role}». Must be only capitalized words and spaces.`);
             return;
         }
         if (!validateAge(employeeFormData.age)) {
-            setErrorMessage("Invalid age. Age must be a positive integer.");
+            setErrorMessage(`Invalid age «${employeeFormData.age}». Age must be a positive integer from 1 to 9999.`);
             return;
         }
         const existingEmployees = await userService.employeeList(user._id);
 
         if (!validateUniqueName(employeeFormData.fullname, existingEmployees)) {
-            setErrorMessage("This employee already exists. Please use a different name.");
+            if (!existingEmployees.some(ee => ee._id === employeeId)) {
+                setErrorMessage(`Employee «${employeeFormData.fullname}» already exists. Please use a different name.`);
+            };
             return;
         }
         setErrorMessage('');
@@ -234,7 +235,7 @@ const EmployeeForm = (props) => {
                                 />
                             </div>
                         </fieldset>
-                        {errorMessage && <p className="error">{errorMessage}</p>}
+                        {errorMessage ? <p className="error">{errorMessage}</p> : <></>}
                         <section className="button-container">
                             <button type='submit'>{employeeId ? 'update' : 'add_employee'}</button>
                         </section>
