@@ -27,10 +27,14 @@ const NavBar = (props) => {
         <>
           <h4>
             {ehls.split('').map((letter, index) => (
-              Math.random() > .95
-              ? <span className='darken' key={index}>{letter}</span>
-              : <span key={index}>{letter}</span>
-            ))}
+              /[A-Z ]/.test(letter) ? letter
+                : (
+                  Math.random() > .97
+                    ? <span className='darken' key={index}>{String.fromCharCode(letter.charCodeAt() + 1)}</span>
+                    : letter
+                )
+            )
+            )}
           </h4>
           <nav>
             <NavLink to={targetLink}>{props.target}</NavLink>
