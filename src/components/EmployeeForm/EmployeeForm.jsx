@@ -38,7 +38,7 @@ const EmployeeForm = (props) => {
         return ageRegex.test(age);
     };
     const validateRole = (role) => {
-        const roleRegex = /^[A-Z][a-z]*(?:\s(?:[A-Z][a-z]*))$/;
+        const roleRegex = /^[A-Za-z\s]+$/;
         return roleRegex.test(role);
     };
     const validateFileName = (fileName) => {
@@ -127,7 +127,7 @@ const EmployeeForm = (props) => {
             return;
         }
         if (!validateRole(employeeFormData.role)) {
-            setErrorMessage(`Invalid role «${employeeFormData.role}». Must be only capitalized words and spaces.`);
+            setErrorMessage(`Invalid role «${employeeFormData.role}». Must be only letters and spaces.`);
             return;
         }
         if (!validateAge(employeeFormData.age)) {
