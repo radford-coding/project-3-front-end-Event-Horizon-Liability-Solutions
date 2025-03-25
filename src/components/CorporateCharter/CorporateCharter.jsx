@@ -9,7 +9,7 @@ const CorporateCharter = () => {
             <main>
                 <header>corporate_charter</header>
                 <br />
-                <h3>Galactic Corporate Charter</h3>
+                <h3 className="typewriter">Galactic Corporate Charter</h3>
                 <br />
                 <section>Event Horizon Liability Solutions, Incorporated</section>
                 <br />

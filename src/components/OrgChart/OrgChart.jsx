@@ -52,9 +52,9 @@ const OrgChart = () => {
             <main>
                 <header>org_chart</header>
                 <br />
-                <div>
-                    select a role to view that employee
-                </div>
+                <p className='typewriter'>
+                    select a role for details:
+                </p>
                 <br />
             </main>
             <div className="org">

@@ -33,7 +33,7 @@ const Dashboard = () => {
         <section>
           <h3 className='typewriter'>Welcome to EHLS, {user.username}.</h3>
           <article className='typewriter'>
-            Select a resource.
+            Select a resource above.
           </article>
           <br />
           <article>

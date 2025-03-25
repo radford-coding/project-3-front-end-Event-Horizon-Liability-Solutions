@@ -13,8 +13,8 @@ const CompanyResourcesList = () => {
                 </header>
                 <section>
                     <ul>
-                        <NavLink to='/orgchart'><li>org_chart</li></NavLink>
-                        <NavLink to='/balancesheet'><li>balance_sheet</li></NavLink>
+                        <NavLink to='/orgchart'><li className="typewriter">org_chart</li></NavLink>
+                        <NavLink to='/balancesheet'><li className="typewriter">balance_sheet</li></NavLink>
                         <NavLink to='/charter'><li>corporate_charter</li></NavLink>
                     </ul>
                 </section>
