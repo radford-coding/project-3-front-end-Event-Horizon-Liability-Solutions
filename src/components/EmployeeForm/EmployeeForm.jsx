@@ -27,6 +27,7 @@ const EmployeeForm = (props) => {
     const [employeePermissionCheckboxes, setEmployeePermissionCheckboxes] = useState(new Array(allPermissions.length).fill(false));
     const [newFile, setNewFile] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [allEmployees, setAllEmployees] = useState([]);
 
     const validateName = (name) => {
         const nameRegex = /^[a-zA-Z]+, \s*[a-zA-Z]+$/;
@@ -37,7 +38,7 @@ const EmployeeForm = (props) => {
         return ageRegex.test(age);
     };
     const validateRole = (role) => {
-        const roleRegex = /([A-Z][a-z]+\s*)+/;
+        const roleRegex = /^[A-Z][a-z]*(?:\s(?:[A-Z][a-z]*))$/;
         return roleRegex.test(role);
     };
     const validateFileName = (fileName) => {
@@ -55,6 +56,14 @@ const EmployeeForm = (props) => {
             const newPermissions = [...allPermissions].map(p => employeeData.permissions.includes(p));
             setEmployeePermissionCheckboxes(newPermissions);
         };
+        const fetchEmployees = async () => {
+            const fetchedEmployees = await userService.employeeList(user._id);
+            const sortedEmployees = fetchedEmployees.sort((a, b) =>
+                a.fullname.localeCompare(b.fullname)
+            );
+            setAllEmployees(sortedEmployees);
+        };
+        fetchEmployees();
         if (employeeId) fetchEmployee();
         return () => setEmployeeFormData(initialEmployeeFormData);
     }, [user, employeeId]);
@@ -110,7 +119,7 @@ const EmployeeForm = (props) => {
         });
     };
 
-    const handleSubmit = async (evt) => {
+    const handleSubmit = (evt) => {
         evt.preventDefault();
 
         if (!validateName(employeeFormData.fullname)) {
@@ -126,13 +135,9 @@ const EmployeeForm = (props) => {
             return;
         }
 
-        const existingEmployees = await userService.employeeList(user._id);
-
-        if (!validateUniqueName(employeeFormData.fullname, existingEmployees)) {
-            if (!existingEmployees.some(ee => ee._id === employeeId)) {
-                setErrorMessage(`Employee «${employeeFormData.fullname}» already exists. Please use a different name.`);
-                return;
-            };
+        if (!validateUniqueName(employeeFormData.fullname, allEmployees) && !allEmployees.some(ee => ee._id === employeeId)) {
+            setErrorMessage(`Employee «${employeeFormData.fullname}» already exists. Please use a different name.`);
+            return;
         }
         setErrorMessage('');
 
