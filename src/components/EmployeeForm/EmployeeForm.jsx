@@ -104,9 +104,7 @@ const EmployeeForm = (props) => {
 
     const handleFileDelete = (evt) => {
         evt.preventDefault();
-        console.log('id', evt.target.id);
         const newFiles = [...employeeFormData.files].filter((_, i) => i !== Number(evt.target.id.split('-')[0]));
-        console.log('newFiles', newFiles);
         setEmployeeFormData({
             ...employeeFormData,
             files: newFiles,

@@ -1,4 +1,3 @@
-//services/userService.js
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/users`;
 
 // GET /users - view all players
@@ -38,22 +37,6 @@ const updatePlayer = async (userId, playerFormData) => {
     throw new Error(err);
   };
 };
-
-// DELETE /users/:userId - delete a player account - needs to also log out
-// const deletePlayer = async (userId) => {
-//   try {
-//     const res = await fetch(`${BASE_URL}/${userId}`, {
-//       method: 'DELETE',
-//       headers: {
-//         Authorization: `Bearer ${localStorage.getItem('token')}`,
-//       },
-//     });
-//     return res.json();
-//   } catch (err) {
-//     console.log(err);
-//     throw new Error(err);
-//   };
-// };
 
 // GET /users/:userId/employees - view all employees
 const employeeList = async (userId) => {
