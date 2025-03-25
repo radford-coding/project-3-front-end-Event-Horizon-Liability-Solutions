@@ -127,7 +127,7 @@ const EmployeeForm = (props) => {
             return;
         }
         if (!validateRole(employeeFormData.role)) {
-            setErrorMessage(`Invalid role «${employeeFormData.role}». Must be only letters and spaces.`);
+            setErrorMessage(`Invalid role «${employeeFormData.role}». Must be: only letters and spaces.`);
             return;
         }
         if (!validateAge(employeeFormData.age)) {
